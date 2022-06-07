@@ -27,7 +27,7 @@ function Footer() {
                 <TwitterIcon sx={{ display: { xs: 'flex', ms: 'none' }, mr: 3 }} />
                 </Box>
                 
-                <NavBar 
+                <NavBar
                 />
             
             <Box sx={{

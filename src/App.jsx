@@ -4,7 +4,8 @@ import NavBar from './components/NavBar'
 import Body from './components/Body'
 import Footer from './components/Footer'
 import Headers from './components/Headers'
-// import Carrousell from './components/Carrousell'
+import Carusel from './components/Carusel'
+
 
 function App() {
     return (
@@ -13,7 +14,7 @@ function App() {
             
             <Headers />
             <Body />
-            {/* <Carrousell /> */}
+            <Carusel  />
             
             <Footer />
 

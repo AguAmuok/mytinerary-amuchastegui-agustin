@@ -27,11 +27,38 @@
     font-size: 1.3rem !important;
 }
 
-.MuiSvgIcon-root {
+/* .MuiSvgIcon-root {
     cursor: pointer;    
     width: 4vw !important;
-    height: 4vh !important;
+    height: 4vh !important; */
+/* } */
+/* -----------CARRUSEL---------- */
+
+.contenedorCarr{
+    width: 100%;
+    height: 90vh;
+    background-image: url(https://ep01.epimg.net/elpais/imagenes/2020/01/02/paco_nadal/1577966902_562866_1577969649_noticia_normal.jpg);
+    background-position:top;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.contenedorcarurel{
+    width: 75rem;
+}
+
+.tituloCiudades{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(6, 8, 8);
+    color:white;
+    opacity: 70%;
+    font-size: 1.5rem;
+}
+
 
 /* -----------MEDIAQUERY---------- */
 
