@@ -1,0 +1,67 @@
+.header {
+    background-image: url(../images/avion-uno.jpg);
+    background-position:center;
+    background-size: cover;
+    background-attachment: fixed;
+    z-index: 2;
+}
+
+.logo {
+    width: 20rem;
+    padding: 1.5rem;
+}
+
+
+
+.MuiTypography-root {
+    font-size: 2rem !important;
+}
+
+.logolargo {
+    width: 50vw;
+    height: 20vh;
+
+}
+
+.all_reserver {
+    font-size: 1.3rem !important;
+}
+
+.MuiSvgIcon-root {
+    cursor: pointer;    
+    width: 4vw !important;
+    height: 4vh !important;
+}
+
+/* -----------MEDIAQUERY---------- */
+
+
+@media (max-width:900px) {
+    .all_reserver_mobile {
+        font-size: 1rem !important;
+    }
+}
+@media (max-width:800px) {
+    .logolargo {
+        height: 10vh;
+    }
+}
+
+@media (max-width:500px) {
+    .logolargo {
+        height: 5vh;
+    }
+}
+
+@media (max-width: 440px) {
+    .logo {
+        width: 12rem;
+    }
+}
+
+@media (max-width:380px) {
+    .all_reserver_mobile {
+        font-size: .7rem !important;
+    }
+}
+
