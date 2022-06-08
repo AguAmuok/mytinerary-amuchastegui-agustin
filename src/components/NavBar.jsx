@@ -13,8 +13,10 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import '../styles/styles.css'
 import logo from '../images/logo_largo.png'
+import {Link as LinkRouter} from "react-router-dom"
 
-const pages = ['Home', 'Cities'];
+
+const pages = [{ to:'/' , name: 'Home' } , {  to:'/Underconstruction' , name:'Cities'}];
 const settings = ['Sign Up', 'Sign In'];
 
 const NavBar = () => {
@@ -37,13 +39,13 @@ const NavBar = () => {
     };
 
     return (
-        <AppBar position="fixed" sx={{ backgroundColor: 'black', opacity: '50%' }}>
+        <AppBar position="statick" sx={{ backgroundColor: 'black', opacity: '95%' }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }} >
                     </Box>
-
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                        
                         <IconButton
                             size="large"
                             aria-label="account of current user"
@@ -72,11 +74,15 @@ const NavBar = () => {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
+                            {pages.map((page,index) => (
+                                <LinkRouter to={page.to} key={index} onClick={handleCloseNavMenu}>
+                                    <MenuItem >
+                                    <Typography textAlign="center">{page.name}</Typography>
                                 </MenuItem>
+                                </LinkRouter>
                             ))}
+                                
+                                
                         </Menu>
                     </Box>
 
@@ -85,14 +91,14 @@ const NavBar = () => {
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', mx: 'none' }, mr: 1 }} />
 
                     <Box sx={{ display: { xs: 'none', md: 'flex' }, mr: 3 }}>
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
+                        {pages.map((page,index) => (
+                            <LinkRouter to={page.to} key={index} >
+                            <Button 
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'inherit', display: 'block' }}
-                            >
-                                {page}
+                            >{page.name}
                             </Button>
+                            </LinkRouter>
                         ))}
                     </Box>
 
@@ -119,10 +125,11 @@ const NavBar = () => {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {settings.map((setting) => (
+                            {settings.map((setting) => (                        
                                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                                     <Typography textAlign="center">{setting}</Typography>
                                 </MenuItem>
+                                
                             ))}
                         </Menu>
                     </Box>

@@ -32,6 +32,16 @@ export default class SimpleSlider extends Component {
       autoplaySpeed: 1900,
       fade: true,
       pauseOnDotsHover: false,
+      responsive: [
+        {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                rows: 4
+            }
+        }
+    ]
       //  dots: true,
     };
 
@@ -72,3 +82,23 @@ export default class SimpleSlider extends Component {
     );
   }
 }
+
+
+{/* <Slider {...settings}>
+                {array.map((city,i) =>
+                    <Box sx={{
+                        backgroundImage: url(${city.img}),
+                        backgroundPosition: 'center',
+                        backgroundSize: 'cover',
+                        height: '30vh',
+                    }} key={i}>
+                        <Box sx={{width:'100%', height:'100%', backgroundColor:'rgba(9, 14, 12, 0.4)',display: 'flex',
+                        flexDirection:'column',
+                        justifyContent:'center',
+                        alignItems:'center'}}>
+                            <Typography variant='h3' sx={{ fontSize:{xs:'1.5rem', sm:'2rem'} }} className='font-slogan text-light text-shadow-primary'>{city.name}</Typography>
+                            <Typography variant='h6' sx={{  paddingTop: '0.5rem' }} className='font-slogan text-light text-shadow-primary'>{city.country}</Typography>
+                        </Box>
+                    </Box>
+                )}
+            </Slider> */}

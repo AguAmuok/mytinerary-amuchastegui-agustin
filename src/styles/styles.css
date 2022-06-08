@@ -59,6 +59,14 @@
     font-size: 1.5rem;
 }
 
+a{
+    text-decoration: none!important;
+    color:white;
+}
+
+.footer-link{
+    margin:1rem;
+}
 
 /* -----------MEDIAQUERY---------- */
 

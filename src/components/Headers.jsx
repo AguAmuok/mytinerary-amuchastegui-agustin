@@ -14,11 +14,12 @@ function Headers() {
             alignItems: 'center',
             flexDirection: 'column',
             height:'100vh'
-        }} ><img className='logolargo' src= {require('../images/logo_largo.png') } alt='' /> 
+        }} >
+            <img className='logolargo' src= {require('../images/logo_largo.png') } alt='' /> 
         <Typography className='slogan'
                     variant="h6"
-                    Wrap
-                    Display
+                    
+                    
                     sx={{   
                         fontSize: '.5rem',                
                         alignItems: 'center',

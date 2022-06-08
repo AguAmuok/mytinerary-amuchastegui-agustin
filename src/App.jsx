@@ -1,20 +1,22 @@
-
 import React from 'react'
 import NavBar from './components/NavBar'
-import Body from './components/Body'
 import Footer from './components/Footer'
-import Headers from './components/Headers'
-import Carusel from './components/Carusel'
+import {Routes,Route} from 'react-router-dom'
+import Index from './pages/Index'
+import Underconstruction from './pages/Underconstruction'
+
 
 
 function App() {
     return (
         <>
             <NavBar />
-            
-            <Headers />
-            <Body />
-            <Carusel  />
+                
+            <Routes>
+                <Route path='/' element={ <Index />} />
+                <Route path='/Underconstruction' element={ <Underconstruction />}/>
+
+            </Routes>
             
             <Footer />
 
