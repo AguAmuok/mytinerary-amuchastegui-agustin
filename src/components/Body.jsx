@@ -3,13 +3,14 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
+import { Link as LinkRouter } from "react-router-dom"
 
 
-const images =  [
+const images = [
     {
         url: 'https://fondosmil.com/fondo/1069.jpg',
         title: 'Great adventures await for you. What are you waiting for ? Click Here!',
-        width: '100%'    
+        width: '100%'
     }
 ];
 
@@ -18,9 +19,9 @@ const ImageButton = styled(ButtonBase)(({ theme }) => ({
     height: 300,
     [theme.breakpoints.down('sm')]: {
         width: '100% !important', // Overrides inline-style
-        height: 300, 
-        
-        
+        height: 300,
+
+
     },
     '&:hover, &.Mui-focusVisible': {
         zIndex: 1,
@@ -45,8 +46,8 @@ const ImageSrc = styled('span')({
     backgroundSize: 'cover',
     backgroundPosition: 'center 40%',
     backgroundColor: 'danger',
-    
-    
+
+
 });
 
 const Image = styled('span')(({ theme }) => ({
@@ -58,7 +59,7 @@ const Image = styled('span')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: theme.palette.common.white,  
+    color: theme.palette.common.white,
 }));
 
 
@@ -71,8 +72,8 @@ const ImageBackdrop = styled('span')(({ theme }) => ({
     backgroundColor: 'rgb(217, 3, 97)',
     opacity: 0,
     transition: theme.transitions.create('opacity'),
-    
-    
+
+
 }));
 
 const ImageMarked = styled('span')(({ theme }) => ({
@@ -83,13 +84,15 @@ const ImageMarked = styled('span')(({ theme }) => ({
     bottom: -2,
     left: 'calc(50% - 9px)',
     transition: theme.transitions.create('opacity'),
-    
+
 }));
 
 export default function ButtonBases() {
     return (
         <Box sx={{ display: 'flex', justifyContent: 'space-around', backgroundColor: 'rgb(217, 3, 97)', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
             {images.map((image) => (
+
+
                 <ImageButton
                     focusRipple
                     key={image.title}
@@ -100,6 +103,7 @@ export default function ButtonBases() {
                     <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
                     <ImageBackdrop className="MuiImageBackdrop-root" />
                     <Image>
+                        <LinkRouter to='/Underconstruction'>
                         <Typography
                             component="span"
                             variant="subtitle1"
@@ -113,11 +117,12 @@ export default function ButtonBases() {
                         >
                             {image.title}
                             <ImageMarked className="MuiImageMarked-root"
-                            src= {require('../images/avion-uno.jpg') } alt='' /> 
-                            
-                        </Typography>
+                                src={require('../images/avion-uno.jpg')} alt='' />
+
+                        </Typography></LinkRouter>
                     </Image>
                 </ImageButton>
+
             ))}
         </Box>
     );

@@ -27,16 +27,35 @@
     font-size: 1.3rem !important;
 }
 
-/* .MuiSvgIcon-root {
-    cursor: pointer;    
-    width: 4vw !important;
-    height: 4vh !important; */
-/* } */
+.pagconstruction{
+    background-image: url(../images/travelingconstruction.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.popular{
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    transition: .5s
+}
+
+h3{
+    transition: .5s
+}
+
+h3:hover{
+    background-color:rgb(176, 51, 107) ;
+    transition: .5s
+}
+
 /* -----------CARRUSEL---------- */
 
 .contenedorCarr{
-    width: 100%;
-    height: 90vh;
+    width: auto;
+    height: 80vh;
     background-image: url(https://ep01.epimg.net/elpais/imagenes/2020/01/02/paco_nadal/1577966902_562866_1577969649_noticia_normal.jpg);
     background-position:top;
     background-size: cover;
@@ -47,8 +66,75 @@
 }
 
 .contenedorcarurel{
-    width: 75rem;
+    width: 80rem;
 }
+
+
+
+
+@media (max-width: 1350px) {
+    .contenedorcarurel {
+        width: 60rem;
+    }
+}
+@media (max-width: 1330px) {
+    .contenedorcarurel {
+        width: 50rem;
+    }
+}
+
+@media (max-width: 3000px){
+    .divCarrusel {
+        height: 20rem;
+        
+        
+    }
+}
+@media (max-width: 870px) {
+    .contenedorcarurel {
+        width: 40rem;
+    }
+}
+@media (max-width: 710px) {
+    .contenedorcarurel {
+        width: 30rem;
+    }
+}
+
+@media (max-width: 710px){
+    .divCarrusel {
+        height: 15rem;
+        
+        
+    }
+}
+
+@media (max-width: 550px) {
+    .contenedorcarurel {
+        width: 20rem;
+    }
+}
+@media (max-width: 550px){
+    .divCarrusel {
+        height: 10rem;
+        
+        
+    }
+}
+@media (max-width: 390px) {
+    .contenedorcarurel {
+        width: 18rem;
+    }
+}
+@media (max-width: 390px){
+    .divCarrusel {
+        height: 10rem;
+        
+        
+    }
+}
+
+/* ------------------------- */
 
 .tituloCiudades{
     display: flex;
@@ -59,15 +145,28 @@
     font-size: 1.5rem;
 }
 
+@media (max-width: 390px){
+    .tituloCiudades {
+        
+        font-size: 1.2rem;
+        
+    }
+}
+
 a{
     text-decoration: none!important;
-    color:white;
+    color: aliceblue;
 }
 
 .footer-link{
     margin:1rem;
+    color: aliceblue;
 }
 
+.MuiPaper-root {
+    background-color: black!important;
+
+}
 /* -----------MEDIAQUERY---------- */
 
 
@@ -93,7 +192,7 @@ a{
         width: 12rem;
     }
 }
-
+/* Footer */
 @media (max-width:380px) {
     .all_reserver_mobile {
         font-size: .7rem !important;

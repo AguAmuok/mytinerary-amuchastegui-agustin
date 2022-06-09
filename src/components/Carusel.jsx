@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 
+
 const fotos = [
   { nombre: "Athens", url: 'https://ak.picdn.net/shutterstock/videos/28366465/thumb/12.jpg' },
   { nombre: "Buenos Aires", url: 'https://images3.alphacoders.com/109/1095798.jpg' },
@@ -19,6 +20,8 @@ const fotos = [
   { nombre: "Toronto", url: 'https://img.besthqwallpapers.com/Uploads/13-3-2018/43946/toronto-4k-nightscapes-modern-buildings-canada.jpg' },
 ];
 
+
+
 export default class SimpleSlider extends Component {
   render() {
     const settings = {
@@ -32,20 +35,14 @@ export default class SimpleSlider extends Component {
       autoplaySpeed: 1900,
       fade: true,
       pauseOnDotsHover: false,
-      responsive: [
-        {
-            breakpoint: 600,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                rows: 4
-            }
-        }
-    ]
+
       //  dots: true,
     };
 
     return (
+      <>
+      
+      <h2 className='popular'>Popular MyTinerary</h2>
       <div className="contenedorCarr">
         
         <div className= 'contenedorcarurel'>        
@@ -59,11 +56,8 @@ export default class SimpleSlider extends Component {
                   style={{
                     backgroundImage: `url("${foto.url}")`,
                     backgroundPosition: 'center',
-                    margin: '2vh',
-                    width: '90%',
-                    height: "40vh",
+                    margin: '.5vh',
                     backgroundSize: "cover",
-                    centerPadding: '20px',
                     borderRadius: "2%",                    
                   }}
                 >
@@ -79,26 +73,9 @@ export default class SimpleSlider extends Component {
         </Slider>
         </div>
       </div>
+      </>
     );
   }
 }
 
 
-{/* <Slider {...settings}>
-                {array.map((city,i) =>
-                    <Box sx={{
-                        backgroundImage: url(${city.img}),
-                        backgroundPosition: 'center',
-                        backgroundSize: 'cover',
-                        height: '30vh',
-                    }} key={i}>
-                        <Box sx={{width:'100%', height:'100%', backgroundColor:'rgba(9, 14, 12, 0.4)',display: 'flex',
-                        flexDirection:'column',
-                        justifyContent:'center',
-                        alignItems:'center'}}>
-                            <Typography variant='h3' sx={{ fontSize:{xs:'1.5rem', sm:'2rem'} }} className='font-slogan text-light text-shadow-primary'>{city.name}</Typography>
-                            <Typography variant='h6' sx={{  paddingTop: '0.5rem' }} className='font-slogan text-light text-shadow-primary'>{city.country}</Typography>
-                        </Box>
-                    </Box>
-                )}
-            </Slider> */}
