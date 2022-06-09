@@ -5,23 +5,16 @@ import {Routes,Route} from 'react-router-dom'
 import Index from './pages/Index'
 import Underconstruction from './pages/Underconstruction'
 
-
-
 function App() {
     return (
         <>
-            <NavBar />
-                
+            <NavBar />                
             <Routes>
                 <Route path='/' element={ <Index />} />
                 <Route path='/Underconstruction' element={ <Underconstruction />}/>
-
-            </Routes>
-            
+            </Routes>            
             <Footer />
-
         </>
     );
 }
-
 export default App;

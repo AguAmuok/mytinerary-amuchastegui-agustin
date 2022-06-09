@@ -21,7 +21,6 @@ const ImageButton = styled(ButtonBase)(({ theme }) => ({
         width: '100% !important', // Overrides inline-style
         height: 300,
 
-
     },
     '&:hover, &.Mui-focusVisible': {
         zIndex: 1,
@@ -46,8 +45,6 @@ const ImageSrc = styled('span')({
     backgroundSize: 'cover',
     backgroundPosition: 'center 40%',
     backgroundColor: 'danger',
-
-
 });
 
 const Image = styled('span')(({ theme }) => ({
@@ -91,8 +88,6 @@ export default function ButtonBases() {
     return (
         <Box sx={{ display: 'flex', justifyContent: 'space-around', backgroundColor: 'rgb(217, 3, 97)', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
             {images.map((image) => (
-
-
                 <ImageButton
                     focusRipple
                     key={image.title}
@@ -114,15 +109,13 @@ export default function ButtonBases() {
                                 pt: 2,
                                 pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
                             }}
-                        >
+                >
                             {image.title}
                             <ImageMarked className="MuiImageMarked-root"
                                 src={require('../images/avion-uno.jpg')} alt='' />
-
                         </Typography></LinkRouter>
                     </Image>
                 </ImageButton>
-
             ))}
         </Box>
     );

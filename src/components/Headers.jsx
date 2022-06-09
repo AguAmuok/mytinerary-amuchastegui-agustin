@@ -17,9 +17,7 @@ function Headers() {
         }} >
             <img className='logolargo' src= {require('../images/logo_largo.png') } alt='' /> 
         <Typography className='slogan'
-                    variant="h6"
-                    
-                    
+                    variant="h6"                                        
                     sx={{   
                         fontSize: '.5rem',                
                         alignItems: 'center',
@@ -32,8 +30,7 @@ function Headers() {
                         letterSpacing: '.3rem',
                         color: '#ffffff',
                         textDecoration: 'none',
-                        padding: '1rem',
-                        
+                        padding: '1rem',                        
                     }}> 
                     Find your perfect trip, designed by insiders who know and love their cities!
                     </Typography>                 

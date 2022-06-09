@@ -4,7 +4,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 
-
 const fotos = [
   { nombre: "Athens", url: 'https://ak.picdn.net/shutterstock/videos/28366465/thumb/12.jpg' },
   { nombre: "Buenos Aires", url: 'https://images3.alphacoders.com/109/1095798.jpg' },
@@ -20,8 +19,6 @@ const fotos = [
   { nombre: "Toronto", url: 'https://img.besthqwallpapers.com/Uploads/13-3-2018/43946/toronto-4k-nightscapes-modern-buildings-canada.jpg' },
 ];
 
-
-
 export default class SimpleSlider extends Component {
   render() {
     const settings = {
@@ -35,17 +32,14 @@ export default class SimpleSlider extends Component {
       autoplaySpeed: 1900,
       fade: true,
       pauseOnDotsHover: false,
-
       //  dots: true,
     };
 
     return (
       <>
-      
       <h2 className='popular'>Popular MyTinerary</h2>
-      <div className="contenedorCarr">
-        
-        <div className= 'contenedorcarurel'>        
+      <div className="contenedorCarr">        
+      <div className= 'contenedorcarurel'>        
         <Slider {...settings}>
           {fotos.map((foto) => {
             // console.log(fotos.map)

@@ -39,7 +39,7 @@ const NavBar = () => {
     };
 
     return (
-        <AppBar position="static" sx={{ backgroundColor: 'black', opacity: '95%' }}>
+        <AppBar position="fixed" sx={{ backgroundColor: 'black', opacity: '75%' }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }} >
@@ -77,7 +77,7 @@ const NavBar = () => {
                         >
                             {pages.map((page,index) => (
                                 <LinkRouter to={page.to} key={index} onClick={handleCloseNavMenu}>
-                                    <MenuItem style={{backgroundColor: 'rgb(114, 32, 69)'}}>
+                                    <MenuItem style={{backgroundColor: 'black'}}>
                                     <Typography textAlign="center">{page.name}</Typography>
                                 </MenuItem>
                                 </LinkRouter>
