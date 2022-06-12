@@ -1,6 +1,6 @@
 .header {
     background-image: url(../images/avion-uno.jpg);
-    background-position:center;
+    background-position: center;
     background-size: cover;
     background-attachment: fixed;
     z-index: 2;
@@ -12,7 +12,7 @@
 }
 
 .MuiTypography-root {
-    font-size: 2rem !important;
+    font-size: 1.5rem !important;
 }
 
 .logolargo {
@@ -24,28 +24,38 @@
     font-size: 1.3rem !important;
 }
 
-.pagconstruction{
+.pagconstruction {
     background-image: url(../images/travelingconstruction.jpg);
     background-position: center;
     background-size: cover;
 }
 
-.popular{
+.popular {
     background-color: black;
     color: white;
     display: flex;
     justify-content: center;
     padding: 1rem;
-    transition: .5s
+    transition: .7s
 }
 
-a{
-    text-decoration: none!important;
-    color: aliceblue;
+.MuiList-root{
+    background-color: black;
 }
 
-.footer-link{
-    margin:1rem;
+a {
+    text-decoration: none !important;
+    color: white;
+    transition: .5s;
+}
+
+a:hover{
+    color: rgb(192, 75, 128)!important;
+    transition: .5s;
+}
+
+.footer-link {
+    margin: 1rem;
     color: aliceblue;
 }
 
@@ -53,13 +63,85 @@ a{
     background-color: rgba(0, 0, 0, 0.418);
 }
 
+
+
+
+/* CSS */
+.button-85 {
+    padding: 0.6em 2em;
+    border: none;
+    outline: none;
+    color: rgb(255, 255, 255);
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    
+}
+
+.button-85:before {
+    content: "";
+    background: linear-gradient(45deg,
+            #ff0000,
+            #ff7300,
+            #fffb00,
+            #48ff00,
+            #00ffd5,
+            #002bff,
+            #7a00ff,
+            #ff00c8,
+            #ff0000);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing-button-85 20s linear infinite;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+}
+
+@keyframes glowing-button-85 {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.button-85:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #222;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
 /* -----------CARRUSEL---------- */
 
-.contenedorCarr{
+.contenedorCarr {
     width: auto;
     height: 80vh;
     background-image: url(https://ep01.epimg.net/elpais/imagenes/2020/01/02/paco_nadal/1577966902_562866_1577969649_noticia_normal.jpg);
-    background-position:top;
+    background-position: top;
     background-size: cover;
     background-attachment: fixed;
     display: flex;
@@ -67,15 +149,15 @@ a{
     align-items: center;
 }
 
-.contenedorcarurel{
+.contenedorcarurel {
     width: 80rem;
 }
 
-.tituloCiudades{
+.tituloCiudades {
     display: flex;
     justify-content: center;
     background-color: rgb(6, 8, 8);
-    color:white;
+    color: white;
     opacity: 70%;
     font-size: 1.5rem;
 }
@@ -88,33 +170,36 @@ a{
         width: 60rem;
     }
 }
+
 @media (max-width: 1330px) {
     .contenedorcarurel {
         width: 50rem;
     }
 }
 
-@media (max-width: 3000px){
+@media (max-width: 3000px) {
     .divCarrusel {
         height: 20rem;
-        
-        
+
+
     }
 }
+
 @media (max-width: 870px) {
     .contenedorcarurel {
         width: 40rem;
     }
 }
+
 @media (max-width: 710px) {
     .contenedorcarurel {
         width: 30rem;
     }
 }
 
-@media (max-width: 710px){
+@media (max-width: 710px) {
     .divCarrusel {
-        height: 15rem;        
+        height: 15rem;
     }
 }
 
@@ -123,19 +208,22 @@ a{
         width: 20rem;
     }
 }
-@media (max-width: 550px){
+
+@media (max-width: 550px) {
     .divCarrusel {
-        height: 10rem;     
+        height: 10rem;
     }
 }
+
 @media (max-width: 390px) {
     .contenedorcarurel {
         width: 18rem;
     }
 }
-@media (max-width: 390px){
+
+@media (max-width: 390px) {
     .divCarrusel {
-        height: 10rem;       
+        height: 10rem;
     }
 }
 
@@ -145,11 +233,12 @@ a{
     }
 }
 
-@media (max-width: 390px){
+@media (max-width: 390px) {
     .tituloCiudades {
-        font-size: 1.2rem;     
+        font-size: 1.2rem;
     }
 }
+
 /* -------------------------- */
 
 @media (max-width:900px) {
@@ -157,6 +246,7 @@ a{
         font-size: 1rem !important;
     }
 }
+
 @media (max-width:800px) {
     .logolargo {
         height: 10vh;
@@ -181,4 +271,3 @@ a{
         font-size: .7rem !important;
     }
 }
-

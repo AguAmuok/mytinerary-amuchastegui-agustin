@@ -16,8 +16,8 @@ import logo from '../images/logo_largo.png'
 import {Link as LinkRouter} from "react-router-dom"
 
 
-const pages = [{ to:'/' , name: 'Home' } , {  to:'/Underconstruction' , name:'Cities'}];
-const settings = ['Sign Up', 'Sign In'];
+const pages = [{ to:'/' , name: 'Home' } , {  to:'/Cities' , name:'Cities'}];
+const settings = [{to: '/Underconstruction', name:'Sign Up'} , {to:'/Underconstruction' , name:'Sign In'}];
 
 const NavBar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -39,7 +39,7 @@ const NavBar = () => {
     };
 
     return (
-        <AppBar position="fixed" sx={{ backgroundColor: 'black', opacity: '75%' }}>
+        <AppBar position="static" sx={{ backgroundColor: 'black'}}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }} >
@@ -86,8 +86,9 @@ const NavBar = () => {
                                 
                         </Menu>
                     </Box>
-
+                    <LinkRouter to='/'>             
                     <img className='logo' src={logo} alt='' href="index.html" />
+                    </LinkRouter>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', mx: 'none' }, mr: 1 }} />
 
@@ -126,10 +127,12 @@ const NavBar = () => {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {settings.map((setting) => (                        
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
+                            {settings.map((setting,index) => (  
+                                <LinkRouter to={setting.to} key={index} onClick={handleCloseUserMenu} >                    
+                                <MenuItem >
+                                    <Typography textAlign="center">{setting.name}</Typography>
                                 </MenuItem>
+                                </LinkRouter>
                                 
                             ))}
                         </Menu>

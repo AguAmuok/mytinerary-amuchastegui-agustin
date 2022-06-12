@@ -6,7 +6,7 @@ export default function Underconstruction() {
 
         <>
         <Box className='pagconstruction' sx={{
-            minHeight:  '80vh',
+            minHeight:  '61.4vh',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',

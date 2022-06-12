@@ -21,7 +21,7 @@ function Footer() {
                 }}>
 
                     <LinkRouter className='footer-link' to={'/'}>Home</LinkRouter>
-                    <LinkRouter className='footer-link' to={'/Underconstruction'}>Cities</LinkRouter>
+                    <LinkRouter className='footer-link' to={'/Cities'}>Cities</LinkRouter>
                 </Box>
 
                 <Box sx={{
@@ -34,9 +34,9 @@ function Footer() {
 
                 }}>
 
-                    <InstagramIcon sx={{ display: { xs: 'flex', ms: 'none' }, mr: 3 }} />
-                    <FacebookIcon sx={{ display: { xs: 'flex', ms: 'none' }, mr: 3 }} />
-                    <TwitterIcon sx={{ display: { xs: 'flex', ms: 'none' }, mr: 3 }} />
+                    <InstagramIcon sx={{ cursor: 'pointer' , display: { xs: 'flex', ms: 'none' }, mr: 3 }} />
+                    <FacebookIcon sx={{  cursor: 'pointer' , display: { xs: 'flex', ms: 'none' }, mr: 3 }} />
+                    <TwitterIcon sx={{   cursor: 'pointer' , display: { xs: 'flex', ms: 'none' }, mr: 3 }} />
                 </Box>
 
                 <Box sx={{
@@ -47,8 +47,6 @@ function Footer() {
                         className='all_reserver'
                         variant="h6"
                         noWrap
-                        component="a"
-                        href="/"
                         sx={{
                             alignItems: 'center',
                             justifyContent: 'center',

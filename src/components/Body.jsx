@@ -3,13 +3,13 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
-import { Link as LinkRouter } from "react-router-dom"
+
 
 
 const images = [
     {
         url: 'https://fondosmil.com/fondo/1069.jpg',
-        title: 'Great adventures await for you. What are you waiting for ? Click Here!',
+        title: 'Great adventures await for you. What are you waiting for ?',
         width: '100%'
     }
 ];
@@ -97,8 +97,7 @@ export default function ButtonBases() {
                 >
                     <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
                     <ImageBackdrop className="MuiImageBackdrop-root" />
-                    <Image>
-                        <LinkRouter to='/Underconstruction'>
+                    <Image>                      
                         <Typography
                             component="span"
                             variant="subtitle1"
@@ -113,7 +112,7 @@ export default function ButtonBases() {
                             {image.title}
                             <ImageMarked className="MuiImageMarked-root"
                                 src={require('../images/avion-uno.jpg')} alt='' />
-                        </Typography></LinkRouter>
+                        </Typography>
                     </Image>
                 </ImageButton>
             ))}

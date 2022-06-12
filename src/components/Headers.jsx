@@ -2,6 +2,7 @@ import React from 'react'
 import '../styles/styles.css'
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+ import { Link as LinkRouter } from "react-router-dom"
 
 function Headers() {
     
@@ -15,7 +16,9 @@ function Headers() {
             flexDirection: 'column',
             height:'100vh'
         }} >
+            
             <img className='logolargo' src= {require('../images/logo_largo.png') } alt='' /> 
+        
         <Typography className='slogan'
                     variant="h6"                                        
                     sx={{   
@@ -33,7 +36,12 @@ function Headers() {
                         padding: '1rem',                        
                     }}> 
                     Find your perfect trip, designed by insiders who know and love their cities!
-                    </Typography>                 
+            
+                    </Typography>                       
+                    <LinkRouter to='/Cities' className='button-85' sx={{
+                        color: 'white'
+                    }}>Click Here for see more</LinkRouter>
+                            
         </ Box >               
         </>
     )

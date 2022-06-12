@@ -4,16 +4,30 @@ import Footer from './components/Footer'
 import {Routes,Route} from 'react-router-dom'
 import Index from './pages/Index'
 import Underconstruction from './pages/Underconstruction'
+import Cities from './pages/Cities'
+import Detail from './components/Detail'
+import ScrollToTop from "react-scroll-to-top";
+import FileUploadIcon from '@mui/icons-material/FileUpload';
+
 
 function App() {
     return (
         <>
-            <NavBar />                
+            <NavBar />
+
             <Routes>
                 <Route path='/' element={ <Index />} />
                 <Route path='/Underconstruction' element={ <Underconstruction />}/>
+                <Route path='/Cities' element={ <Cities />} />
+                <Route path='/City/:id' element={ <Detail />} />
+
             </Routes>            
             <Footer />
+            <ScrollToTop
+                style={{backgroundColor: 'white', opacity:'70%', width:'50px', height:'50px'}}                
+                smooth
+                viewBox="0 0 24 24"
+                component={<FileUploadIcon />} />   
         </>
     );
 }
