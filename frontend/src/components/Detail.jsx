@@ -9,6 +9,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import Box from '@mui/material/Box';
 
 
 export default function Detail() {
@@ -18,26 +19,36 @@ export default function Detail() {
             console.log(setCard)
 
     return (
-        card.map((event) =>
+        card.map((event,index)  =>   
+        <Box  key={index} sx={{
+        
+            backgroundImage: 'url(https://r4.wallpaperflare.com/wallpaper/231/5/291/palm-trees-sky-clouds-pink-wallpaper-7b56fced23016f0935d4cbe97d5ccc90.jpg)',
+            backgrounSize: 'cover',
+            backgroundPosition: 'center',    
+            display:'flex',
+            justifyContent: 'center',
+            padding: '3rem'
 
-        <Card sx={{ maxWidth: 345 }}>
+        }}>
+        <Card sx={{ maxWidth: 1000,  color:'white' , backgroundColor: 'black'}}>
             <CardActionArea>
                 <CardMedia                   
                     component="img"
-                    height="140"
-                    image={event.url}                   
+                    height="338"                    
+                    image={event.url}                                                         
                     />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                         {event.nombre}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="white">
                         Lizards are a widespread group of squamate reptiles, with over 6,000
                         species, ranging across all continents except Antarctica
                     </Typography>
                 </CardContent>
             </CardActionArea>
-        </Card>)
+        </Card></Box> 
+        )
     );
 }
     

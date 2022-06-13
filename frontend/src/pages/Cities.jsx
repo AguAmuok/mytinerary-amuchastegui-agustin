@@ -21,17 +21,15 @@ export default function TitlebarImageList() {
     setcities(city)   
     },[search])
 
-
 return (
 <>
 <Box sx={{
         
         backgroundImage: 'url(https://r4.wallpaperflare.com/wallpaper/231/5/291/palm-trees-sky-clouds-pink-wallpaper-7b56fced23016f0935d4cbe97d5ccc90.jpg)',
-        backgrounSize: 'cover',
-        
-        backgroundPosition: 'center'    
-        
-    }}>
+        backgrounSize: 'cover',        
+        backgroundPosition: 'center'
+        }}>
+
 
 <Box className='input' sx={{
         display: 'flex',
@@ -43,12 +41,14 @@ return (
         placeholder='Search...'
         onKeyUp={(e) =>{
             setSearch(e.target.value)
+
+            
         }}
     />
 
     </Box>
 
-    <ImageList sx={{ width: '100%', padding:'2rem',  height: '100%'}}>
+    <ImageList sx={{gap:'50px', width: '100%', padding:'2rem'}}>
     <ImageListItem key="Subheader" cols={2}>
         {/* <ListSubheader component="div">December</ListSubheader> */}
     </ImageListItem>
@@ -62,11 +62,11 @@ return (
         />
         <ImageListItemBar
             title={item.nombre}
-            subtitle={item.nombre}
+            subtitle={item.pais}
             actionIcon={
                 <LinkRouter to={ `/City/${item.id}`} >
             <IconButton
-                sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
+                sx={{ color: 'rgba(255, 255, 255, 0.54)' , height:'10vh'}}
                 aria-label={`info about ${item.nombre}`}
             >
                 <InfoIcon  />
