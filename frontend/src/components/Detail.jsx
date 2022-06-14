@@ -15,8 +15,8 @@ import Box from '@mui/material/Box';
 export default function Detail() {
 
     const {id} = useParams()
-    const [card, setCard] = useState(fotos.filter(dato => dato.id == id))
-            console.log(setCard)
+    const [card] = useState(fotos.filter(dato => dato.id === parseInt(id)))
+            
 
     return (
         card.map((event,index)  =>   
@@ -25,8 +25,9 @@ export default function Detail() {
             backgroundImage: 'url(https://r4.wallpaperflare.com/wallpaper/231/5/291/palm-trees-sky-clouds-pink-wallpaper-7b56fced23016f0935d4cbe97d5ccc90.jpg)',
             backgrounSize: 'cover',
             backgroundPosition: 'center',    
-            display:'flex',
-            justifyContent: 'center',
+            display:'flex!important',
+            justifyContent: 'center!important',
+            alignItems: 'center',
             padding: '3rem'
 
         }}>

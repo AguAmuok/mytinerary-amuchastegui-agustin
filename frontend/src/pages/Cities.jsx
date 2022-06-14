@@ -34,24 +34,25 @@ return (
 <Box className='input' sx={{
         display: 'flex',
         justifyContent: 'center',
-        padding: '2rem'
+        padding: '2rem',
+        height: '6rem'        
     }}>
 
-    <input type="Stext" 
+    <input type="text" 
         placeholder='Search...'
-        onKeyUp={(e) =>{
-            setSearch(e.target.value)
+        onKeyUp={(e) =>{setSearch(e.target.value)}}
+        
 
-            
-        }}
     />
 
     </Box>
 
-    <ImageList sx={{gap:'50px', width: '100%', padding:'2rem'}}>
+    <ImageList sx={{marginLeft:'5%', gap:'30px!important', width: '90%', padding:'2rem'}}>
     <ImageListItem key="Subheader" cols={2}>
         {/* <ListSubheader component="div">December</ListSubheader> */}
     </ImageListItem>
+
+
         {cities.map((item) => (
         <ImageListItem key={item.url}>
         <img
@@ -60,13 +61,14 @@ return (
             alt={item.nombre}
             loading="lazy"
         />
+
         <ImageListItemBar
             title={item.nombre}
             subtitle={item.pais}
             actionIcon={
                 <LinkRouter to={ `/City/${item.id}`} >
             <IconButton
-                sx={{ color: 'rgba(255, 255, 255, 0.54)' , height:'10vh'}}
+                sx={{ color: 'rgba(255, 255, 255, 0.54)'}}
                 aria-label={`info about ${item.nombre}`}
             >
                 <InfoIcon  />
