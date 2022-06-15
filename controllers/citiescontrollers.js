@@ -37,7 +37,8 @@ const citiesControllers = {
             city = await new City({
                 name: name,
                 country: country,
-                image: image
+                image: image,
+                description: description
             }).save()
         } catch (err) {
             error = err
@@ -89,7 +90,8 @@ const citiesControllers = {
                 await new City({
                     name: item.name,
                     country: item.country,
-                    image: item.image
+                    image: item.image,
+                    description: item.description
                 }).save()
             })
         } catch (err) { error = err }

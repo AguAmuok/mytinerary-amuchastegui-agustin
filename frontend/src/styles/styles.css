@@ -43,6 +43,10 @@
     background-color: black;
 }
 
+.MuiImageList-standard {
+    grid-template-columns: repeat(2fr)!important;
+} 
+
 a {
     text-decoration: none !important;
     color: white;

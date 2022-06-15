@@ -8,21 +8,24 @@ import Box from '@mui/material/Box';
 import { useEffect } from 'react';
 import {useState} from 'react';
 import { Link as LinkRouter } from "react-router-dom"
-import picture from '../components/Location'
+import axios from 'axios'
+
 
 export default function TitlebarImageList() {
-    const [ cities, setcities] = useState([])
-    const [ search, setSearch]= useState('')
-    
-    useEffect(() =>{
-        setcities(picture)
+    const [cities, setCities] = useState([])
+    const [search, setSearch] = useState('')   
 
-    let city=picture.filter(foto => foto.name.toLowerCase().startsWith(search.trim().toLowerCase())) 
-    setcities(city)   
-    },[search])
+    useEffect(() => {
+        axios.get("http://localhost:4000/api/cities")
+        .then(response => {console.log(response)
+
+    let city=response.data.response.cities.filter(foto => foto.name.toLowerCase().startsWith(search.trim().toLowerCase())) 
+    setCities(city)}  
+    )},[search])
 
 return (
 <>
+{cities && <>
 <Box sx={{
         
         backgroundImage: 'url(https://r4.wallpaperflare.com/wallpaper/231/5/291/palm-trees-sky-clouds-pink-wallpaper-7b56fced23016f0935d4cbe97d5ccc90.jpg)',
@@ -59,14 +62,14 @@ return (
             src={`${item.image}?w=248&fit=crop&auto=format`}
             srcSet={`${item.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
             alt={item.name}
-            loading="lazy"
+            
         />
 
         <ImageListItemBar
-            title={item.country}
-            subtitle={item.name}
+            title={item.name}
+            subtitle={item.country}
             actionIcon={
-                <LinkRouter to={ `/City/${item.id}`} >
+                <LinkRouter to={ `/City/${item._id}`} >
             <IconButton
                 sx={{ color: 'rgba(255, 255, 255, 0.54)'}}
                 aria-label={`info about ${item.name}`}
@@ -80,16 +83,7 @@ return (
     ))}
     </ImageList>
     </Box>
+    </> }
     </>
     );
 }
-
-
-
-
-
-
-
-    
-    
-

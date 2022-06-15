@@ -1,26 +1,30 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useState } from 'react'
-
-// import Box from '@mui/material/Box';
-import picture from './Location'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import Box from '@mui/material/Box';
+import { useEffect} from 'react'
+import axios from 'axios'
 
 
 export default function Detail() {
 
     const {id} = useParams()
-    const [card] = useState(picture.filter(dato => dato.id === parseInt(id)))
-            
+    
+    const [card , setCity] = useState([])
 
-    return (
-        card.map((event,index)  =>   
-        <Box  key={index} sx={{
+    useEffect (() => {
+        axios.get(`http://localhost:4000/api/cities/${id}`)
+        .then( resp => setCity(resp.data.response.city))},[]) 
+        
+
+        return (         
+
+        <Box  key={card._id} sx={{
         
             backgroundImage: 'url(https://r4.wallpaperflare.com/wallpaper/231/5/291/palm-trees-sky-clouds-pink-wallpaper-7b56fced23016f0935d4cbe97d5ccc90.jpg)',
             backgrounSize: 'cover',
@@ -36,21 +40,20 @@ export default function Detail() {
                 <CardMedia                   
                     component="img"
                     height="338"                    
-                    image={event.image}                                                         
+                    image={card.image}                                                         
                     />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                        {event.name}
+                        {card.name}
+                        {}
                     </Typography>
                     <Typography variant="body2" color="white">
-                        Lizards are a widespread group of squamate reptiles, with over 6,000
-                        species, ranging across all continents except Antarctica
+                    {card.description}
                     </Typography>
                 </CardContent>
             </CardActionArea>
         </Card></Box> 
-        )
-    );
+        );
 }
     
 
