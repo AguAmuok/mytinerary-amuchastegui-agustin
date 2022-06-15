@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useState } from 'react'
 
 // import Box from '@mui/material/Box';
-import fotos from './Location'
+import picture from './Location'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -15,7 +15,7 @@ import Box from '@mui/material/Box';
 export default function Detail() {
 
     const {id} = useParams()
-    const [card] = useState(fotos.filter(dato => dato.id === parseInt(id)))
+    const [card] = useState(picture.filter(dato => dato.id === parseInt(id)))
             
 
     return (
@@ -36,11 +36,11 @@ export default function Detail() {
                 <CardMedia                   
                     component="img"
                     height="338"                    
-                    image={event.url}                                                         
+                    image={event.image}                                                         
                     />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                        {event.nombre}
+                        {event.name}
                     </Typography>
                     <Typography variant="body2" color="white">
                         Lizards are a widespread group of squamate reptiles, with over 6,000

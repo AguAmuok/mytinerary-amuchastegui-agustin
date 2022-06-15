@@ -8,16 +8,16 @@ import Box from '@mui/material/Box';
 import { useEffect } from 'react';
 import {useState} from 'react';
 import { Link as LinkRouter } from "react-router-dom"
-import fotos from '../components/Location'
+import picture from '../components/Location'
 
 export default function TitlebarImageList() {
     const [ cities, setcities] = useState([])
     const [ search, setSearch]= useState('')
     
     useEffect(() =>{
-        setcities(fotos)
+        setcities(picture)
 
-    let city=fotos.filter(foto => foto.nombre.toLowerCase().startsWith(search.trim().toLowerCase())) 
+    let city=picture.filter(foto => foto.name.toLowerCase().startsWith(search.trim().toLowerCase())) 
     setcities(city)   
     },[search])
 
@@ -54,22 +54,22 @@ return (
 
 
         {cities.map((item) => (
-        <ImageListItem key={item.url}>
+        <ImageListItem key={item.image}>
         <img
-            src={`${item.url}?w=248&fit=crop&auto=format`}
-            srcSet={`${item.url}?w=248&fit=crop&auto=format&dpr=2 2x`}
-            alt={item.nombre}
+            src={`${item.image}?w=248&fit=crop&auto=format`}
+            srcSet={`${item.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
+            alt={item.name}
             loading="lazy"
         />
 
         <ImageListItemBar
-            title={item.nombre}
-            subtitle={item.pais}
+            title={item.country}
+            subtitle={item.name}
             actionIcon={
                 <LinkRouter to={ `/City/${item.id}`} >
             <IconButton
                 sx={{ color: 'rgba(255, 255, 255, 0.54)'}}
-                aria-label={`info about ${item.nombre}`}
+                aria-label={`info about ${item.name}`}
             >
                 <InfoIcon  />
             </IconButton>

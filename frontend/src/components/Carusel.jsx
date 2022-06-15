@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import fotos from './Location'
+import picture from './Location'
 
 
 export default class SimpleSlider extends Component {
@@ -27,14 +27,14 @@ export default class SimpleSlider extends Component {
       <div className="contenedorCarr">        
       <div className= 'contenedorcarurel'>        
         <Slider {...settings}>
-          {fotos.map((foto) => {
+          {picture.map((foto) => {
             // console.log(fotos.map)
             return (
-              <div key={foto.nombre} className="carrusel">
+              <div key={foto.name} className="carrusel">
                 <div
                   className="divCarrusel"
                   style={{
-                    backgroundImage: `url("${foto.url}")`,
+                    backgroundImage: `url("${foto.image}")`,
                     backgroundPosition: 'center',
                     margin: '.5vh',
                     backgroundSize: "cover",
@@ -43,7 +43,7 @@ export default class SimpleSlider extends Component {
                 >
                   <div style={{ height: "10vh" }}>
                     <h3 style={{}} className="tituloCiudades">
-                      {foto.nombre}
+                      {foto.name}
                     </h3>
                   </div>
                 </div>
