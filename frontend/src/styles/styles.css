@@ -20,7 +20,7 @@
     height: 20vh;
 }
 
-.notFound{
+.notFound {
     width: 30vw;
     height: 15vh;
 }
@@ -29,18 +29,19 @@
     font-size: 1.3rem !important;
 }
 
-image{
+image {
     object-fit: cover;
 }
+
 .pagconstruction {
     background-image: url(../images/travelingconstruction.jpg);
     background-position: center;
     background-size: cover;
-    min-height:  61.4vh;
+    min-height: 61.4vh;
     display: flex;
     justify-content: center;
-    align-items: center;   
-        
+    align-items: center;
+
 }
 
 .popular {
@@ -52,13 +53,13 @@ image{
     transition: .7s
 }
 
-.MuiList-root{
+.MuiList-root {
     background-color: black;
 }
 
 .MuiImageList-standard {
-    grid-template-columns: repeat(2fr)!important;
-} 
+    grid-template-columns: repeat(2fr) !important;
+}
 
 a {
     text-decoration: none !important;
@@ -66,8 +67,8 @@ a {
     transition: .5s;
 }
 
-a:hover{
-    color: rgb(192, 75, 128)!important;
+a:hover {
+    color: rgb(192, 75, 128) !important;
     transition: .5s;
 }
 
@@ -80,7 +81,43 @@ a:hover{
     background-color: rgba(0, 0, 0, 0.418);
 }
 
+.button-24 {
+    background: rgb(192, 75, 128);
+    border: 1px solid black;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 10px;
+    min-height: 30px;
+    outline: 0;
+    padding: .5rem .5rem;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    margin-top: .5rem;
+}
 
+.button-24:hover,
+.button-24:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: #FF4742;
+}
+
+.button-24:active {
+    opacity: .5;
+}
 
 
 /* CSS */
@@ -97,7 +134,7 @@ a:hover{
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    
+
 }
 
 .button-85:before {

@@ -9,6 +9,7 @@ import { CardActionArea } from '@mui/material';
 import Box from '@mui/material/Box';
 import { useEffect} from 'react'
 import axios from 'axios'
+import Button from '../components/Button';
 
 
 export default function Detail() {
@@ -19,7 +20,7 @@ export default function Detail() {
 
     useEffect (() => {
         axios.get(`http://localhost:4000/api/cities/${id}`)
-        .then( resp => setCity(resp.data.response.city))},[]) 
+        .then( resp => setCity(resp.data.response.city))},) 
         
 
         return (         
@@ -53,6 +54,7 @@ export default function Detail() {
                     }} variant="h6" color="white">
                     <p>{card.description}</p>
                     </Typography>
+                    <Button/>
                 </CardContent>
             </CardActionArea>
         </Card>
