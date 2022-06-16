@@ -49,6 +49,7 @@ const citiesControllers = {
             error: error
         })
     },
+    
     modifyCity: async (req, res) => {
         const id = req.params.id
         const city = req.body
@@ -65,6 +66,7 @@ const citiesControllers = {
             error: error
         })
     },
+
     removeCity: async (req, res) => {
         const id = req.params.id
         let city

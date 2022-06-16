@@ -20,14 +20,27 @@
     height: 20vh;
 }
 
+.notFound{
+    width: 30vw;
+    height: 15vh;
+}
+
 .all_reserver {
     font-size: 1.3rem !important;
 }
 
+image{
+    object-fit: cover;
+}
 .pagconstruction {
     background-image: url(../images/travelingconstruction.jpg);
     background-position: center;
     background-size: cover;
+    min-height:  61.4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+        
 }
 
 .popular {

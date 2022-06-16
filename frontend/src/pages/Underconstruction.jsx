@@ -5,12 +5,7 @@ export default function Underconstruction() {
     return (
 
         <>
-        <Box className='pagconstruction' sx={{
-            minHeight:  '61.4vh',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-        }}>
+        <Box className='pagconstruction'>
 
         <img className='logolargo' src= {require('../images/logo_large.png') } alt='' /> 
 

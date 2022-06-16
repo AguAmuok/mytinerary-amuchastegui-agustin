@@ -9,15 +9,17 @@ import { Link as LinkRouter } from "react-router-dom"
 function Footer() {
     return (
         <>
-            <Box className='footer'>
+            <Box className='footer' sx={{
+                backgroundColor: "black",
+            }}>
                 <Box className='botones-footer' sx={{
-                    backgroundColor: "black",
+                    
                     color: 'white',
                     fontSize: '1.5rem',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    paddingTop: '1rem'
+                    paddingTop: '1rem',
                 }}>
 
                     <LinkRouter className='footer-link' to={'/'}>Home</LinkRouter>
@@ -65,8 +67,6 @@ function Footer() {
                     <Typography className='all_reserver_mobile'
                         variant="h5"
                         noWrap
-                        component="a"
-                        href=""
                         sx={{
                             alignItems: 'center',
                             justifyContent: 'center',

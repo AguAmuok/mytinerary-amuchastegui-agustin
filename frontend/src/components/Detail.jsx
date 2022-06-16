@@ -32,27 +32,32 @@ export default function Detail() {
             display:'flex!important',
             justifyContent: 'center!important',
             alignItems: 'center',
-            padding: '3rem'
+            padding: '3rem',
+            minHeight:  '61.4vh'
 
         }}>
-        <Card sx={{ maxWidth: 1000,  color:'white' , backgroundColor: 'black'}}>
+            <Box>
+        <Card sx={{ maxWidth: 1000, color:'white' , backgroundColor: 'black'}}>
             <CardActionArea>
-                <CardMedia                   
-                    component="img"
-                    height="338"                    
+                <CardMedia sx={{height: 300}}                  
+                    component="img"                                       
                     image={card.image}                                                         
                     />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                         {card.name}
-                        {}
+                        
                     </Typography>
-                    <Typography variant="body2" color="white">
-                    {card.description}
+                    <Typography sx={{
+                        fontSize:'1rem!important'
+                    }} variant="h6" color="white">
+                    <p>{card.description}</p>
                     </Typography>
                 </CardContent>
             </CardActionArea>
-        </Card></Box> 
+        </Card>
+        </Box>
+        </Box> 
         );
 }
     
