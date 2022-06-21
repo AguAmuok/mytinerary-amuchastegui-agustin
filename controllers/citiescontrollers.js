@@ -1,14 +1,15 @@
-const City = require('../models/city')
+const City = require('../models/city') //requerimos el modelo
 
-const citiesControllers = {
-    getCities: async (req, res) => {
-        let cities
-        let error = null
-        try {
-            cities = await City.find()
-        } catch (err) { error = err }
+const citiesControllers = { //definimos un objeto con los controladores del modelo
+
+    getCities: async (req, res) => { //funcion asincrona que creara un trabajo
+        let cities //definimos las variables
+        let error = null // definimos el error, que en primer instancia sera nulo
+        try { //utilizamos el constructor de modelos
+            cities = await City.find() // esperamos esa creacion y el metodo .FIND encuentra
+        } catch (err) { error = err } // cachamos el error en caso de tener uno 
         res.json({
-            response: error ? 'ERROR' : { cities },
+            response: error ? 'ERROR' : { cities }, //respuestas segun lo que suceda
             success: error ? false : true,
             error: error
         })
@@ -18,7 +19,7 @@ const citiesControllers = {
         let city
         let error = null
         try {
-            city = await City.findOne({ _id: id })
+            city = await City.findOne({ _id: id }) 
         } catch (err) {
             error = err
         }
@@ -56,7 +57,10 @@ const citiesControllers = {
         let citydb
         let error = null
         try {
-            citydb = await City.findOneAndUpdate({ _id: id }, city, { new: true })
+            citydb = await City.findOneAndUpdate( //el metodo .findeOneAndUpdate requiere tres parametros
+                { _id: id }, //el parametro necesario para el modelo que tiene que encontrar
+                city,// la modificacion que vamos a pasar en body
+                { new: true }) //y esta opcion en true que "cambia" el modelo viejo por el actualizado (en caso de false: crea un modelo nuevo con la modificacion)
         } catch (err) {
             error = err
         }
@@ -72,7 +76,7 @@ const citiesControllers = {
         let city
         let error = null
         try {
-            city = await City.findOneAndDelete({ _id: id })
+            city = await City.findOneAndDelete({ _id: id })// el metodo .findOneAndDelete encuentra y elimina
         } catch (err) {
             error = err
         }
@@ -88,12 +92,12 @@ const citiesControllers = {
         const data = req.body.data //almaceno en la constante data la informacion que le pedi al body.
         let error = null
         try {
-            data.map(async (item) => {
+            data.map(async (city) => {
                 await new City({
-                    name: item.name,
-                    country: item.country,
-                    image: item.image,
-                    description: item.description
+                    name: city.name,
+                    country: city.country,
+                    image: city.image,
+                    description: city.description
                 }).save()
             })
         } catch (err) { error = err }

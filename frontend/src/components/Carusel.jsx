@@ -37,8 +37,7 @@ export default class SimpleSlider extends Component {
                     backgroundImage: `url("${foto.image}")`,
                     backgroundPosition: 'center',
                     margin: '.5vh',
-                    backgroundSize: "cover",
-                    borderRadius: "2%",                    
+                    backgroundSize: "cover",                                        
                   }}
                 >
                   <div style={{ height: "10vh" }}>

@@ -6,7 +6,7 @@ const picture = [
 
 
     { "name": "Buenos Aires",
-      "country": "Argentine",
+      "country": "Argentina",
       "image": "https://images3.alphacoders.com/109/1095798.jpg",
     },
 
@@ -69,3 +69,4 @@ const picture = [
   ];
 
 export default picture
+

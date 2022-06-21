@@ -1,18 +1,35 @@
-const Router = require('express').Router();
+const Router = require('express').Router(); // requiero el metodo Router de la libreria de express
 
-const citiesControllers = require('../controllers/citiescontrollers');
-const {getCities, getOneCity, addCity, modifyCity, removeCity, multiplesCities} = citiesControllers
 
-Router.route('/cities')
-.get(getCities)
-.post(addCity)
+const {getCities, getOneCity, addCity, modifyCity, removeCity, multiplesCities} = require('../controllers/citiescontrollers'); 
+const {getItinerary, addItinerary, removeItinerary, modifyItinerary, getOneItinerary, multiplesItineraries } = require('../controllers/itinerarycontrollers');
+ //desustructuro los consoladores
 
-Router.route('/cities/:id')
-.delete(removeCity)
-.put(modifyCity)
-.get(getOneCity)
+
+Router.route('/cities') // a Router le configuro una ruta (/cities)
+.get(getCities)// aplicamos a la ruta el metodo GET para asignarle el controlador de lectura/obtencion de los modelos 
+.post(addCity) //con el metodo POST le asignamos el controlador de creacion de modelos
+
+Router.route('/cities/:id') 
+.delete(removeCity) //metodo DELETE eliminamos
+.put(modifyCity)// metodo PUT modificamos
+.get(getOneCity) // metodo GET leemos una sola ciudad
 
 Router.route('/multiplesCities')
-.post(multiplesCities)
+.post(multiplesCities) // metodo POST agregamos varias ciudades
 
-module.exports = Router
+Router.route('/itineraries')
+.get(getItinerary)
+.post(addItinerary)
+
+Router.route('/itineraries/:id')
+.delete(removeItinerary)
+.put(modifyItinerary)
+.get(getOneItinerary)
+
+Router.route('/multiplesItineraries')
+.post(multiplesItineraries)
+
+module.exports = Router //exportamos el modulo
+
+//vamos a requerir las rutas en server para poder conectarnos con ellas a la base de datos

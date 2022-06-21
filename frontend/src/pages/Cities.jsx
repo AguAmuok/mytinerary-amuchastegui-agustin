@@ -8,12 +8,12 @@ import Cards from '../components/Cards';
 
 
 export default function TitlebarImageList() {
-    const [cities, setCities] = useState([])
-    const [search, setSearch] = useState('')   
+    const [cities, setCities] = useState([]) //useState asigna un valor inicial vacio
+    const [search, setSearch] = useState('') //useState asigna un valor inicial vacio
 
-    useEffect(() => {
-        axios.get("http://localhost:4000/api/cities")
-        .then(response => setCities(response.data.response.cities)  
+    useEffect(() => { //Hook de estado,, Actualiza el título del documento usando la API del navegador
+        axios.get("http://localhost:4000/api/cities") //con el metodo GET de axios obtenemos los datos de nuestra URL
+        .then(response => setCities(response.data.response.cities)  //esperamos una respuesta
     )},[])
 
     let city=cities?.filter(city => city.name.toLowerCase().startsWith(search.trim().toLowerCase()))
