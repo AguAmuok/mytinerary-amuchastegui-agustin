@@ -6,11 +6,20 @@ import Index from './pages/Index'
 import Underconstruction from './pages/Underconstruction'
 import Cities from './pages/Cities'
 import Detail from './components/Detail'
-import ScrollToTop from "react-scroll-to-top";
-import FileUploadIcon from '@mui/icons-material/FileUpload';
+import ScrollToTop from "react-scroll-to-top"
+import FileUploadIcon from '@mui/icons-material/FileUpload'
+import {connect} from 'react-redux'
+import citiesActions from './redux/actions/citiesActions'
+import {useEffect} from 'react'
 
 
-function App() {
+
+function App(props) {
+    
+    useEffect(() => {
+        props.getCities()
+},[props])
+
     return (
         <>
             <NavBar />
@@ -31,4 +40,10 @@ function App() {
         </>
     );
 }
-export default App;
+
+const mapDispatchToProps = {
+    getCities: citiesActions.getCities,
+}
+
+export default connect(null, mapDispatchToProps)(App);
+

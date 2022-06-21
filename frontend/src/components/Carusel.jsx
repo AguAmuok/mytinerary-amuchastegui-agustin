@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import picture from './Location'
 
 
+
 export default class SimpleSlider extends Component {
   render() {
     const settings = {
