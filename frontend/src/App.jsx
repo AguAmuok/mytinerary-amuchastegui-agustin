@@ -6,6 +6,7 @@ import Index from './pages/Index'
 import Underconstruction from './pages/Underconstruction'
 import Cities from './pages/Cities'
 import Detail from './components/Detail'
+// import Itinerary from './components/Itinerary'
 import ScrollToTop from "react-scroll-to-top"
 import FileUploadIcon from '@mui/icons-material/FileUpload'
 import {connect} from 'react-redux'
@@ -29,6 +30,7 @@ function App(props) {
                 <Route path='/Underconstruction' element={ <Underconstruction />}/>
                 <Route path='/Cities' element={ <Cities />} />
                 <Route path='/City/:id' element={ <Detail />} />
+                {/* <Route path='/City/:id' element={ <Itinerary />} /> */}
 
             </Routes>            
             <Footer />

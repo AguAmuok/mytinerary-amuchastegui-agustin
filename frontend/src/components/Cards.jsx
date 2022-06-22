@@ -14,7 +14,7 @@ function Cards({cardFilter}) {
         <Box sx={{
             minHeight: '51.2vh'
         }}>
-        <ImageList sx={{ marginLeft:'5%', gap:'30px!important', width: '90%', padding:'2rem'}}>
+        <ImageList sx={{ marginLeft:'5%', gap:'30px!important', width: '90%', padding:'2rem' }}>
         <ImageListItem key="Subheader" cols={2}>
             
         </ImageListItem>
@@ -22,12 +22,11 @@ function Cards({cardFilter}) {
     
             {cardFilter.map((city) => (
             <ImageListItem key={city.image}>
-            <img
+            <img 
                 src={`${city.image}?w=248&fit=crop&auto=format`}
                 srcSet={`${city.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
                 alt={city.name}
-                style={{height:'20rem',
-                }}
+                style={{height:'20rem'}}
                 
             />
     
@@ -40,7 +39,7 @@ function Cards({cardFilter}) {
                     sx={{ color: 'rgba(255, 255, 255, 0.54)'}}
                     aria-label={`info about ${city.name}`}
                 >
-                    <InfoIcon  />
+                    <InfoIcon fontSize="large" />
                 </IconButton>
                 </LinkRouter> 
                 }

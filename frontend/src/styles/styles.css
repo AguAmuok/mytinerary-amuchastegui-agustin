@@ -81,6 +81,7 @@ a:hover {
     background-color: rgba(0, 0, 0, 0.418);
 }
 
+
 .button-24 {
     background: rgb(192, 75, 128);
     border: 1px solid black;
@@ -254,6 +255,14 @@ a:hover {
 @media (max-width: 710px) {
     .divCarrusel {
         height: 15rem;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .MuiImageList-root {
+        display: flex!important;
+        flex-direction: column;        
     }
 }
 

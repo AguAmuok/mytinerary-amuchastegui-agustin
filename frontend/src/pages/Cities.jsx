@@ -18,8 +18,6 @@ function Cities(props) {
     //     .then(response => setCities(response.data.response.cities) 
     // )},[])
 
-
-
     let city = props.cities?.filter(city => city.name.toLowerCase().startsWith(search.trim().toLowerCase()))
 return (
 <>
