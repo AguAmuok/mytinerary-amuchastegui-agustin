@@ -31,7 +31,7 @@ const itineraryControllers = { //definimos un objeto con los controladores del m
     }
     ,
     addItinerary: async (req, res) => {
-        const { title, userPic, userName, likes, hours, price, hashtag, activities } = req.body.data
+        const { title, userPic, userName, likes, duration, price, hashtag, activities } = req.body.data
         let itinerary
         let error = null
         try {
@@ -40,7 +40,7 @@ const itineraryControllers = { //definimos un objeto con los controladores del m
                 userPic: userPic,
                 userName: userName,
                 likes: likes,
-                hours: hours,
+                duration: duration,
                 price: price,
                 hashtag: hashtag,
                 activities: activities,
@@ -102,7 +102,7 @@ const itineraryControllers = { //definimos un objeto con los controladores del m
                     userPic: item.userPic,
                     userName: item.userName,
                     likes: item.likes,
-                    hours: item.hours,
+                    duration: item.duration,
                     price: item.price,
                     hashtag: item.hashtag,
                     activities: item.activities,
