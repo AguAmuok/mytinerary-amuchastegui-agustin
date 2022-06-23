@@ -2,7 +2,7 @@ const Router = require('express').Router(); // requiero el metodo Router de la l
 
 
 const {getCities, getOneCity, addCity, modifyCity, removeCity, multiplesCities} = require('../controllers/citiescontrollers'); 
-const {getItinerary, addItinerary, removeItinerary, modifyItinerary, getOneItinerary, multiplesItineraries } = require('../controllers/itinerarycontrollers');
+const {getItinerary, addItinerary, removeItinerary, modifyItinerary, getOneItinerary, multiplesItineraries, getItinerariesByCity } = require('../controllers/itinerarycontrollers');
  //desustructuro los consoladores
 
 
@@ -18,6 +18,10 @@ Router.route('/cities/:id')
 Router.route('/multiplesCities')
 .post(multiplesCities) // metodo POST agregamos varias ciudades
 
+
+
+//RUTAS ITINERARIES
+
 Router.route('/itineraries')
 .get(getItinerary)
 .post(addItinerary)
@@ -29,6 +33,9 @@ Router.route('/itineraries/:id')
 
 Router.route('/multiplesItineraries')
 .post(multiplesItineraries)
+
+Router.route('/itinerarybycity/:id')
+.get(getItinerariesByCity)
 
 module.exports = Router //exportamos el modulo
 

@@ -31,7 +31,7 @@ const itineraryControllers = { //definimos un objeto con los controladores del m
     }
     ,
     addItinerary: async (req, res) => {
-        const { title, userPic, userName, likes, duration, price, hashtag, activities } = req.body.data
+        const { title, userPic, userName, likes, duration, price, hashtag, description, cityId } = req.body.data
         let itinerary
         let error = null
         try {
@@ -43,7 +43,8 @@ const itineraryControllers = { //definimos un objeto con los controladores del m
                 duration: duration,
                 price: price,
                 hashtag: hashtag,
-                activities: activities,
+                description: description,
+                cityId: cityId
             }).save()
         } catch (err) {
             error = err
@@ -105,7 +106,8 @@ const itineraryControllers = { //definimos un objeto con los controladores del m
                     duration: item.duration,
                     price: item.price,
                     hashtag: item.hashtag,
-                    activities: item.activities,
+                    description: item.description,
+                    cityId: item.cityId,
                 }).save()
             })
         } catch (err) { error = err }
@@ -116,6 +118,22 @@ const itineraryControllers = { //definimos un objeto con los controladores del m
             error: error
         })
     },
+
+    getItinerariesByCity: async (req,res) => {
+        const id = req.params.id
+        let itineraries
+        let error = null
+        try {
+            itineraries = await Itinerary.find({ cityId : id })
+        } catch (err) {
+            error = err
+        }
+        res.json({
+            response: error ? 'ERROR' : itineraries,
+            success: error ? false : true,
+            error: error
+        })
+    }
 }
 
 module.exports = itineraryControllers

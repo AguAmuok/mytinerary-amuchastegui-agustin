@@ -9,6 +9,11 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Box from '@mui/material/Box';
+import {useSelector, useDispatch} from 'react-redux'
+import { useEffect } from 'react';
+import {useParams} from 'react-router-dom'
+import itinerariesActions from '../redux/actions/itinerariesActions';
 
 
 
@@ -24,45 +29,61 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function ItineraryCard() {
+    const {id} = useParams() //recibimos el id, y con el metodo useParams destructuramos el parametro 
+    const dispatch = useDispatch()
+    useEffect( () =>  { 
+        dispatch(itinerariesActions.getItinerariesByCity(id))
+        // eslint-disable-next-line
+    },[id])
+
+    const itineraries = useSelector(store => store.itinerariesReducer.getItineraryByCity)
+    console.log(itineraries)
+
+
     const [expanded, setExpanded] = React.useState(false);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
-
+    
+    
     return (
-        <Card sx={{
+        <>{itineraries &&  
+        <>
+            {itineraries.map((itineraries) => { 
+                return(
+            <Box key={itineraries._id} sx={{display:'flex ', width:'50%', flexDirection:'row'}}>
+            
+            <Card  sx={{
             display: 'flex',
             flexDirection: 'column',
             flexGrow: '1',
-            height: '100%',
+            height: '40%',
             textAlign: 'center',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: 'rgb(32, 35, 37)',
-            opacity:'80%',
+            backgroundColor: 'rgb(32, 35, 37)',           
             color: 'white',
             padding: '10px',
             marginTop: '2rem',
-            width: '83%'}}>
-            <Typography variant='h2'>TITTLE ITINERARY</Typography>
-            <Typography variant='subtitle1'>Descrption Itinerary</Typography>
-            <Typography variant='subtitle2'>Price and hours</Typography>
-            <Typography variant='subtitle2'>Hashtag</Typography>
-
-
-            <CardMedia 
-                component="img"                
-                src= {require('../images/agustin.jpg') }
-                sx={{display:'flex', flexDirection:'column', height:'10rem', width:'10%', }}
-            />
-            <CardContent>
+            width: '50%'}}>
                 
-            </CardContent>
-            <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
+                <Box sx={{display:'flex', flexDirection:'column' , height:'15rem', width:'10rem',  margin: '2rem' }}>
+                    <Typography>{itineraries.userName}</Typography>
+                    <CardMedia 
+                    component="img"                
+                    src= {itineraries.userPic}
+                    sx={{borderRadius:'50%', maxWidth:'15rem'}} />                             
+            </Box>
+            <Box sx={{display: 'flex', flexDirection: 'column', margin:'3rem'}}>
+            <Typography variant='h2'>{itineraries.title} </Typography>
+            <Typography variant='subtitle1'>{itineraries.description} </Typography>
+            <Typography variant='subtitle2'>{itineraries.price} | {itineraries?.duration}</Typography>
+            <Typography variant='subtitle2'>{itineraries.hashtag}</Typography>
+            <CardActions sx={{display:'flex', justifyContent:'center'}}>
+            <IconButton aria-label="add to favorites">
                     <FavoriteIcon style={{color:'red'}} />
-                </IconButton>
+                </IconButton>   
                 <ExpandMore
                     style={{color:'white'}}
                     expand={expanded}
@@ -75,33 +96,14 @@ export default function ItineraryCard() {
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                    <Typography paragraph>Method:</Typography>
-                    <Typography paragraph>
-                        {/* Heat 1/2 cup of the broth in a pot until simmering, add saffron and set
-                        aside for 10 minutes. */}
-                    </Typography>
-                    <Typography paragraph>
-                        {/* Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over
-                        medium-high heat. Add chicken, shrimp and chorizo, and cook, stirring
-                        occasionally until lightly browned, 6 to 8 minutes. Transfer shrimp to a
-                        large plate and set aside, leaving chicken and chorizo in the pan. Add
-                        pimentón, bay leaves, garlic, tomatoes, onion, salt and pepper, and cook,
-                        stirring often until thickened and fragrant, about 10 minutes. Add
-                        saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil. */}
-                    </Typography>
-                    <Typography paragraph>
-                        {/* Add rice and stir very gently to distribute. Top with artichokes and
-                        peppers, and cook without stirring, until most of the liquid is absorbed,
-                        15 to 18 minutes. Reduce heat to medium-low, add reserved shrimp and
-                        mussels, tucking them down into the rice, and cook again without
-                        stirring, until mussels have opened and rice is just tender, 5 to 7
-                        minutes more. (Discard any mussels that don&apos;t open.) */}
-                    </Typography>
-                    <Typography>
-                        Set aside off of the heat to let rest for 10 minutes, and then serve.
-                    </Typography>
+                    <Typography paragraph>Soon we will have more itineraries!</Typography>                  
                 </CardContent>
-            </Collapse>
+            </Collapse>         
+            </Box>
+            
         </Card>
+        </Box>)})}
+        </> }   
+        </>            
     );
 }

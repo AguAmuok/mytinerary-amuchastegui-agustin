@@ -6,20 +6,21 @@ import Index from './pages/Index'
 import Underconstruction from './pages/Underconstruction'
 import Cities from './pages/Cities'
 import Detail from './components/Detail'
-// import Itinerary from './components/Itinerary'
 import ScrollToTop from "react-scroll-to-top"
 import FileUploadIcon from '@mui/icons-material/FileUpload'
-import {connect} from 'react-redux'
 import citiesActions from './redux/actions/citiesActions'
 import {useEffect} from 'react'
+import {useDispatch} from 'react-redux'
 
 
-
-function App(props) {
+function App() {
     
+    const dispatch = useDispatch()
+
     useEffect(() => {
-        props.getCities()
-},[props])
+        dispatch(citiesActions.getCities())        
+        //eslint-disable-next-line
+},[])
 
     return (
         <>
@@ -43,9 +44,5 @@ function App(props) {
     );
 }
 
-const mapDispatchToProps = {
-    getCities: citiesActions.getCities,
-}
-
-export default connect(null, mapDispatchToProps)(App);
+export default App;
 

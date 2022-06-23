@@ -8,7 +8,7 @@ import {Provider} from 'react-redux';
 import {configureStore as createStore} from '@reduxjs/toolkit'
 import mainReducer from './redux/reducers/mainReducer'
 
-const reduxStore = createStore({reducer:mainReducer})
+const reduxStore = createStore({reducer:mainReducer})//las propiedades denttro del objeto es con :
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
