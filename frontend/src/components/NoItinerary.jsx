@@ -30,24 +30,24 @@ export default function RecipeReviewCard() {
 
     return (
 
-        <Box className='card_tinerary'  sx={{ display: 'flex ', width: '90%', flexDirection: 'row' }}>
+        <Box className='card_tinerary'  sx={{ display: 'flex ' }}>
         <Card sx={{
             display: 'flex',
             flexDirection: 'column',
-            flexGrow: '1',
-            height: '20rem',
+            flexGrow: '1',            
             textAlign: 'center',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: 'rgb(32, 35, 37)',
+            backgroundColor: 'rgb(192, 75, 128)',
+            opacity:'90%',
             color: 'white',
             padding: '10px',
             marginTop: '2rem',
-            width: '90%'
+            
         }}>          
             
             <CardContent>
-                <Typography sx={{fontSize:'2rem!important'}} color="white">
+                <Typography variant='h3' color="white">
                 Soon we will have more itineraries!
                 </Typography>
             </CardContent>

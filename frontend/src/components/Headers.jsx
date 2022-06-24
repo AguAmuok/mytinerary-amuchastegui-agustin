@@ -20,9 +20,9 @@ function Headers() {
             <img className='logolargo' src= {require('../images/logo_largo.png') } alt='' /> 
         
         <Typography className='slogan'
-                    variant="h6"                                        
+                    variant="h5"                                        
                     sx={{   
-                        fontSize: '.5rem',                
+                                       
                         alignItems: 'center',
                         textAlign: 'center',
                         justifyContent: 'center',

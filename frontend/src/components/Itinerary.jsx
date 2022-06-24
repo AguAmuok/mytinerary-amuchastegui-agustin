@@ -37,27 +37,29 @@ export default function ItineraryCard(props) {
                 
                 <Card className='card_tinerary' sx={{
                     display: 'flex',
-                    flexDirection: 'column',                         
+                    flexDirection: 'column',
+                    flexGrow: '1',                         
                     textAlign: 'center',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    backgroundColor: 'rgb(32, 35, 37)',
+                    backgroundColor: 'rgb(192, 75, 128)',
+                    opacity:'90%',
                     color: 'white',
                     padding: '10px',
                     marginTop: '2rem',                    
                     borderRadius: '5%'                    
                 }}>
 
-                    <Box sx={{ display: 'flex', flexDirection: 'column', }}>
-                        <Typography sx={{marginBottom:'2rem'}}>{props.userName}</Typography>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: '1'}}>
+                        <Typography variant='h5'sx={{marginBottom:'1rem'}}>{props.userName}</Typography>
                         <CardMedia
                             component="img"
                             src={props.userPic}
-                            sx={{ borderRadius: '50%', width: '10rem', height:'10rem'}} />
+                            sx={{ borderRadius: '50%', width: '10rem', height:'10rem', marginBottom:'1rem'}} />
                     </Box>
-                    <Box sx={{ display: 'flex', flexDirection: 'column', margin: '3rem' }}>
-                        <Typography sx={{ color: '' , flexGrow:1}}>{props.title} </Typography>
-                        <Typography variant='subtitle1'>{props.description} </Typography>
+                    <Box sx={{ display: 'flex', flexDirection: 'column'}}>
+                        <Typography variant='h5'  sx={{flexGrow:1}}>{props.title} </Typography>
+                        <Typography sx={{}} >{props.description}</Typography>
                         <Typography>Price:{props.price} | Duration:{props?.duration}</Typography>
                         <Typography sx={{ fontStyle: 'italic' }}>{props.hashtag}</Typography>
                         <CardActions sx={{ display: 'flex', justifyContent: 'center' }}>

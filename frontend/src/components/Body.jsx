@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 const images = [
     {
         url: 'https://fondosmil.com/fondo/1069.jpg',
-        title: 'Great adventures await for you. What are you waiting for ?',
+        title: '',
         width: '100%'
     }
 ];
@@ -100,7 +100,7 @@ export default function ButtonBases() {
                     <Image>                      
                         <Typography
                             component="span"
-                            variant="subtitle1"
+                            variant="h5"
                             color="inherit"
                             sx={{
                                 position: 'relative',
@@ -111,7 +111,7 @@ export default function ButtonBases() {
                 >
                             {image.title}
                             <ImageMarked className="MuiImageMarked-root"
-                                src={require('../images/avion-uno.jpg')} alt='' />
+                                src={require('../images/avion-uno.jpg')} alt='' />Great adventures await for you. What are you waiting for ?
                         </Typography>
                     </Image>
                 </ImageButton>
