@@ -1,0 +1,80 @@
+import * as React from 'react';
+import { styled } from '@mui/material/styles';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Collapse from '@mui/material/Collapse';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Box from '@mui/material/Box';
+
+const ExpandMore = styled((props) => {
+    const { expand, ...other } = props;
+    return <IconButton {...other} />;
+})(({ theme, expand }) => ({
+    transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
+        duration: theme.transitions.duration.shortest,
+    }),
+}));
+
+export default function RecipeReviewCard() {
+    const [expanded, setExpanded] = React.useState(false);
+
+    const handleExpandClick = () => {
+        setExpanded(!expanded);
+    };
+
+    return (
+
+        <Box className='card_tinerary'  sx={{ display: 'flex ', width: '90%', flexDirection: 'row' }}>
+        <Card sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            flexGrow: '1',
+            height: '20rem',
+            textAlign: 'center',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: 'rgb(32, 35, 37)',
+            color: 'white',
+            padding: '10px',
+            marginTop: '2rem',
+            width: '90%'
+        }}>          
+            
+            <CardContent>
+                <Typography sx={{fontSize:'2rem!important'}} color="white">
+                Soon we will have more itineraries!
+                </Typography>
+            </CardContent>
+            <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                    <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                    
+                </IconButton>
+                <ExpandMore
+                    style={{ color: 'white' }}
+                    expand={expanded}
+                    onClick={handleExpandClick}
+                    aria-expanded={expanded}
+                    aria-label="show more"
+                >
+                    <ExpandMoreIcon />
+                </ExpandMore>
+            </CardActions>
+            <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <CardContent>
+                    <Typography paragraph>Soon we will have more itineraries!</Typography>
+                    
+                </CardContent>
+            </Collapse>
+        </Card>
+        </Box>
+    );
+}

@@ -217,6 +217,14 @@ a:hover {
     font-size: 1.5rem;
 }
 
+.card_tinerary{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vh;
+}
+
 
 /* -----------MEDIAQUERY---------- */
 
@@ -243,6 +251,31 @@ a:hover {
 @media (max-width: 870px) {
     .contenedorcarurel {
         width: 40rem;
+    }
+}
+
+
+@media (max-width: 940px){
+    .card_tinerary {
+        width: 80vw;
+    }
+}
+
+@media (max-width: 775px){
+    .card_tinerary {
+        width: 60vh;
+    }
+}
+
+@media (max-width: 580px){
+    .card_tinerary {
+        width: 40vh;
+    }
+}
+
+@media (max-width: 400px){
+    .card_tinerary {
+        width: 30vh;
     }
 }
 
