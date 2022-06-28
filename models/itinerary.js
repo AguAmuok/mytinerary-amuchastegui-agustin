@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 
+//creamos el modelo con las distintas propiedades que necesitaremos
+
 const itinerarySchema = new mongoose.Schema({
     title: {type: String, required: true},
     userPic: {type: String, required: true},

@@ -17,10 +17,10 @@ import NoItinerary from '../components/NoItinerary'
 
 export default function Detail() {
 
-    const { id } = useParams()
+    const { id } = useParams() // devuelve un objeto clave, en este caso por ID
     const dispatch = useDispatch()
 
-    useEffect(() => {
+    useEffect(() => { //se ejecuta cuando el componente se renderiza por 1ra vez o cuando se actualiza
         dispatch(citiesActions.getOneCity(id))
         dispatch(itinerariesActions.getItinerariesByCity(id))
         //eslint-disable-next-line
@@ -68,9 +68,9 @@ export default function Detail() {
                         </CardActionArea>
                     </Card>
                 </Box>
-                {itineraries.length > 0 ?
+                {itineraries.length > 0 ? //leo el arreglo y si es mayor a 0 muestro los itinerarios
                     itineraries.map((itineraries, index) =>
-                        <Itinerary
+                        <Itinerary  //traigo el componente Itinerary y le paso el map mediante props!
                             key={index}
                             title={itineraries.title}
                             userName={itineraries.userName}
@@ -78,9 +78,9 @@ export default function Detail() {
                             description={itineraries.description}
                             price={itineraries.price}
                             duration={itineraries.duration}
-                            hashtag={itineraries.hashtag}
-                            likes={itineraries.likes} />) : <NoItinerary />}
-            </Box>
+                            hashtag={itineraries.hashtag} // con el operador ternario muestro las citys sin itinerarios
+                            likes={itineraries.likes} />) : <NoItinerary />}  
+            </Box> 
         </>
     );
 }

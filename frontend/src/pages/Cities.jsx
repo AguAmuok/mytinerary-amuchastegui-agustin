@@ -7,20 +7,19 @@ import Cards from '../components/Cards';
 import citiesActions from '../redux/actions/citiesActions';
 import {useDispatch, useSelector} from 'react-redux'
 
-
-
 function Cities(props) {
     // const [cities, setCities] = useState([]) 
     const [search, setSearch] = useState('')
-    const dispatch = useDispatch() 
+    const dispatch = useDispatch()  // modificamos el estado parecido al useEffect pero de manera mas controlada para nuestro Json (?)
+    //useDispatch es un hook que modifica la accion
+    //dispatch es un metodo que  despacha una o mas acciones 
 
-    useEffect (() => { 
-        dispatch(citiesActions.filterCities(search))
+    useEffect (() => {  //se ejecuta cuando el componente se renderiza por 1ra vez o cuando se actualiza
+        dispatch(citiesActions.filterCities(search)) // hacemos el filtro de las ciudades utilizando redux
         //eslint-disable-next-line
     },[search]);
 
-    const city = useSelector(store => store.citiesReducer.filter)
-
+    const city = useSelector(store => store.citiesReducer.filter) //useSelector permite extraer los datos de estado del store
 
 return (
 <>

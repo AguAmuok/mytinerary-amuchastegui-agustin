@@ -78,6 +78,14 @@ a:hover {
     background-color: rgba(0, 0, 0, 0.418);
 }
 
+.sign{
+    background-color: #111!important;
+}
+
+.facebook {
+    width: 250px!important;
+    height: 50px!important;
+}
 
 .button-24 {
     background: rgb(192, 75, 128);

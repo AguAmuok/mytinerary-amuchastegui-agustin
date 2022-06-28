@@ -1,19 +1,21 @@
-const initialState = {
+
+const initialState = { //asignamos el valor inicial
     itineraries: [],
     auxiliar: [],
-    getItineraryByCity: [],
+    getItineraryByCity: [], 
     
 }
+//Los reducers especifican cómo cambia el estado de la aplicación en respuesta a las acciones enviadas al store.
 
-const itinerariesReducer = (state = initialState, action) => { //action es una funcion y reduce tambien pero funciona con dos propiedades
+const itinerariesReducer = (state = initialState, action) => { // se necesitan dos parametros en la funcion "state" y "action" para realizar un cambio
 
     switch(action.type){  // el type se mete en el objeto action..condicion en cada case
-        case "GET_ITINERARIES": //action se mete en GET_CITIES   
+        case "GET_ITINERARIES": //action se mete en GET_TINERARIES   
             return{
-                ...state,
+                ...state, //state almacena valores mediante payload
                 itineraries: action.payload,
                 auxiliar: action.payload,
-                filter: action.payload //cargamos todas las ciudades en filter
+                filter: action.payload //cargamos todas las ciudades en filter valor de carga
             }
             case "GET_ONE_ ITINERARY":    
             return{
