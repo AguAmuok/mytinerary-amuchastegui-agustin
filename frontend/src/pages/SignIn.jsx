@@ -14,22 +14,36 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import GoogleButton from 'react-google-button'
 import { FacebookLoginButton } from "react-social-login-buttons";
-import '../styles/styles.css'
-
+import '../styles/styles.css';
+import { useDispatch} from 'react-redux';
+import userActions from '../redux/actions/userAction';
+import {useState} from 'react';
 
 
 const theme = createTheme();
 
 export default function SignInSide() {
+    const [email,setEmail]= useState("");
+    const [password,setPassword]= useState("");
+    // const [from,setFrom]= useState("");
+
+    const dispatch = useDispatch();
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
-    };
+        const logedData = {
 
+            email: email,
+            password: password,
+            from: "form-SignUp",
+    }
+
+    console.log(logedData)
+    dispatch(userActions.signIn(logedData))
+
+    setEmail("")
+    setPassword("")
+    }
     return (
         <ThemeProvider theme={theme}>
             <Grid container component="main" sx={{ minHeight: '60.7vh' }}>
@@ -66,6 +80,8 @@ export default function SignInSide() {
                         </Typography>
                         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
                             <TextField
+                                onChange={e=>setEmail(e.target.value)}
+                                value={email}
                                 margin="normal"
                                 required
                                 fullWidth
@@ -76,6 +92,8 @@ export default function SignInSide() {
                                 autoFocus
                             />
                             <TextField
+                                onChange={e=>setPassword(e.target.value)}
+                                value={password}
                                 margin="normal"
                                 required
                                 fullWidth
@@ -128,6 +146,9 @@ export default function SignInSide() {
     );
 }
 
+
+
+
 // export default function SignInSide() {
 //     const handleSubmit = (event) => {
 //         event.preventDefault();
@@ -139,4 +160,17 @@ export default function SignInSide() {
 //             email: event.target[3].value,
 //         }
 //         props.singUpUsers(userData)
+//     };
+
+
+//ORIGINAL
+
+// export default function SignInSide() {
+//     const handleSubmit = (event) => {
+//         event.preventDefault();
+//         const data = new FormData(event.currentTarget);
+//         console.log({
+//             email: data.get('email'),
+//             password: data.get('password'),
+//         });
 //     };

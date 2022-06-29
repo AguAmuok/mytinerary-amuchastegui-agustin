@@ -3,7 +3,8 @@ const Router = require('express').Router(); // requiero el metodo Router de la l
 
 const {getCities, getOneCity, addCity, modifyCity, removeCity, multiplesCities} = require('../controllers/citiescontrollers'); 
 const {getItinerary, addItinerary, removeItinerary, modifyItinerary, getOneItinerary, multiplesItineraries, getItinerariesByCity } = require('../controllers/itinerarycontrollers');
- //desustructuro los consoladores
+const {signIn,singUpUsers} = require('../controllers/userscontroller')
+//desustructuro los consoladores
 
 
 Router.route('/cities') // a Router le configuro una ruta (/cities)
@@ -36,6 +37,16 @@ Router.route('/multiplesItineraries')
 
 Router.route('/itinerarybycity/:id')
 .get(getItinerariesByCity)
+
+
+//RUTAS USERS
+
+Router.route('/auth/signUp')
+.post(singUpUsers)
+
+Router.route('/auth/signIn')
+.post(signIn)
+
 
 module.exports = Router //exportamos el modulo
 

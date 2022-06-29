@@ -3,8 +3,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -15,20 +13,48 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import GoogleButton from 'react-google-button'
 import { FacebookLoginButton } from "react-social-login-buttons";
 import '../styles/styles.css'
-import { Select, InputLabel, FormControl, MenuItem } from '@mui/material';
-
+import CountrySelect from '../components/CountrySelect';
+import { useDispatch} from 'react-redux';
+import userActions from '../redux/actions/userAction';
+import {useState} from 'react';
 
 const theme = createTheme();
 
 export default function SignUp() {
+    const [nameUser,setNameUser]= useState("");
+    const [lastNameUser,setLastNameUser]= useState("");
+    const [photoUser,setPhotoUser]= useState("");
+    const [email,setEmail]= useState("");
+    // const [country,setCountry]= useState("");
+    // const [from,setFrom]= useState("");
+    const [password,setPassword]= useState("");
+
+    const dispatch = useDispatch();
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
-    };
+        const userData = {
+            
+            nameUser: nameUser,
+            lastNameUser: lastNameUser,
+            // photoUser: photoUser,
+            email: email,
+            // country: country,
+            from: "form-SignUp",
+            password: password,
+        }
+        console.log(userData)
+        dispatch(userActions.signUp(userData))  
+        
+        setNameUser("")
+        setLastNameUser("")
+        setPassword("")
+        setEmail("")
+        setPhotoUser("")
+    //     setCountry("")
+    //     setFrom("")
+    
+};
 
     return (
         <ThemeProvider theme={theme}>
@@ -46,12 +72,14 @@ export default function SignUp() {
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        Sign up
+                        Sign Up
                     </Typography>
                     <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={6}>
                                 <TextField
+                                    onChange={e=>setNameUser(e.target.value)}
+                                    value={nameUser}
                                     autoComplete="given-name"
                                     name="firstName"
                                     required
@@ -63,6 +91,8 @@ export default function SignUp() {
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
+                                    onChange={e=>setLastNameUser(e.target.value)}
+                                    value={lastNameUser}
                                     required
                                     fullWidth
                                     id="lastName"
@@ -73,6 +103,8 @@ export default function SignUp() {
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
+                                    onChange={e=>setEmail(e.target.value)}
+                                    value={email}
                                     required
                                     fullWidth
                                     id="email"
@@ -83,6 +115,20 @@ export default function SignUp() {
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
+                                    onChange={e=>setPhotoUser(e.target.value)}
+                                    value={photoUser}
+                                    required
+                                    fullWidth
+                                    id="email"
+                                    label="PhotoUser URL:"
+                                    name="email"
+                                    autoComplete="email"
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    onChange={e=>setPassword(e.target.value)}
+                                    value={password}
                                     required
                                     fullWidth
                                     name="password"
@@ -94,28 +140,9 @@ export default function SignUp() {
                             </Grid>
 
                             <Grid item xs={12}>
-                                <FormControl fullWidth>
-                                    <InputLabel id="demo-simple-select-label">Country</InputLabel>
-                                    <Select
-                                        labelId="demo-simple-select-label"
-                                        id="demo-simple-select"
-                                        //value={Country}
-                                        label="Age"
-                                    //onChange={handleChange}
-                                    >
-                                        <MenuItem value={10}>Ten</MenuItem>
-                                        <MenuItem value={20}>Twenty</MenuItem>
-                                        <MenuItem value={30}>Thirty</MenuItem>
-                                    </Select>
-                                </FormControl>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <FormControlLabel
-                                    control={<Checkbox value="allowExtraEmails" color="primary" />}
-                                    label="I want to receive inspiration, marketing promotions and updates via email."
-                                />
-                            </Grid>
-
+                                
+                                <CountrySelect/>
+                            </Grid>                        
                         </Grid>
                         <Button
                             className='sign'
