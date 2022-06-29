@@ -18,8 +18,21 @@ import '../styles/styles.css';
 import { useDispatch} from 'react-redux';
 import userActions from '../redux/actions/userAction';
 import {useState} from 'react';
+import {Link as LinkRouter} from "react-router-dom"
 
 
+function Copyright(props) {
+    return (
+        <Typography variant="body2" color="text.secondary" align="center" {...props}>
+            {'Copyright © '}
+            <LinkRouter color="black" to="/">
+                MyTinerary
+            </LinkRouter>{' '}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
+    );
+}
 const theme = createTheme();
 
 export default function SignInSide() {
@@ -46,7 +59,7 @@ export default function SignInSide() {
     }
     return (
         <ThemeProvider theme={theme}>
-            <Grid container component="main" sx={{ minHeight: '60.7vh' }}>
+            <Grid container component="main" sx={{ minHeight: '60.7vh', backgroundColor:'blue!important'}}>
                 <CssBaseline />
                 <Grid
                     item
@@ -133,12 +146,14 @@ export default function SignInSide() {
                                     </Link>
                                 </Grid>
                                 <Grid item>
-                                    <Link href="#" variant="body2">
+
+                                    <LinkRouter to='/SignUp' variant="body2">
                                         {"Don't have an account? Sign Up"}
-                                    </Link>
+                                    </LinkRouter>
                                 </Grid>
-                            </Grid>                            
-                        </Box>
+                            </Grid>
+                            <Copyright sx={{ mt: 5 }} />                            
+                        </Box>                        
                     </Box>
                 </Grid>
             </Grid>

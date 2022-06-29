@@ -1,9 +1,10 @@
 const Router = require('express').Router(); // requiero el metodo Router de la libreria de express
 
-
 const {getCities, getOneCity, addCity, modifyCity, removeCity, multiplesCities} = require('../controllers/citiescontrollers'); 
 const {getItinerary, addItinerary, removeItinerary, modifyItinerary, getOneItinerary, multiplesItineraries, getItinerariesByCity } = require('../controllers/itinerarycontrollers');
 const {signIn,singUpUsers} = require('../controllers/userscontroller')
+const validator = require('../config/validator')
+
 //desustructuro los consoladores
 
 
@@ -16,7 +17,7 @@ Router.route('/cities/:id')
 .put(modifyCity)// metodo PUT modificamos
 .get(getOneCity) // metodo GET leemos una sola ciudad
 
-Router.route('/multiplesCities')
+Router.route('/multiplesCities') 
 .post(multiplesCities) // metodo POST agregamos varias ciudades
 
 
@@ -42,7 +43,7 @@ Router.route('/itinerarybycity/:id')
 //RUTAS USERS
 
 Router.route('/auth/signUp')
-.post(singUpUsers)
+.post(validator,singUpUsers)
 
 Router.route('/auth/signIn')
 .post(signIn)

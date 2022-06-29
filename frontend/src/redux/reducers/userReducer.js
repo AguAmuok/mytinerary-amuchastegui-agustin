@@ -9,12 +9,12 @@ const initialState = {
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'user':
+        case 'USER':
             return {
                 ...state,
                 user: action.payload,   
             }
-        case 'message':
+        case 'MESSAGE':
             return {
                 ...state,
                 snackbar: action.payload,   

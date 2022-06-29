@@ -22,7 +22,7 @@ function Headers() {
         <Typography className='slogan'
                     variant="h5"                                        
                     sx={{   
-                                       
+                                        
                         alignItems: 'center',
                         textAlign: 'center',
                         justifyContent: 'center',

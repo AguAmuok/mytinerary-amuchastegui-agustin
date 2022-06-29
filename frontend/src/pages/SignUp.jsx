@@ -25,24 +25,23 @@ export default function SignUp() {
     const [lastNameUser,setLastNameUser]= useState("");
     const [photoUser,setPhotoUser]= useState("");
     const [email,setEmail]= useState("");
-    // const [country,setCountry]= useState("");
-    // const [from,setFrom]= useState("");
     const [password,setPassword]= useState("");
-
     const dispatch = useDispatch();
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        // console.log(event)
         const userData = {
             
             nameUser: nameUser,
             lastNameUser: lastNameUser,
-            // photoUser: photoUser,
+            photoUser: photoUser,
             email: email,
-            // country: country,
+            country: event.target[10].value,
             from: "form-SignUp",
             password: password,
         }
+
         console.log(userData)
         dispatch(userActions.signUp(userData))  
         
@@ -51,8 +50,7 @@ export default function SignUp() {
         setPassword("")
         setEmail("")
         setPhotoUser("")
-    //     setCountry("")
-    //     setFrom("")
+        //setFrom("")
     
 };
 
@@ -177,3 +175,4 @@ export default function SignUp() {
         </ThemeProvider>
     );
 }
+

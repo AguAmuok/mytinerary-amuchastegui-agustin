@@ -8,7 +8,7 @@ const userActions = {
         return async(dispatch,getState) => {
             try {
                 const res = await axios.post(urlApi + 'api/auth/signUp', {userData})
-                // console.log(res)
+                console.log(res)
                 dispatch({
                     type: 'MESSAGE',
                     payload: {

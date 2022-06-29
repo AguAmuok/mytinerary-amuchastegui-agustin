@@ -13,6 +13,7 @@ import {useEffect} from 'react'
 import {useDispatch} from 'react-redux'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
+import Snackbar from './components/Snackbar'
 
 
 function App() {
@@ -35,8 +36,8 @@ function App() {
                 <Route path='/Cities' element={ <Cities />} />
                 <Route path='/City/:id' element={ <Detail />} />
                 {/* <Route path='/City/:id' element={ <Itinerary />} /> */}
-
-            </Routes>            
+            </Routes>      
+            <Snackbar/>      
             <Footer />
             <ScrollToTop
                 style={{backgroundColor: 'white', opacity:'70%', width:'50px', height:'50px'}}                

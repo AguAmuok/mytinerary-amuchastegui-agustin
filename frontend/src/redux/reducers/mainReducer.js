@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 import citiesReducer from './citiesReducer';
 import itinerariesReducer from './itinerariesReducer';
+import userReducer from './userReducer';
 
 const mainReducer = combineReducers({ //combinamos todos nuestros reducer en uno solo para ser luego enviado al index (?)
     citiesReducer,  
-    itinerariesReducer //le pasamos como objeto los distintos reducer
+    itinerariesReducer,
+    userReducer //le pasamos como objeto los distintos reducer
 })
 
 export default mainReducer 
