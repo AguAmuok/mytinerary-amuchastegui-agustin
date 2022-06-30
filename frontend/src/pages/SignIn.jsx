@@ -44,15 +44,15 @@ export default function SignInSide() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const logedData = {
+        const userLogin = {
 
             email: email,
             password: password,
             from: "form-SignUp",
     }
 
-    console.log(logedData)
-    dispatch(userActions.signIn(logedData))
+    console.log(userLogin)
+    dispatch(userActions.signIn(userLogin))
 
     setEmail("")
     setPassword("")
