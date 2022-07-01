@@ -40,7 +40,7 @@ export default function SignUp() {
             photoUser: photoUser,
             email: email,
             country: event.target[10].value,
-            from: "form-SignUp",
+            from: "SignUpForm",
             password: password,
         }
 

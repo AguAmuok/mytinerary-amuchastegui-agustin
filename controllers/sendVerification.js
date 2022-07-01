@@ -36,7 +36,7 @@ const sendVerification = async (email, string) => {
         to: email,
         subject: 'PEPITO verify account',
         html: `
-            <a href=http://localhost:4000/api/verify/${string}>CLICK!</a>
+            <a href=http://localhost:4000/api/verify/${string}>PONE PLAY!</a>
             <h3>to confirm!</h3>`
     }
 

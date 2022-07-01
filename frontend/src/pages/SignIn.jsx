@@ -48,8 +48,8 @@ export default function SignInSide() {
 
             email: email,
             password: password,
-            from: "form-SignUp",
-    }
+            from: "SignUpForm",
+    } 
 
     console.log(userLogin)
     dispatch(userActions.signIn(userLogin))
