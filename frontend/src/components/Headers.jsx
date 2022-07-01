@@ -2,7 +2,7 @@ import React from 'react'
 import '../styles/styles.css'
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
- import { Link as LinkRouter } from "react-router-dom"
+import { Link as LinkRouter } from "react-router-dom"
 
 function Headers() {
     

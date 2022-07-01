@@ -1,10 +1,8 @@
-//importo de librerias externas
 import React from 'react'
 import Box from '@mui/material/Box'
 import Snackbar from '@mui/material/Snackbar'
 import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
-//importo acciones de redux
 import {connect} from 'react-redux'
 import {useDispatch} from 'react-redux'
 
@@ -20,8 +18,9 @@ function Alert(props) {
     const action = (
         <Box sx={{
             width: '100%',
-            backgroundColor: props.snackbar.success ? 'green':'rgb(192, 75, 128)',
-            color: 'white',
+            backgroundColor: props.snackbar.success ? 'rgb(122, 241, 0)':'rgb(255, 0, 71)',
+            color: 'black',
+            fontSize:'1.5rem',
             borderRadius: '4px',
             padding: '4px',
             fontWeight: '400'}}>
@@ -33,7 +32,7 @@ function Alert(props) {
         </Box>
     )
 
-    console.log(props.snackbar.view);
+
     return (
         <Snackbar
             open={props.snackbar.view}
@@ -41,8 +40,8 @@ function Alert(props) {
             onClose={handleClose}
             action={action}
             message={
-                <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
-                    <CloseIcon fontSize="small" />
+                <IconButton size="large" aria-label="close" color="inherit" onClick={handleClose}>
+                    <CloseIcon fontSize="large" />
                 </IconButton>
             } 
         />

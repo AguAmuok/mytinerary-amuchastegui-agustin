@@ -1,13 +1,13 @@
 import axios from 'axios'
 // import apiUrl from '../../url'
 
-let urlApi = 'http://localhost:4000/'
+
 const userActions = {
 
     signUp: (userData) => {
         return async(dispatch,getState) => {
             try {
-                const res = await axios.post(urlApi + 'api/auth/signUp', {userData})
+                const res = await axios.post('http://localhost:4000/api/auth/signUp', {...userData})
                 console.log(res)
                 dispatch({
                     type: 'MESSAGE',
@@ -28,7 +28,7 @@ const userActions = {
     signIn: (userLogin) => {
         //console.log(userLogin)
         return async (dispatch, getState) => {
-            const res = await axios.post(urlApi + 'api/auth/signIn', {userLogin})
+            const res = await axios.post('http://localhost:4000/api/auth/signIn', {...userLogin})
             console.log(res)
             
             if(res.data.success) {
@@ -41,7 +41,7 @@ const userActions = {
                 dispatch({
                     type: 'MESSAGE',
                     payload: {
-                        view: true,
+                        view: true, 
                         message: res.data.message,
                         success: res.data.success
                     }
