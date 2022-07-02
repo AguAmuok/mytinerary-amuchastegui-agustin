@@ -14,6 +14,7 @@ import {useDispatch} from 'react-redux'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import Snackbar from './components/Snackbar'
+import userActions from './redux/actions/userAction'
 
 
 function App() {
@@ -25,10 +26,16 @@ function App() {
         //eslint-disable-next-line
 },[])
 
+useEffect(() => {
+    if(localStorage.getItem('token') !== null) {
+        const token = localStorage.getItem("token")
+        dispatch(userActions.verifyToken(token))
+    }
+},)
+
     return (
         <>
             <NavBar />
-
             <Routes>
                 <Route path='/' element={ <Index />} />
                 <Route path='/SignUp' element={ <SignUp />}/>

@@ -2,8 +2,7 @@ const User = require('../models/user')
 const bcryptjs = require('bcryptjs')
 const crypto = require('crypto')
 const sendVerification = require('./sendVerification')
-//const nodemailer = require('nodemailer')
-//const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken')
 
 const UserControllers = {
 
@@ -63,7 +62,6 @@ const UserControllers = {
     },
 
     signIn: async (req, res) => {
-        //console.log('REQ BODY')
         //console.log(req.body)
         const {email, password, from} = req.body
         try {
@@ -85,17 +83,19 @@ const UserControllers = {
                             nameUser: loginUser.nameUser,
                             photoUser: loginUser.photoUser,
                             from: loginUser.from}
-                        await loginUser.save()
+                        const token = jwt.sign({...userData}, process.env.PASSWORD_TOKEN, {expiresIn: 30*30*24 })//uso el paquete jwt. y el metodo sign de firma . creamos una firma para el token
+                        await loginUser.save()                      
+                        console.log(token)
                         res.json({
-                            response: userData, 
+                            response: {token, userData}, 
                             success: true, 
                             from: from, 
-                            message: `welcome back ${userData.nameUser}!`})
+                            message: `Welcome back ${userData.nameUser}!!`})
                     } else { //si no hay coincidencias
                         res.json({
                             success: false, 
                             from: from,  
-                            message: `verify your password!`})
+                            message: `Verify your password!`})
                     }
                 } else { //si fue registrado por redes sociales
                     //ACLARACION: por ahora es igual al anterior
@@ -106,17 +106,18 @@ const UserControllers = {
                             nameUser: loginUser.nameUser,
                             photoUser: loginUser.photoUser,
                             from: loginUser.from}
+                        const token = jwt.sign({...userData}, process.env.PASSWORD_TOKEN, {expiresIn: 30*30*24 })//uso el paquete jwt. y el metodo sign de firma . creamos una firma para el token
                         await loginUser.save()
                         res.json({
-                            response: userData, 
+                            response: {token,userData}, 
                             success: true, 
                             from: from, 
-                            message: `welcome back ${userData.nameUser}!`})
+                            message: `Welcome back ${userData.nameUser}!`})
                     } else { //si no hay coincidencias
                         res.json({
                             success: false, 
                             from: from,  
-                            message: `verify your mail or password!`})
+                            message: `Verify your mail or password!`})
                     }
                 }
             }
@@ -135,12 +136,25 @@ const UserControllers = {
         if (user) {
             user.verification = true
             await user.save()
-            res.redirect('http://localhost:3000/')
+            res.redirect('http://localhost:3000/SignIn/')
         }
         else {res.json({
             success: false,
-            message: 'email has not been confirmed yet!'})
+            message: 'Email does not have an account yet!'})
         }
+},
+
+verificationToken:(req,res) => {
+    
+    if(req.user){
+        res.json({
+            succes:true,
+            response:{id:req.user.id, nameUser:req.user.nameUser,lastNameUser:req.user.lastNameUser,email:req.user.email, from:"token"},
+            message: "Welcome new" + req.user.email})
+    }else {
+        res.json({success:false,
+        message: 'Please signIn again'})
+}
 }
 }
 

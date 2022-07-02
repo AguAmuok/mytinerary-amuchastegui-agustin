@@ -12,7 +12,7 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { FacebookLoginButton } from "react-social-login-buttons";
+// import { FacebookLoginButton } from "react-social-login-buttons";
 import '../styles/styles.css';
 import { useDispatch} from 'react-redux';
 import userActions from '../redux/actions/userAction';
@@ -38,20 +38,15 @@ const theme = createTheme();
 export default function SignInSide() {
     const [email,setEmail]= useState("");
     const [password,setPassword]= useState("");
-    // const [from,setFrom]= useState("");
-
     const dispatch = useDispatch();
-
     const handleSubmit = (event) => {
         event.preventDefault();
         const userLogin = {
-
             email: email,
             password: password,
             from: "SignUpForm",
     } 
 
-    console.log(userLogin)
     dispatch(userActions.signIn(userLogin))
 
     setEmail("")
@@ -133,11 +128,11 @@ export default function SignInSide() {
                             <Grid sx={{ display: 'flex', justifyContent: 'center', margin:'1rem'}}>
                             <GoogleSignIn/>
                             </Grid>
-                            <Grid sx={{display: 'flex', justifyContent: 'center', margin: '1rem'}}>
+                            {/* <Grid sx={{display: 'flex', justifyContent: 'center', margin: '1rem'}}>
                             <FacebookLoginButton className='facebook' onClick={() => { console.log('Facebook button clicked') }}>
                             <span>Sign In with Facebook</span>
                             </FacebookLoginButton>
-                            </Grid>
+                            </Grid> */}
                             
                             <Grid container>
                                 <Grid item xs>

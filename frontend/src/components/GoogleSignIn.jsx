@@ -4,12 +4,12 @@ import { useDispatch } from 'react-redux';
 import userActions from '../redux/actions/userAction'
 
 
-export default function GoogleSignUp() {
+export default function GoogleSignIn() {
     const dispatch = useDispatch();
 
 
     async function handleCallbackResponse(response) {
-        console.log(response.credential);
+        // console.log(response.credential);
         let userObject = jwt_decode(response.credential);
         console.log(userObject);
         dispatch(userActions.signIn({                        
@@ -29,7 +29,7 @@ export default function GoogleSignUp() {
 
         google.accounts.id.renderButton(
             document.getElementById('buttonDiv'),
-            { theme: 'outline', size: 'large', context: 'signUp' }
+            { theme: 'outline', size: 'large', locale: 'en' }
         )
     });
 

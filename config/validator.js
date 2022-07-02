@@ -1,8 +1,8 @@
 const joi = require('joi')
 
 const validator = (req, res, next) => {
-    console.log("req.body es")
-    console.log(req.body)
+    // console.log("req.body es")
+    // console.log(req.body)
     const schema = joi.object({
         nameUser: joi.string()
             .min(3)

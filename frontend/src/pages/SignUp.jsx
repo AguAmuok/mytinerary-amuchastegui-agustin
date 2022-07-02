@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 // import GoogleButton from 'react-google-button'
-import { FacebookLoginButton } from "react-social-login-buttons";
+// import { FacebookLoginButton } from "react-social-login-buttons";
 import '../styles/styles.css'
 import CountrySelect from '../components/CountrySelect';
 import { useDispatch} from 'react-redux';
@@ -160,9 +160,9 @@ export default function SignUp() {
                             <GoogleButton className='sign' label='Sign Up with Google'
                                 onClick={() => { console.log('Google button clicked') }} /></Grid>
                         <Grid sx={{ display: 'flex', justifyContent: 'center', margin: '1rem' }}> */}
-                            <FacebookLoginButton className='facebook' onClick={() => { console.log('Facebook button clicked') }}>
+                            {/* <FacebookLoginButton className='facebook' onClick={() => { console.log('Facebook button clicked') }}>
                                 <span>Sign up with Facebook</span>
-                            </FacebookLoginButton>
+                            </FacebookLoginButton> */}
                         {/* </Grid> */}
 
                         <Grid container justifyContent="flex-end">

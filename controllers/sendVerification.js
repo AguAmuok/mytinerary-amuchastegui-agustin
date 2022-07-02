@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer')
 const { google } = require("googleapis")
 const OAuth2 = google.auth.OAuth2
 
-const sendVerification = async (email, string) => {
+const sendVerification = async (email, string) => { //string=uniqueString.. puede llevar cualquier nombre.. depende del email que ingresa el usuario y el unique string de crypto
 
     const myOAuth2Client = new OAuth2(
         process.env.GOOGLE_CLIENTID,
