@@ -14,12 +14,17 @@ import MenuItem from '@mui/material/MenuItem';
 import '../styles/styles.css'
 import logo from '../images/logo_largo.png'
 import {Link as LinkRouter} from "react-router-dom"
+import SignOut from './SignOut'
+import { connect } from 'react-redux';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+
+
 
 
 const pages = [{ to:'/' , name: 'Home' } , {  to:'/Cities' , name:'Cities'}];
-const settings = [{to: '/SignUp', name:'Sign Up'} , {to:'/SignIn' , name:'Sign In'} , {to:'/SignOut' , name: 'Sign Out'}];
+const settings = [{to: '/SignUp', name:'Sign Up'} , {to:'/SignIn' , name:'Sign In'}];
 
-const NavBar = () => {
+const NavBar = (props) => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -106,9 +111,12 @@ const NavBar = () => {
 
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
+                        
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar src="https://mpng.subpng.com/20190209/zcj/kisspng-computer-icons-clip-art-portable-network-graphics-islamic-boarding-school-5c5f3724df3f17.1898313715497439089144.jpg" />
-
+                            {props.user?
+                            <Avatar src={props.user.photoUser} sx={{width: '40px', height: '40px'}}/> :
+                            <AccountCircleIcon  sx={{width:'80px', height:'50px', color:'white'}}/>}
+                            
                             </IconButton>
                         </Tooltip>
                         <Menu
@@ -127,10 +135,13 @@ const NavBar = () => {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {settings.map((setting,index) => (  
-                                <LinkRouter to={setting.to} key={index} onClick={handleCloseUserMenu} >                    
+
+                            {props.user ? 
+                            <SignOut handleCloseUserMenu={handleCloseUserMenu}/> :
+                            settings.map((element,index) => (  
+                                <LinkRouter to={element.to} key={index} onClick={handleCloseUserMenu} >                    
                                 <MenuItem >
-                                    <Typography textAlign="center">{setting.name}</Typography>
+                                    <Typography textAlign="center">{element.name}</Typography>
                                 </MenuItem>
                                 </LinkRouter>
                                 
@@ -142,4 +153,10 @@ const NavBar = () => {
         </AppBar>
     );
 };
-export default NavBar;
+const mapStateToProps = (state) => {
+    return {
+        user: state.userReducer.user,
+    }
+}
+
+export default connect(mapStateToProps, null)(NavBar)

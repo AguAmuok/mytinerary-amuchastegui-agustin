@@ -130,31 +130,49 @@ const UserControllers = {
         }
     },
 
+    signOut: async (req, res) => {
+        
+        const email = req.body.email
+        console.log(req.body.email)
+        const user = await User.findOne({email})
+        await user
+        res.json({
+            success: true,
+            message: email+' sign out!'})
+    },
+    
     verifyMail: async (req, res) => {
         const {string} = req.params
-        const user = await User.findOne({uniqueString:string})
-        if (user) {
-            user.verification = true
-            await user.save()
-            res.redirect('http://localhost:3000/SignIn/')
+        const userData = await User.findOne({uniqueString: string})
+        //console.log(user)
+        if (userData) {
+            userData.verification = true
+            await userData.save()
+            res.redirect("http://localhost:3000")
         }
         else {res.json({
             success: false,
-            message: 'Email does not have an account yet!'})
+            message: `email has not account yet!`})
         }
-},
+    },
 
-verificationToken:(req,res) => {
-    
-    if(req.user){
+verifyToken:(req, res) => {
+    //console.log(req.user)
+    if (!req.err) {
+    res.json({
+        success: true,
+        response: {
+            id: req.user.id,
+            email: req.user.email,
+            nameUser: req.user.nameUser,
+            photoUser:req.user.photoUser,
+            from: "token"},
+        message: "Hi! Welcome back "+req.user.nameUser}) 
+    } else {
         res.json({
-            succes:true,
-            response:{id:req.user.id, nameUser:req.user.nameUser,lastNameUser:req.user.lastNameUser,email:req.user.email, from:"token"},
-            message: "Welcome new" + req.user.email})
-    }else {
-        res.json({success:false,
-        message: 'Please signIn again'})
-}
+            success:false,
+            message:"sign in please!"}) 
+    }
 }
 }
 

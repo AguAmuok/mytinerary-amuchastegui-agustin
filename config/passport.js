@@ -4,18 +4,19 @@ const extractJwt = require('passport-jwt').ExtractJwt
 
 const Users = require('../models/user')
 
-module.exports = passport.use(new jwtStrategy({
-    jwtFromRequest: extractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey: 'process.env.PASSWORD_TOKEN'
-}, (jwt_payload, done) => {
+module.exports = passport.use(
+    new jwtStrategy(
+        {jwtFromRequest: extractJwt.fromAuthHeaderAsBearerToken(),
+        secretOrKey:process.env.PASSWORD_TOKEN},
+        (jwt_payload, done) => {
 
     Users.findOne({ _id: jwt_payload.id })
 
-        .then(user => {
+        .then(userData => {
 
-            if (user) {
+            if (userData) {
 
-                return done(null, user)
+                return done(null, userData)
             }
             else if (err) {
 
@@ -31,3 +32,5 @@ module.exports = passport.use(new jwtStrategy({
         })
 
 }))
+
+

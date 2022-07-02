@@ -5,7 +5,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -25,7 +24,7 @@ function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
-            <LinkRouter color="black" to="/">
+            <LinkRouter className='links' to="/">
                 MyTinerary
             </LinkRouter>{' '}
             {new Date().getFullYear()}
@@ -45,7 +44,7 @@ export default function SignInSide() {
             email: email,
             password: password,
             from: "SignUpForm",
-    } 
+    }
 
     dispatch(userActions.signIn(userLogin))
 
@@ -54,7 +53,7 @@ export default function SignInSide() {
     }
     return (
         <ThemeProvider theme={theme}>
-            <Grid container component="main" sx={{ minHeight: '60.7vh', backgroundColor:'blue!important'}}>
+            <Grid container component="main" sx={{ minHeight: '60.7vh'}}>
                 <CssBaseline />
                 <Grid
                     item
@@ -84,7 +83,7 @@ export default function SignInSide() {
                             <LockOutlinedIcon />
                         </Avatar>
                         <Typography component="h1" variant="h5">
-                            Sign in
+                            Sign In
                         </Typography>
                         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
                             <TextField
@@ -124,7 +123,7 @@ export default function SignInSide() {
                             >
                                 Sign In
                             </Button>
-                            
+
                             <Grid sx={{ display: 'flex', justifyContent: 'center', margin:'1rem'}}>
                             <GoogleSignIn/>
                             </Grid>
@@ -133,22 +132,21 @@ export default function SignInSide() {
                             <span>Sign In with Facebook</span>
                             </FacebookLoginButton>
                             </Grid> */}
-                            
+
                             <Grid container>
                                 <Grid item xs>
-                                    <Link href="#" variant="body2">
+                                    <LinkRouter className='links' to="/SignUp" variant="body2">
                                         Forgot password?
-                                    </Link>
-                                </Grid>
-                                <Grid item>
-
-                                    <LinkRouter to='/SignUp' variant="body2">
-                                        {"Don't have an account? Sign Up"}
                                     </LinkRouter>
                                 </Grid>
+                                <Grid item>
+                                <LinkRouter className='links' to="/SignUp" variant="body2">
+                                        Don't have an account? Sign Up
+                                </LinkRouter>   
+                                </Grid>
                             </Grid>
-                            <Copyright sx={{ mt: 5 }} />                            
-                        </Box>                        
+                            <Copyright sx={{ mt:4 }} />
+                        </Box>
                     </Box>
                 </Grid>
             </Grid>

@@ -22,16 +22,15 @@ function App() {
     const dispatch = useDispatch()
 
     useEffect(() => { //se ejecuta cuando el componente se renderiza por 1ra vez o cuando se actualiza
-        dispatch(citiesActions.getCities())        
+        dispatch(citiesActions.getCities())  
+        if(localStorage.getItem('token') !== null) {
+            const token = localStorage.getItem("token")
+            dispatch(userActions.verifyToken(token))
+        }      
         //eslint-disable-next-line
 },[])
 
-useEffect(() => {
-    if(localStorage.getItem('token') !== null) {
-        const token = localStorage.getItem("token")
-        dispatch(userActions.verifyToken(token))
-    }
-},)
+
 
     return (
         <>

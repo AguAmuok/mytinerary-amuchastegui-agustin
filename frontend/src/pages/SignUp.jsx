@@ -3,7 +3,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -12,6 +11,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 // import GoogleButton from 'react-google-button'
 // import { FacebookLoginButton } from "react-social-login-buttons";
+import {Link as LinkRouter} from "react-router-dom"
 import '../styles/styles.css'
 import CountrySelect from '../components/CountrySelect';
 import { useDispatch} from 'react-redux';
@@ -19,6 +19,18 @@ import userActions from '../redux/actions/userAction';
 import {useState} from 'react';
 import GoogleSignUp from '../components/GoogleSignUp';
 
+function Copyright(props) {
+    return (
+        <Typography variant="body2" color="text.secondary" align="center" {...props}>
+            {'Copyright © '}
+            <LinkRouter className='links' to="/">
+                MyTinerary
+            </LinkRouter>{' '}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
+    );
+}
 
 const theme = createTheme();
 
@@ -139,8 +151,7 @@ export default function SignUp() {
                                 />
                             </Grid>
 
-                            <Grid item xs={12}>
-                                
+                            <Grid item xs={12}>                              
                                 <CountrySelect/>
                             </Grid>                        
                         </Grid>
@@ -149,13 +160,13 @@ export default function SignUp() {
                             type="submit"
                             fullWidth
                             variant="contained"
-                            sx={{ mt: 3, mb: 2 }}
-
-                        >
+                            sx={{ mt: 3, mb: 2 }} >
                             Sign Up
                         </Button>
-                        <GoogleSignUp/>
-
+                        <Grid sx={{ display: 'flex', justifyContent: 'center', margin:'1rem'}}>
+                        <GoogleSignUp />
+                        </Grid>
+                        
                         {/* <Grid sx={{ display: 'flex', justifyContent: 'center', margin: '1rem' }}>
                             <GoogleButton className='sign' label='Sign Up with Google'
                                 onClick={() => { console.log('Google button clicked') }} /></Grid>
@@ -167,11 +178,12 @@ export default function SignUp() {
 
                         <Grid container justifyContent="flex-end">
                             <Grid item>
-                                <Link href="#" variant="body2">
-                                    Already have an account? Sign in
-                                </Link>
+                            <LinkRouter className='links' to="/SignIn" variant="body2"  >
+                                    Already have an account? Sign In
+                                </LinkRouter>
                             </Grid>
                         </Grid>
+                        <Copyright sx={{ m: 3 }} />
                     </Box>
                 </Box>
             </Container>

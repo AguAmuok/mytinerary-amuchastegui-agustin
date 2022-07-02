@@ -68,6 +68,9 @@ a:hover {
     color: rgb(192, 75, 128) !important;
     transition: .5s;
 }
+.links{
+    color: gray;
+}
 
 .footer-link {
     margin: 1rem;

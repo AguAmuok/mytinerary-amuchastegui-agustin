@@ -2,9 +2,10 @@ const Router = require('express').Router(); // requiero el metodo Router de la l
 
 const {getCities, getOneCity, addCity, modifyCity, removeCity, multiplesCities} = require('../controllers/citiescontrollers'); 
 const {getItinerary, addItinerary, removeItinerary, modifyItinerary, getOneItinerary, multiplesItineraries, getItinerariesByCity } = require('../controllers/itinerarycontrollers');
-const {signIn,signUp,verifyMail,verificationToken} = require('../controllers/userscontroller')
+const {signIn,signUp,verifyMail,signOut,verifyToken} = require('../controllers/userscontroller')
 const validator = require('../config/validator')
 const passport = require('../config/passport')
+
 
 //desustructuro los consoladores
 
@@ -49,11 +50,14 @@ Router.route('/auth/signUp')
 Router.route('/auth/signIn')
 .post(signIn)
 
+Router.route('/auth/signOut')
+.post(signOut)
+
 Router.route('/verify/:string')
 .get(verifyMail)
 
 Router.route('/auth/signInToken')
-.get(passport.authenticate('jwt',{ session: false}),verificationToken)
+.get(passport.authenticate('jwt',{ session: false}),verifyToken)
 
 
 module.exports = Router //exportamos el modulo

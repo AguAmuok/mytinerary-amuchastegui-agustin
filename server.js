@@ -1,10 +1,12 @@
+require('dotenv').config()
 const express = require ('express') //requiero del modulo express
 const Router = require ('./routes/routes') //requiero el modulo de las rutas de conexion
 const app = express() //ejecutamos express para creear la app
 const cors = require ('cors')  //requiero el modulo cors
+
 const passport = require ('passport')
 
-require('dotenv').config() //requiero dotenv que es una libreria que configura nuestra app con las variables de entonrno definidas en el archivo .env
+ //requiero dotenv que es una libreria que configura nuestra app con las variables de entonrno definidas en el archivo .env
 require('./config/database')//requiero la conexion con la base de datos 
 
 //middlewares

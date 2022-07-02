@@ -59,56 +59,41 @@ const userActions = {
     },
 
     signOut: (userData) => {
-        //console.log(data)
-        return async (dispatch, getState) => {
-            await axios.post('http://localhost:4000/api/auth/signOut',{...userData})
-            //console.log(res)
-            localStorage.removeItem('token')//removemos token
-        }   
-    },
-
-    verifyToken: (token) => {
-        // console.log(token)
-        return async (dispatch, getState) => {          
-        await axios.get('http://localhost:4000/api/auth/signInToken', {
-            headers: {
-                'Authorization': 'Bearer ' + token
-            }
-            
+    console.log(userData)
+    console.log('aca este el userdata')
+    return async (dispatch, getState) => {
+        await axios.post('http://localhost:4000/api/auth/signOut',{...userData})       
+        localStorage.removeItem('token')
+        
+        dispatch({
+            type:'USER',
+            payload:null
         })
-            .then(user => {
-                if (user.data.success) {
-                    dispatch({ type: 'user', payload: user.data.response });
-                    dispatch({type:'userList'})
-                    dispatch({
-                        type: 'message',
-                        payload: {
-                            view: true,
-                            message: user.data.message,
-                            success: user.data.success
-                        }
-                    });
-                } else {
-                    localStorage.removeItem('token')
-                }
-            }
-            ).catch(error => {
-                if (error.response.status === 401)
-                    dispatch({
-                        type: 'message',
-                        payload: {
-                            view: true,
-                            message: "Please signIn again",
-                            success: false
-                        }
-                    })
-                localStorage.removeItem('token')
+    }   
+},
+
+verifyToken: (token) => {
+    return async (dispatch, getState) => {       
+        const user = await axios.get('http://localhost:4000/api/auth/signInToken', {headers: {'Authorization': 'Bearer '+ token}} )       
+        if (user.data.success) {
+            dispatch({
+                type: 'USER',
+                payload: user.data.response 
             })
-            
+            dispatch({
+                type: 'MESSAGE',
+                payload: {
+                    view: true,
+                    message: user.data.message,
+                    success: user.data.success
+                }
+            })
+        } else {
+            localStorage.removeItem('token')
+        }
     }
-    
 }
-};
+}
 
 export default userActions
 
