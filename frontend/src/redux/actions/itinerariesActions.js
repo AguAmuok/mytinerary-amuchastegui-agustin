@@ -10,7 +10,6 @@ const itinerariesActions = { //action es un objeto que contiene una funcion con 
     getItineraries: () => {
         return async (dispatch, getState) => { // el dispatch es lo que recibe como parametro el reducer junto al estado para luego trabajarlo y cambiarlo
             const res = await axios.get('http://localhost:4000/api/itineraries')
-            console.log(res)
             dispatch({type: "GET_ITINERARIES", payload:res.data.response}) // payLoad/"carga util": nos referirnos a los datos que necesita un action en Redux para funcionar correctamente
         }
     },

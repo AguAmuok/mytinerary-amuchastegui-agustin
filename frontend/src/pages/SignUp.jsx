@@ -165,16 +165,6 @@ export default function SignUp() {
                         <Grid sx={{ display: 'flex', justifyContent: 'center', margin:'1rem'}}>
                         <GoogleSignUp />
                         </Grid>
-                        
-                        {/* <Grid sx={{ display: 'flex', justifyContent: 'center', margin: '1rem' }}>
-                            <GoogleButton className='sign' label='Sign Up with Google'
-                                onClick={() => { console.log('Google button clicked') }} /></Grid>
-                        <Grid sx={{ display: 'flex', justifyContent: 'center', margin: '1rem' }}> */}
-                            {/* <FacebookLoginButton className='facebook' onClick={() => { console.log('Facebook button clicked') }}>
-                                <span>Sign up with Facebook</span>
-                            </FacebookLoginButton> */}
-                        {/* </Grid> */}
-
                         <Grid container justifyContent="flex-end">
                             <Grid item>
                             <LinkRouter className='links' to="/SignIn" variant="body2"  >
@@ -190,3 +180,12 @@ export default function SignUp() {
     );
 }
 
+
+// {/* <Grid sx={{ display: 'flex', justifyContent: 'center', margin: '1rem' }}>
+//                             <GoogleButton className='sign' label='Sign Up with Google'
+//                                 onClick={() => { console.log('Google button clicked') }} /></Grid>
+//                         <Grid sx={{ display: 'flex', justifyContent: 'center', margin: '1rem' }}> */}
+//                             {/* <FacebookLoginButton className='facebook' onClick={() => { console.log('Facebook button clicked') }}>
+//                                 <span>Sign up with Facebook</span>
+//                             </FacebookLoginButton> */}
+//                         {/* </Grid> */}

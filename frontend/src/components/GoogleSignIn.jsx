@@ -12,7 +12,6 @@ export default function GoogleSignIn() {
     async function handleCallbackResponse(response) {
         // console.log(response.credential);
         let userObject = jwt_decode(response.credential);
-        console.log(userObject);
         await dispatch(userActions.signIn({                        
             email: userObject.email,           
             password: userObject.sub, 
@@ -22,7 +21,7 @@ export default function GoogleSignIn() {
         
         const token = localStorage.getItem('token')//recupero el token de local store si esta seteado
         if (token) {// si esta el token lo redirecciono al Navigate
-            console.log('navigate')
+            // console.log('navigate')
             navigate("/")
         }  
     }

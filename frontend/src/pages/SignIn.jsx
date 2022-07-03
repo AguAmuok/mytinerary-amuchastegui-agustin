@@ -55,7 +55,6 @@ export default function SignInSide() {
     
     const token = localStorage.getItem('token')//recupero el token de local store si esta seteado
     if (token) {// si esta el token lo redirecciono al Navigate
-        console.log('navigate')
         navigate("/")
     }  
 

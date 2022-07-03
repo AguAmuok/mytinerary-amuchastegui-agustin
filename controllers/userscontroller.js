@@ -73,7 +73,6 @@ const UserControllers = {
                     message: `Sorry.. email or password are incorrect!`})
             } else { //si existe el usuario
                 let checkedWord =  loginUser.password.filter(pass => bcryptjs.compareSync(password, pass))
-                console.log(checkedWord)
                 //filtramos en el array de contraseñas hasheadas si coincide la contraseña 
                 if (from === "signUpForm") { //si fue registrado por nuestro formulario
                     if (checkedWord.length>0) { //si hay coincidencias
@@ -85,7 +84,7 @@ const UserControllers = {
                             from: loginUser.from}
                         const token = jwt.sign({...userData}, process.env.PASSWORD_TOKEN, {expiresIn: 30*30*24 })//uso el paquete jwt. y el metodo sign de firma . creamos una firma para el token
                         await loginUser.save()                      
-                        console.log(token)
+                        // console.log(token)
                         res.json({
                             response: {token, userData}, 
                             success: true, 
@@ -133,7 +132,6 @@ const UserControllers = {
     signOut: async (req, res) => {
         
         const email = req.body.email
-        console.log(req.body.email)
         const user = await User.findOne({email})
         await user
         res.json({

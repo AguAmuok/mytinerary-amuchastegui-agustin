@@ -8,7 +8,6 @@ const userActions = {
         return async(dispatch,getState) => {
             try {
                 const res = await axios.post('http://localhost:4000/api/auth/signUp', {...userData})
-                console.log(res)
                 dispatch({
                     type: 'MESSAGE',
                     payload: {
@@ -26,10 +25,8 @@ const userActions = {
 
 
     signIn: (userLogin) => {
-        //console.log(userLogin)
         return async (dispatch, getState) => {
             const res = await axios.post('http://localhost:4000/api/auth/signIn', {...userLogin})
-            console.log(res)
             
             if(res.data.success) {
                 localStorage.setItem('token',res.data.response.token)//guardamos el token
@@ -59,8 +56,6 @@ const userActions = {
     },
 
     signOut: (userData) => {
-    console.log(userData)
-    console.log('aca este el userdata')
     return async (dispatch, getState) => {
         await axios.post('http://localhost:4000/api/auth/signOut',{...userData})       
         localStorage.removeItem('token')
