@@ -167,7 +167,7 @@ verifyToken:(req, res) => {
             nameUser: req.user.nameUser,
             photoUser:req.user.photoUser,
             from: "token"},
-        message: "Hi! Welcome back "+req.user.nameUser}) 
+        message: "Hi! Welcome back " + req.user.nameUser}) 
     } else {
         res.json({
             success:false,

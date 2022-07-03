@@ -18,6 +18,8 @@ import userActions from '../redux/actions/userAction';
 import {useState} from 'react';
 import {Link as LinkRouter} from "react-router-dom"
 import GoogleSignIn from '../components/GoogleSignIn'
+import {useNavigate} from 'react-router-dom'
+    
 
 
 function Copyright(props) {
@@ -35,22 +37,32 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignInSide() {
+    
     const [email,setEmail]= useState("");
     const [password,setPassword]= useState("");
     const dispatch = useDispatch();
-    const handleSubmit = (event) => {
+    const navigate = useNavigate()
+    
+    const handleSubmit = async (event) => {//funcion en async
         event.preventDefault();
         const userLogin = {
             email: email,
             password: password,
             from: "SignUpForm",
     }
-
-    dispatch(userActions.signIn(userLogin))
+    
+    await dispatch(userActions.signIn(userLogin))// paso awayt para que espere el ingreso del user
+    
+    const token = localStorage.getItem('token')//recupero el token de local store si esta seteado
+    if (token) {// si esta el token lo redirecciono al Navigate
+        console.log('navigate')
+        navigate("/")
+    }  
 
     setEmail("")
     setPassword("")
     }
+    
     return (
         <ThemeProvider theme={theme}>
             <Grid container component="main" sx={{ minHeight: '60.7vh'}}>

@@ -5,8 +5,7 @@ import Box from '@mui/material/Box';
 import { Link as LinkRouter } from "react-router-dom"
 
 function Headers() {
-    
-    
+            
     return (
         <>
         <Box className='header' sx={{
@@ -38,9 +37,9 @@ function Headers() {
                     Find your perfect trip, designed by insiders who know and love their cities!
             
                     </Typography>                       
-                    <LinkRouter to='/Cities' className='button-85' sx={{
+                    <LinkRouter to='/SignIn' className='button-85' sx={{
                         color: 'white'
-                    }}>¡ Click here for see more !</LinkRouter>
+                    }}>¡ Log In to see more !</LinkRouter>
                             
         </ Box >               
         </>

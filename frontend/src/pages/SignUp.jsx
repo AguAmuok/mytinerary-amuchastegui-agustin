@@ -56,7 +56,6 @@ export default function SignUp() {
             password: password,
         }
 
-        console.log(userData)
         dispatch(userActions.signUp(userData))  
         
         setNameUser("")

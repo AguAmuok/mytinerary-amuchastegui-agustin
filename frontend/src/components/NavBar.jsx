@@ -113,7 +113,7 @@ const NavBar = (props) => {
                         <Tooltip title="Open settings">
                         
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                            {props.user?
+                            {props.user ?
                             <Avatar src={props.user.photoUser} sx={{width: '40px', height: '40px'}}/> :
                             <AccountCircleIcon  sx={{width:'80px', height:'50px', color:'white'}}/>}
                             
@@ -146,6 +146,7 @@ const NavBar = (props) => {
                                 </LinkRouter>
                                 
                             ))}
+
                         </Menu>
                     </Box>
                 </Toolbar>

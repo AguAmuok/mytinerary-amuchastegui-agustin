@@ -32,7 +32,6 @@ function Alert(props) {
         </Box>
     )
 
-
     return (
         <Snackbar
             open={props.snackbar.view}

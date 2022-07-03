@@ -7,6 +7,7 @@ import userActions from '../redux/actions/userAction'
 
 function SignOut(props) {
     function signOut() {
+        localStorage.setItem("user", JSON.stringify({}));//borro el la info de users
 		props.signOut(props.user.email)
 	}
     return ( //returno el HTML

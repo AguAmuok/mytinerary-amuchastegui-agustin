@@ -2,23 +2,31 @@ import React, { useEffect } from 'react';
 import jwt_decode from 'jwt-decode';
 import { useDispatch } from 'react-redux';
 import userActions from '../redux/actions/userAction'
+import {useNavigate} from 'react-router-dom'
 
 
 export default function GoogleSignIn() {
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
 
     async function handleCallbackResponse(response) {
         // console.log(response.credential);
         let userObject = jwt_decode(response.credential);
         console.log(userObject);
-        dispatch(userActions.signIn({                        
+        await dispatch(userActions.signIn({                        
             email: userObject.email,           
             password: userObject.sub, 
             from: 'google'
         
         }))
+        
+        const token = localStorage.getItem('token')//recupero el token de local store si esta seteado
+        if (token) {// si esta el token lo redirecciono al Navigate
+            console.log('navigate')
+            navigate("/")
+        }  
     }
+
 
     useEffect(() => {
         /* global google */
