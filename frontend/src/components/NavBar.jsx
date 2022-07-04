@@ -114,8 +114,8 @@ const NavBar = (props) => {
                         
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                             {props.user ?
-                            <Avatar src={props.user.photoUser} sx={{width: '40px', height: '40px'}}/> :
-                            <AccountCircleIcon  sx={{width:'80px', height:'50px', color:'white'}}/>}
+                            <Avatar className='avatar' src={props.user.photoUser} sx={{width: '50px', height: '50px'}}/> :
+                            <AccountCircleIcon className='avatar' sx={{width:'50px', height:'50px', color:'white'}}/>}
                             
                             </IconButton>
                         </Tooltip>

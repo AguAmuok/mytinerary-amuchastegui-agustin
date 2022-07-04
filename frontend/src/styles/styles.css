@@ -237,9 +237,16 @@ a:hover {
 
 /* -----------MEDIAQUERY---------- */
 
-@media (max-width: 1350px) {
+@media (max-width: 1351px) {
     .contenedorcarurel {
         width: 60rem;
+    }
+}
+
+@media (max-width: 1350px) {
+    .tinerary-card {
+        display: flex!important;
+        flex-direction: column;
     }
 }
 
@@ -316,7 +323,7 @@ a:hover {
 
 @media (max-width: 550px) {
     .divCarrusel {
-        height: 10rem;
+        height: 15rem;
     }
 }
 
@@ -328,7 +335,7 @@ a:hover {
 
 @media (max-width: 390px) {
     .divCarrusel {
-        height: 10rem;
+        height: 18rem;
     }
 }
 
@@ -360,13 +367,21 @@ a:hover {
 
 @media (max-width:500px) {
     .logolargo {
-        height: 5vh;
+        height: 6vh;
+        width: 70vw;
     }
 }
 
 @media (max-width: 440px) {
     .logo {
         width: 12rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .avatar {
+        width:40px!important;
+        height:40px!important;
     }
 }
 

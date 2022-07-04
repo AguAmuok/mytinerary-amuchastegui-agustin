@@ -10,7 +10,7 @@ function SignOut(props) {
         localStorage.setItem("user", JSON.stringify({}));//borro el la info de users
 		props.signOut(props.user.email)
 	}
-    return ( //returno el HTML
+    return ( //retorno el HTML
         <MenuItem onClick={props.handleCloseUserMenu}>
             <LinkRouter to={'/'}>
                 <Typography onClick={signOut} className='fredokaFont' sx={{color: 'white'}}>Sign Out</Typography>

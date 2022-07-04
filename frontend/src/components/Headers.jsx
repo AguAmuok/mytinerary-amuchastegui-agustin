@@ -37,9 +37,9 @@ function Headers() {
                     Find your perfect trip, designed by insiders who know and love their cities!
             
                     </Typography>                       
-                    <LinkRouter to='/SignIn' className='button-85' sx={{
+                    <LinkRouter to='/Cities' className='button-85' sx={{
                         color: 'white'
-                    }}>¡ Log In to see more !</LinkRouter>
+                    }}>¡Click to see more  !</LinkRouter>
                             
         </ Box >               
         </>

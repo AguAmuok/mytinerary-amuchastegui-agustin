@@ -14,7 +14,8 @@ const UserControllers = {
             const verification = false //por defecto
             const uniqueString = crypto.randomBytes(20).toString('hex') // uso los metodos de crypto
             if (!user) { //si NO existe el usuario                
-                const newUser = await new User({nameUser, lastNameUser, photoUser, email, country, verification,
+                const newUser = await new User({nameUser,
+                    lastNameUser, photoUser, email, country, verification,
                     uniqueString: uniqueString,
                     password: [hashWord],
                     from: [from]})
@@ -25,7 +26,7 @@ const UserControllers = {
                         success: true, 
                         from: from,
                         message: `check ${email} and finish your SIGN UP!`}) 
-                    } else { //si los datos vienen desde una red social
+                    } else { //si los datos vienen de Google o una red social
                         newUser.verification = true
                     await newUser.save()
                     res.json({
@@ -136,7 +137,7 @@ const UserControllers = {
         await user
         res.json({
             success: true,
-            message: email+' sign out!'})
+            message: email+' Sign out!'})
     },
     
     verifyMail: async (req, res) => {

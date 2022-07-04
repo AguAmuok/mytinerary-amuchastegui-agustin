@@ -41,7 +41,6 @@ export default function SignUp() {
     const [email,setEmail]= useState("");
     const [password,setPassword]= useState("");
     const dispatch = useDispatch();
-
     const handleSubmit = (event) => {
         event.preventDefault();
         // console.log(event)

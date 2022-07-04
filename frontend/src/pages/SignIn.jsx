@@ -19,8 +19,6 @@ import {useState} from 'react';
 import {Link as LinkRouter} from "react-router-dom"
 import GoogleSignIn from '../components/GoogleSignIn'
 import {useNavigate} from 'react-router-dom'
-    
-
 
 function Copyright(props) {
     return (
@@ -51,7 +49,7 @@ export default function SignInSide() {
             from: "SignUpForm",
     }
     
-    await dispatch(userActions.signIn(userLogin))// paso awayt para que espere el ingreso del user
+    await dispatch(userActions.signIn(userLogin))// paso await para que espere el ingreso del user
     
     const token = localStorage.getItem('token')//recupero el token de local store si esta seteado
     if (token) {// si esta el token lo redirecciono al Navigate
