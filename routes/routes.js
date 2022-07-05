@@ -3,6 +3,7 @@ const Router = require('express').Router(); // requiero el metodo Router de la l
 const {getCities, getOneCity, addCity, modifyCity, removeCity, multiplesCities} = require('../controllers/citiescontrollers'); 
 const {getItinerary, addItinerary, removeItinerary, modifyItinerary, getOneItinerary, multiplesItineraries, getItinerariesByCity } = require('../controllers/itinerarycontrollers');
 const {signIn,signUp,verifyMail,signOut,verifyToken} = require('../controllers/userscontroller')
+const{getActivities,addActivity,removeActivity,modifyActivity,getOneActivity,multiplesActivities,getActivitiesByitinerary} = require('../controllers/activitiescontrollers');
 const validator = require('../config/validator')
 const passport = require('../config/passport')
 
@@ -41,6 +42,21 @@ Router.route('/multiplesItineraries')
 Router.route('/itinerarybycity/:id')
 .get(getItinerariesByCity)
 
+//RUTAS ACTIVITIES
+Router.route('/activities')
+.get(getActivities)
+.post(addActivity)
+
+Router.route('/activities/:id')
+.delete(removeActivity)
+.put(modifyActivity)
+.get(getOneActivity)
+
+Router.route('/multiplesActivities')
+.post(multiplesActivities)
+
+Router.route('/activitiesbyitinerary/:id')
+.get(getActivitiesByitinerary)
 
 //RUTAS USERS
 

@@ -15,19 +15,20 @@ import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import Snackbar from './components/Snackbar'
 import userActions from './redux/actions/userAction'
+import {connect} from 'react-redux'
 
 
 
 
 
-function App() {
+function App(props) {
     //llamamos a todas las cities en todas las paginas.. 
     const dispatch = useDispatch()
 
     useEffect(() => { //se ejecuta cuando el componente se renderiza por 1ra vez o cuando se actualiza
         dispatch(citiesActions.getCities())  
-        if(localStorage.getItem('token') !== null) {
-            const token = localStorage.getItem("token")
+        if(localStorage.getItem('token') !== null) { //buscamos si token existe en el local storaje
+            const token = localStorage.getItem("token")//cada vez que se actualiza el useEffec  busca el token
             dispatch(userActions.verifyToken(token))
         }      
         //eslint-disable-next-line
@@ -39,10 +40,11 @@ function App() {
         <>
             <NavBar />
             <Routes>
+                <Route path="*" element={<Index />} />
                 <Route path='/' element={ <Index />} />
-                <Route path='/SignUp' element={ <SignUp />}/>
-                <Route path='/SignIn' element={ <SignIn />}/>
-                <Route path='/Cities' element={ <Cities />} />
+                {!props.user && <Route path='/SignUp' element={ <SignUp />}/>}
+                {!props.user && <Route path='/SignIn' element={ <SignIn />}/>}
+                {props.user && <Route path='/Cities' element={ <Cities />} />}
                 <Route path='/City/:id' element={ <Detail />} />
                 {/* <Route path='/City/:id' element={ <Itinerary />} /> */}
             </Routes>      
@@ -57,5 +59,16 @@ function App() {
     );
 }
 
-export default App;
+const mapDispatchToProps = {
+    verifyToken: userActions.verifyToken,                  
+}
+
+    const mapStateToProps = (state) => {
+    return {
+    user: state.userReducer.user,
+    
+    }
+}
+
+    export default connect(mapStateToProps, mapDispatchToProps)(App);
 

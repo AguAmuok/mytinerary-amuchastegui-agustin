@@ -1,9 +1,7 @@
 import axios from "axios";
 
-
 //Las action solo describen que es lo que se va a pedir que haga
 //Las action son el único mecanismo en Redux para enviar información a tu store.
-
 
 const itinerariesActions = { //action es un objeto que contiene una funcion con dos propiedades
 
@@ -18,7 +16,7 @@ const itinerariesActions = { //action es un objeto que contiene una funcion con 
 
         return async (dispatch, getState) => {
         const res = await axios.get(`http://localhost:4000/api/itineraries/${id}`)
-        dispatch({type: "GET_ONE_ ITINERARY", payload:res.data.response})
+        dispatch({type: "GET_ONE_ITINERARY", payload:res.data.response})
     }
 },
 

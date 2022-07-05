@@ -4,21 +4,21 @@ const OAuth2 = google.auth.OAuth2
 
 const sendVerification = async (email, string) => { //string=uniqueString.. puede llevar cualquier nombre.. depende del email que ingresa el usuario y el unique string de crypto
 
-    const myOAuth2Client = new OAuth2(
+    const myOAuth2Client = new OAuth2( // construye una configuaracion con dos variables de entorno que traemos de googleAccount
         process.env.GOOGLE_CLIENTID,
         process.env.GOOGLE_CLIENTSECRET,
         "https://developers.google.com/oauthplayground"
     )
 
-    myOAuth2Client.setCredentials({
+    myOAuth2Client.setCredentials({// setamos las credenciales y aplicamos el refreshtoken 
         refresh_token:process.env.GOOGLE_REFRESHTOKEN
     })
 
-    const accessToken = myOAuth2Client.getAccessToken()
+    const accessToken = myOAuth2Client.getAccessToken()//genero el token de acceso con el  metodo myOAuth2Client
 
-    const transporter = nodemailer.createTransport({
+    const transporter = nodemailer.createTransport({//aplicamos a nodemailer un trasportador para el envio del email
         service: "gmail",
-        auth: {
+        auth: {// caracteristicas que debe tener/ tienen que coicidir con la variabled de entorno .env
             type: "OAuth2",
             user: process.env.USER,
             clientId: process.env.GOOGLE_CLIENTID,
@@ -26,14 +26,14 @@ const sendVerification = async (email, string) => { //string=uniqueString.. pued
             refreshToken: process.env.GOOGLE_REFRESHTOKEN,
             accessToken: accessToken
         },
-        tls: {
+        tls: {//transport layer security
             rejectUnauthorized: false// es para que no  lo bloquee el antivirus
         }
     })
 
-    let mailOptions = {
-        from: process.env.USER,
-        to: email,
+    let mailOptions = {//datos que necesita google para generar el correo
+        from: process.env.USER,// quien envia el mail
+        to: email,//a quien va el mail
         subject: 'My Tinerary verify account',
         html: `
             <body style="width:100%;font-family:arial, 'helvetica neue', helvetica, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0"><div class="es-wrapper-color" style="background-color:#F6F6F6"><!--[if gte mso 9]><v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t"> <v:fill type="tile" color="#f6f6f6"></v:fill> </v:background><![endif]--><table class="es-wrapper" width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;padding:0;Margin:0;width:100%;height:100%;background-repeat:repeat;background-position:center top"><tr style="border-collapse:collapse"><td valign="top" style="padding:0;Margin:0"><table cellpadding="0" cellspacing="0" class="es-content" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%"><tr style="border-collapse:collapse"><td align="center" style="padding:0;Margin:0"><table bgcolor="#0b0a0a" class="es-content-body" align="center" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#0B0A0A;width:600px"><tr class="es-visible-simple-html-only" style="border-collapse:collapse"><td class="es-struct-html" align="left" style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px"><table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"><tr style="border-collapse:collapse"><td valign="top" align="center" style="padding:0;Margin:0;width:560px"><table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"><tr style="border-collapse:collapse"><td align="center" style="padding:0;Margin:0;font-size:0px"><img class="adapt-img" src="https://vpplto.stripocdn.email/content/guids/c2603882-4168-4177-afa1-9f87bceb377d/images/logo_largo.png" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="560"></td>
@@ -42,7 +42,7 @@ const sendVerification = async (email, string) => { //string=uniqueString.. pued
 </tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr></table></div></body></html>`
     }
 
-    await transporter.sendMail(mailOptions, function (error, response) {
+    await transporter.sendMail(mailOptions, function (error, response) {//esperamos que trasporter envie el mail y me trae los mesajes de alerta
         if (error) {
             console.log(error)
         } else {

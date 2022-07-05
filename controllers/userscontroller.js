@@ -7,22 +7,22 @@ const jwt = require('jsonwebtoken')
 const UserControllers = {
 
     signUp: async (req,res) => {
-        const { nameUser, lastNameUser, photoUser, email, country, from, password } = req.body
+        const { nameUser, lastNameUser, photoUser, email, country, from, password } = req.body//pido los datos requeridos
         try {
-            const user = await User.findOne({email}) //buscamos por email
+            const user = await User.findOne({email}) //esperamos que encuentre un usuario por su email
             const hashWord = bcryptjs.hashSync(password, 10) //hasheo la contraseña
-            const verification = false //por defecto
-            const uniqueString = crypto.randomBytes(20).toString('hex') // uso los metodos de crypto
+            const verification = false //por defecto si es por formulario
+            const uniqueString = crypto.randomBytes(20).toString('hex') // uso los metodos de crypto para enviar un mail de verificacion
             if (!user) { //si NO existe el usuario                
-                const newUser = await new User({nameUser,
+                const newUser = await new User({nameUser, //espera las propiedades
                     lastNameUser, photoUser, email, country, verification,
                     uniqueString: uniqueString,
                     password: [hashWord],
                     from: [from]})
                 if (from === "SignUpForm") { //si la data viene del formulario
                     await newUser.save()
-                    await sendVerification(email, uniqueString)
-                    res.json({
+                    await sendVerification(email, uniqueString)//espero que sea enviado el mail de verificion
+                    res.json({//si el mail es correcto cambia la verificacion a true
                         success: true, 
                         from: from,
                         message: `check ${email} and finish your SIGN UP!`}) 
@@ -66,7 +66,7 @@ const UserControllers = {
         //console.log(req.body)
         const {email, password, from} = req.body
         try {
-            const loginUser = await User.findOne({email}) //buscamos por eemail
+            const loginUser = await User.findOne({email}) //espera que busque el user por email
             if (!loginUser) { //si NO existe el usuario
                 res.json({
                     success: false,
@@ -77,7 +77,7 @@ const UserControllers = {
                 //filtramos en el array de contraseñas hasheadas si coincide la contraseña 
                 if (from === "signUpForm") { //si fue registrado por nuestro formulario
                     if (checkedWord.length>0) { //si hay coincidencias
-                        const userData = { //este objeto lo utilizaremos cuando veamos TOKEN
+                        const userData = { 
                             id: loginUser._id,
                             email: loginUser.email,
                             nameUser: loginUser.nameUser,
@@ -100,7 +100,7 @@ const UserControllers = {
                 } else { //si fue registrado por redes sociales
                     //ACLARACION: por ahora es igual al anterior
                     if (checkedWord.length>0) { //si hay coincidencias
-                        const userData = { //este objeto lo utilizaremos cuando veamos TOKEN
+                        const userData = {
                             id: loginUser._id,
                             email: loginUser.email,
                             nameUser: loginUser.nameUser,
@@ -142,7 +142,7 @@ const UserControllers = {
     
     verifyMail: async (req, res) => {
         const {string} = req.params
-        const userData = await User.findOne({uniqueString: string})
+        const userData = await User.findOne({uniqueString: string})//espero que el usuario verifique el mail
         //console.log(user)
         if (userData) {
             userData.verification = true
@@ -157,8 +157,8 @@ const UserControllers = {
 
 verifyToken:(req, res) => {
     //console.log(req.user)
-    if (!req.err) {
-    res.json({
+    if (!req.err) {//si no tenemos errores nos devuelve una respuesta en formato json
+    res.json({//con todos los datos requeridos 
         success: true,
         response: {
             id: req.user.id,
@@ -166,11 +166,11 @@ verifyToken:(req, res) => {
             nameUser: req.user.nameUser,
             photoUser:req.user.photoUser,
             from: "token"},
-        message: "Hi! Welcome back " + req.user.nameUser}) 
+        message: "Hi! Welcome back " + req.user.nameUser}) //si hay token = msj bienvenida
     } else {
         res.json({
             success:false,
-            message:"sign in please!"}) 
+            message:"Sign in please!"}) // de lo contrario mensje vuelve a ingresar
     }
 }
 }

@@ -17,7 +17,7 @@ const validator = (req, res, next) => {
             .min(3)
             .max(20)
             .trim()
-            .pattern(new RegExp('[a-zA-Z]'))
+            .pattern(new RegExp('[a-zA-Z]'))//expresiones regulares
             .required()
             .messages({
                 'string.min': '"last name": min 3 characters',
@@ -47,11 +47,11 @@ const validator = (req, res, next) => {
                 'string.max': '"password": max 30 characters'}),
         
     })
-    const validation = schema.validate(req.body, {abortEarly:false})
+    const validation = schema.validate(req.body, {abortEarly:false})// realiza todas las verificaciones y lo devuelve en un array( muestra las alertas de los campos requeridos)
     if (validation.error) {
-        return res.json({success: false, from: 'validator', message: validation.error.details, test: validation})
+        return res.json({success: false, from: 'validator', message: validation.error.details, test: validation})//devuelve un error enc caso que algo este mal y manda un msj
     }
-    next()
+    next()// pasa al signIn si todo esta bien
 }
 
 module.exports = validator

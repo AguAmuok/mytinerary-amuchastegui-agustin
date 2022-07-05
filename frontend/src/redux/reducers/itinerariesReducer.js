@@ -17,7 +17,7 @@ const itinerariesReducer = (state = initialState, action) => { // se necesitan d
                 auxiliar: action.payload,
                 filter: action.payload //cargamos todas las ciudades en filter valor de carga
             }
-            case "GET_ONE_ ITINERARY":    
+            case "GET_ONE_ITINERARY":    
             return{
                 ...state,
                 oneCity: action.payload,
