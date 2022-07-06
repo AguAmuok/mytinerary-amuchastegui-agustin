@@ -10,6 +10,12 @@ import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Box from '@mui/material/Box';
+import Activities from '../components/Activities'
+// import { useParams } from 'react-router-dom';
+// import { useDispatch } from 'react-redux';
+// import { useEffect } from 'react'
+// import { useSelector } from 'react-redux';
+// import activitiesActions from '../redux/actions/activitiesActions';
 
 
 const ExpandMore = styled((props) => {
@@ -23,7 +29,10 @@ const ExpandMore = styled((props) => {
     }),
 }));
 
+
+
 export default function ItineraryCard(props) {
+// console.log(props)
     
     const [expanded, setExpanded] = React.useState(false);
 
@@ -60,7 +69,7 @@ export default function ItineraryCard(props) {
                     <Box sx={{ display: 'flex', flexDirection: 'column'}}>
                         <Typography variant='h5'  sx={{flexGrow:1}}>{props.title} </Typography>
                         <Typography sx={{}} >{props.description}</Typography>
-                        <Typography>Price:{props.price} | Duration:{props?.duration}</Typography>
+                        <Typography>Price:{props.price} | Duration:{props.duration}</Typography>
                         <Typography sx={{ fontStyle: 'italic' }}>{props.hashtag}</Typography>
                         <CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
                             <IconButton aria-label="add to favorites">
@@ -78,13 +87,36 @@ export default function ItineraryCard(props) {
                                 <ExpandMoreIcon />
                             </ExpandMore>
                         </CardActions>
+
                         <Collapse in={expanded} timeout="auto" unmountOnExit >
                             <CardContent>
-                                <Typography paragraph >Soon we will have more itineraries!</Typography>
-                            </CardContent>
+                                <Typography variant='h5' paragraph >Activities!!</Typography>
+                            </CardContent >
+
+                    <CardContent sx={{display: 'flex', justifyContent: 'center'}}>
+
+                        {props.activitiesId.length > 0 ?
+                        
+                        <Activities activitiesId={props.activitiesId} />                         
+                        : 
+                        <Box>
+                            <Typography variant='h1'>No hay nada wachin</Typography>
+                        </Box>}                                                                        
+                    </CardContent>                             
                         </Collapse>
                     </Box>
                 </Card>
-            </Box>             
+            </Box> 
+                        
     );
 }
+
+// const { id } = useParams() // devuelve un objeto clave, en este caso por ID
+    // const dispatch = useDispatch()
+
+    // useEffect(() => { //se ejecuta cuando el componente se renderiza por 1ra vez o cuando se actualiza
+    //     dispatch(activitiesActions.getActivitiesByitinerary(id))
+    //     //eslint-disable-next-line
+    // }, []);
+
+    // const activitiesId = useSelector(store => store.activitiesReducer.getActivitiesByitinerary)

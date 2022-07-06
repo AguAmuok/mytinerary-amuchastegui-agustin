@@ -16,7 +16,7 @@ const activitiesControllers={
     },
     getOneActivity: async (req, res) => {
         const id = req.params.id
-        let activity
+        let activity 
         let error = null
         try {
             activity = await Activity.findOne({ _id: id }) 
@@ -112,7 +112,7 @@ const activitiesControllers={
         let activities
         let error = null
         try {
-            activities = await Activity.find({ cityId : id })
+            activities = await Activity.find({ itineraryId : id })
         } catch (err) {
             error = err
         }

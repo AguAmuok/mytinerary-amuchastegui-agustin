@@ -26,7 +26,6 @@ export default function Detail() {
         //eslint-disable-next-line
     }, []);
 
-
     const itineraries = useSelector(store => store.itinerariesReducer.getItineraryByCity)
     // console.log(itineraries)
 
@@ -68,6 +67,7 @@ export default function Detail() {
                         </CardActionArea>
                     </Card>
                 </Box>
+                
                 <Box className='tinerary-card' sx={{display: 'flex', justifyContent: 'center', gap:'1rem'}}>
                 {itineraries.length > 0 ? //leo el arreglo y si es mayor a 0 muestro los itinerarios
                     itineraries.map((itineraries, index) =>
@@ -80,7 +80,11 @@ export default function Detail() {
                             price={itineraries.price}
                             duration={itineraries.duration}
                             hashtag={itineraries.hashtag} // con el operador ternario muestro las citys sin itinerarios
-                            likes={itineraries.likes} />) : <NoItinerary />}</Box>
+                            likes={itineraries.likes}
+                            activitiesId={itineraries.activitiesId}
+                            />) : <NoItinerary />}
+                </Box>
+                
             </Box> 
         </>
     );

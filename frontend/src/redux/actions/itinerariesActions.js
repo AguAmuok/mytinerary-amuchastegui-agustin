@@ -27,6 +27,25 @@ const itinerariesActions = { //action es un objeto que contiene una funcion con 
         dispatch({type: "GET_ITINERARY_BYCITY", payload:res.data.response})
     }
 },
+
+likeDislike: (id) => {
+    const token = localStorage.getItem('token')// levantamos el token que necesita passport
+    //console.log(token)
+    return async () => {
+        try {
+            let response = await axios.put(`http://localhost:4000/api/like/${id}`, {},//ponemos un objeto vacio para pasarlo como primer parametro
+            {headers: {
+                Authorization: 'Bearer '+ token
+                }
+            })
+            //console.log(response)
+            return response
+            
+        }catch (error) {
+            console.log(error)
+        }
+    }
+}
 }
 
 export default itinerariesActions

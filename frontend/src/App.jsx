@@ -44,7 +44,7 @@ function App(props) {
                 <Route path='/' element={ <Index />} />
                 {!props.user && <Route path='/SignUp' element={ <SignUp />}/>}
                 {!props.user && <Route path='/SignIn' element={ <SignIn />}/>}
-                {props.user && <Route path='/Cities' element={ <Cities />} />}
+                <Route path='/Cities' element={ <Cities />} />
                 <Route path='/City/:id' element={ <Detail />} />
                 {/* <Route path='/City/:id' element={ <Itinerary />} /> */}
             </Routes>      

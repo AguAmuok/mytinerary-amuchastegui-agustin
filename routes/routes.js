@@ -1,7 +1,7 @@
 const Router = require('express').Router(); // requiero el metodo Router de la libreria de express
 
 const {getCities, getOneCity, addCity, modifyCity, removeCity, multiplesCities} = require('../controllers/citiescontrollers'); 
-const {getItinerary, addItinerary, removeItinerary, modifyItinerary, getOneItinerary, multiplesItineraries, getItinerariesByCity } = require('../controllers/itinerarycontrollers');
+const {getItinerary, addItinerary, removeItinerary, modifyItinerary, getOneItinerary, multiplesItineraries, getItinerariesByCity,likeDislike } = require('../controllers/itinerarycontrollers');
 const {signIn,signUp,verifyMail,signOut,verifyToken} = require('../controllers/userscontroller')
 const{getActivities,addActivity,removeActivity,modifyActivity,getOneActivity,multiplesActivities,getActivitiesByitinerary} = require('../controllers/activitiescontrollers');
 const validator = require('../config/validator')
@@ -41,6 +41,9 @@ Router.route('/multiplesItineraries')
 
 Router.route('/itinerarybycity/:id')
 .get(getItinerariesByCity)
+
+Router.route("/like/:id")
+.put(passport.authenticate("jwt", {session: false}),likeDislike)
 
 //RUTAS ACTIVITIES
 Router.route('/activities')
