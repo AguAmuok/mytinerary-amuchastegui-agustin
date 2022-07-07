@@ -233,7 +233,42 @@ a:hover {
     width: 80vh;
     
 }
+/* ----------TINERARY------------ */
+@media (max-width: 900px){
+    .card-details{
+        width: 50rem;
+    }
+}
+@media (max-width: 800px){
+    .card-details{
+        width: 43rem;
+    }
+}
+@media (max-width: 700px){
+    .card-details{
+        width: 36rem;
+    }
+}
+@media (max-width: 580px){
+    .card-details{
+        width: 30rem;
+    }
+}
+@media (max-width: 480px){
+    .card-details{
+        width: 25rem;
+    }
+}
+@media (max-width: 400px){
+    .card-details{
+        width: 19rem;
+    }
+}
 
+.card-details {
+    height: 30rem;
+    width: 90rem;
+}
 
 /* -----------MEDIAQUERY---------- */
 
@@ -270,6 +305,11 @@ a:hover {
     }
 }
 
+@media (min-width: 941px) {
+    .card_con{
+        display: flex;
+    }
+}
 
 @media (max-width: 940px){
     .card_tinerary {

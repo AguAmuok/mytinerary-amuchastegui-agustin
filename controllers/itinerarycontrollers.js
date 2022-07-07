@@ -137,10 +137,10 @@ const itineraryControllers = { //definimos un objeto con los controladores del m
     },
 
     likeDislike: async (req, res) => {
-        const id = req.params.id //LLEGA POR PARAMETRO DESDE AXIOS
-        const user = req.user.id //LLEGA POR RESPUESTA DE PASSPORT
-        //console.log(id);
-        //console.log(user);
+        const id = req.params.id //llega por parametro desde axios
+        const user = req.user.id //llega por la respuesta de passport
+        // console.log(id);
+        // console.log(user);
         await Itinerary.findOne({ _id: id })
 
             .then((itinerary) => {

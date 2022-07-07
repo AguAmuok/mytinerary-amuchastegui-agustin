@@ -14,6 +14,7 @@ import { useDispatch } from 'react-redux';
 import citiesActions from '../redux/actions/citiesActions'
 import itinerariesActions from '../redux/actions/itinerariesActions';
 import NoItinerary from '../components/NoItinerary'
+import '../styles/styles.css'
 
 export default function Detail() {
 
@@ -47,9 +48,9 @@ export default function Detail() {
 
             }}>
                 <Box>
-                    <Card sx={{ maxWidth: 1500, color: 'white', backgroundColor: 'black', borderRadius: '2%' }}>
+                    <Card sx={{ maxWidth: 1500, color: 'white', backgroundColor: 'black', opacity:'95%', borderRadius: '2%' }}>
                         <CardActionArea>
-                            <CardMedia sx={{ height: 300, Width: 1500 }}
+                            <CardMedia className='card-details' sx={{ height: 300 }}
                                 component="img"
                                 image={card.image}
                             />
@@ -67,8 +68,18 @@ export default function Detail() {
                         </CardActionArea>
                     </Card>
                 </Box>
-                
-                <Box className='tinerary-card' sx={{display: 'flex', justifyContent: 'center', gap:'1rem'}}>
+                </Box>
+                <Typography variant='h3' sx={{display: 'flex ', justifyContent: 'center',backgroundColor:'rgb(155, 95, 148)', color:'white', p:'4rem'}}>
+                    ACTIVITIES
+                </Typography>
+                <Box className='tinerary-card' sx={{
+                backgroundImage: 'url(https://r4.wallpaperflare.com/wallpaper/231/5/291/palm-trees-sky-clouds-pink-wallpaper-7b56fced23016f0935d4cbe97d5ccc90.jpg)',
+                backgrounSize: 'cover',
+                display: 'flex ',
+                justifyContent: 'center',
+                alignItems:'center',
+                p:'2rem'
+                }}>
                 {itineraries.length > 0 ? //leo el arreglo y si es mayor a 0 muestro los itinerarios
                     itineraries.map((itineraries, index) =>
                         <Itinerary  //traigo el componente Itinerary y le paso el map mediante props!
@@ -82,9 +93,8 @@ export default function Detail() {
                             hashtag={itineraries.hashtag} // con el operador ternario muestro las citys sin itinerarios
                             likes={itineraries.likes}
                             activitiesId={itineraries.activitiesId}
+                            id={itineraries._id}
                             />) : <NoItinerary />}
-                </Box>
-                
             </Box> 
         </>
     );

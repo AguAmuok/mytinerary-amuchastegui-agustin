@@ -16,7 +16,7 @@ const itinerariesActions = { //action es un objeto que contiene una funcion con 
 
         return async (dispatch, getState) => {
         const res = await axios.get(`http://localhost:4000/api/itineraries/${id}`)
-        dispatch({type: "GET_ONE_ITINERARY", payload:res.data.response})
+            return res.data.response.itinerary
     }
 },
 
@@ -28,14 +28,15 @@ const itinerariesActions = { //action es un objeto que contiene una funcion con 
     }
 },
 
-likeDislike: (id) => {
+    likeDislike: (id) => {
     const token = localStorage.getItem('token')// levantamos el token que necesita passport
-    //console.log(token)
+    console.log(token)
+    console.log(id)
     return async () => {
         try {
             let response = await axios.put(`http://localhost:4000/api/like/${id}`, {},//ponemos un objeto vacio para pasarlo como primer parametro
             {headers: {
-                Authorization: 'Bearer '+ token
+                Authorization: 'Bearer ' + token
                 }
             })
             //console.log(response)
