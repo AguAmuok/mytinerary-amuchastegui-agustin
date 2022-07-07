@@ -35,7 +35,7 @@ export default function Detail() {
     return (
         <>
             <Box key={card._id} sx={{
-
+                flexGrow: 1,
                 backgroundImage: 'url(https://r4.wallpaperflare.com/wallpaper/231/5/291/palm-trees-sky-clouds-pink-wallpaper-7b56fced23016f0935d4cbe97d5ccc90.jpg)',
                 backgrounSize: 'cover',
                 backgroundPosition: 'center',
@@ -48,7 +48,7 @@ export default function Detail() {
 
             }}>
                 <Box>
-                    <Card sx={{ maxWidth: 1500, color: 'white', backgroundColor: 'black', opacity:'95%', borderRadius: '2%' }}>
+                    <Card sx={{ maxWidth: 1200, color: 'white', backgroundColor: 'black', opacity:'95%', borderRadius: '2%' }}>
                         <CardActionArea>
                             <CardMedia className='card-details' sx={{ height: 300 }}
                                 component="img"
@@ -69,17 +69,21 @@ export default function Detail() {
                     </Card>
                 </Box>
                 </Box>
-                <Typography variant='h3' sx={{display: 'flex ', justifyContent: 'center',backgroundColor:'rgb(155, 95, 148)', color:'white', p:'4rem'}}>
-                    ACTIVITIES
-                </Typography>
+            
                 <Box className='tinerary-card' sx={{
-                backgroundImage: 'url(https://r4.wallpaperflare.com/wallpaper/231/5/291/palm-trees-sky-clouds-pink-wallpaper-7b56fced23016f0935d4cbe97d5ccc90.jpg)',
-                backgrounSize: 'cover',
+                backgroundColor: 'rgb(18, 20, 21)',    
                 display: 'flex ',
+                flexGrow: 1,
+                flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems:'center',
                 p:'2rem'
                 }}>
+
+                <Typography variant='h3' sx={{color:'white'}}>
+                    ACTIVITIES
+                </Typography>
+
                 {itineraries.length > 0 ? //leo el arreglo y si es mayor a 0 muestro los itinerarios
                     itineraries.map((itineraries, index) =>
                         <Itinerary  //traigo el componente Itinerary y le paso el map mediante props!

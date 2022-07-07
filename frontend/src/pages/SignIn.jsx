@@ -61,22 +61,20 @@ export default function SignInSide() {
     }
     
     return (
+        <Box sx={{ backgroundImage: 'url(https://r4.wallpaperflare.com/wallpaper/875/239/803/nature-sunset-sun-beach-wallpaper-696048dd818aad5b46d7986f100116ad.jpg)',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize:'cover',
+        backgroundPosition:'center'}}>
+
+        
         <ThemeProvider theme={theme}>
             <Grid container component="main" sx={{ minHeight: '60.7vh'}}>
                 <CssBaseline />
                 <Grid
                     item
                     xs={false}
-                    sm={4}
-                    md={7}
-                    sx={{
-                        backgroundImage: 'url(https://r4.wallpaperflare.com/wallpaper/875/239/803/nature-sunset-sun-beach-wallpaper-696048dd818aad5b46d7986f100116ad.jpg)',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundColor: (t) =>
-                            t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                    }}
+                    sm={2}
+                    md={7}                   
                 />
                 <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
                     <Box
@@ -160,6 +158,7 @@ export default function SignInSide() {
                 </Grid>
             </Grid>
         </ThemeProvider>
+        </Box>
     );
 }
 

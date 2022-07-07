@@ -64,29 +64,31 @@ const like = async (event) => {
             <Box>
                 
                 <Card className='card_tinerary' sx={{
-                    display: 'flex',                        
+                    display: 'flex',
+                    flexGrow: 1,                        
                     textAlign: 'center',
                     alignItems: 'center',
                     justifyContent: 'center',
                     backgroundColor: 'rgb(192, 75, 128)',
-                    opacity:'90%',
+                    filterBlur: '10%',
+                    opacity:'80%',
                     color: 'white',
                     padding: '10px',
                     marginTop: '2rem',                    
-                    borderRadius: '5%',
-                    width:'70vw'                    
+                    borderRadius: '2%',
+                                        
                 }}>
 
-                    <Box>
+                    <Box >
                         <Typography variant='h5'sx={{marginBottom:'1rem'}}>{props.userName}</Typography>
                         <CardMedia
                             component="img"
                             src={props.userPic}
                             sx={{ borderRadius: '50%', width: '10rem', height:'10rem', marginBottom:'1rem'}} />
                     </Box>
-                    <Box >
+                    <Box sx={{flexGrow:1}}>
                         <Typography variant='h5'  sx={{flexGrow:1}}>{props.title} </Typography>
-                        <Typography sx={{}} >{props.description}</Typography>
+                        <Typography sx={{flexGrow:1}} >{props.description}</Typography>
                         <Typography>Price:{props.price} | Duration:{props.duration}</Typography>
                         <Typography sx={{ fontStyle: 'italic' }}>{props.hashtag}</Typography>
                         <CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -94,15 +96,14 @@ const like = async (event) => {
                     {user ?
                         <IconButton onClick={like}>
                             {likes.includes(user.id) ?
-                        <FavoriteIcon  sx={{ color: 'red' }} /> :                     
+                        <FavoriteIcon  sx={{ color: 'red', fontStyle:'large' }} /> :                     
                         <FavoriteBorderIcon/> }
-                        <Typography> {likes.length} </Typography>
+                        <Typography sx={{color:'white', marginLeft:'1rem'}} > {likes.length} </Typography>
                         </IconButton> 
                         :
                         <IconButton>        
                         <FavoriteBorderIcon/> 
                         <Typography> {likes.length} </Typography>
-                        <FavoriteIcon style={{ color: 'red' }} />
                         </IconButton>
                     }     
                             
@@ -119,7 +120,7 @@ const like = async (event) => {
 
                         <Collapse in={expanded} timeout="auto" unmountOnExit >
                             <CardContent>
-                                <Typography variant='h4' paragraph >Activities</Typography>
+                                <Typography variant='h4' paragraph >Choose your own adventure!</Typography>
                             </CardContent >
 
                     <CardContent className='card_con'>
