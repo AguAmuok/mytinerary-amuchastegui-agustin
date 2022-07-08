@@ -28,9 +28,14 @@ export default function Detail() {
     }, []);
 
     const itineraries = useSelector(store => store.itinerariesReducer.getItineraryByCity)
-    // console.log(itineraries)
+    console.log(itineraries)
 
     const card = useSelector((store) => store.citiesReducer.oneCity)
+    
+    function getItineraries() {
+        dispatch(itinerariesActions.getItinerariesByCity(id))
+
+    }
 
     return (
         <>
@@ -98,6 +103,9 @@ export default function Detail() {
                             likes={itineraries.likes}
                             activitiesId={itineraries.activitiesId}
                             id={itineraries._id}
+                            getItineraries={getItineraries}
+                            comments={itineraries.comments}
+
                             />) : <NoItinerary />}
             </Box> 
         </>

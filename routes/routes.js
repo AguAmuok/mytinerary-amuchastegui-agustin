@@ -4,6 +4,7 @@ const {getCities, getOneCity, addCity, modifyCity, removeCity, multiplesCities} 
 const {getItinerary, addItinerary, removeItinerary, modifyItinerary, getOneItinerary, multiplesItineraries, getItinerariesByCity,likeDislike } = require('../controllers/itinerarycontrollers');
 const {signIn,signUp,verifyMail,signOut,verifyToken} = require('../controllers/userscontroller')
 const{getActivities,addActivity,removeActivity,modifyActivity,getOneActivity,multiplesActivities,getActivitiesByitinerary} = require('../controllers/activitiescontrollers');
+const {addComment, modifyComment,deleteComment}= require('../controllers/commentControler')
 const validator = require('../config/validator')
 const passport = require('../config/passport')
 
@@ -23,9 +24,7 @@ Router.route('/cities/:id')
 Router.route('/multiplesCities') 
 .post(multiplesCities) // metodo POST agregamos varias ciudades
 
-
-
-//RUTAS ITINERARIES
+//ROUTER ITINERARIES
 
 Router.route('/itineraries')
 .get(getItinerary)
@@ -45,7 +44,16 @@ Router.route('/itinerarybycity/:id')
 Router.route("/like/:id")
 .put(passport.authenticate("jwt", {session: false}),likeDislike)
 
-//RUTAS ACTIVITIES
+//ROUTER COMMENT
+Router.route('/itineraries/comment')
+.post(passport.authenticate('jwt',{ session: false }),addComment)
+
+
+Router.route('/itineraries/comment/:id')
+.post(passport.authenticate('jwt',{ session: false }),deleteComment)
+.put(passport.authenticate('jwt',{ session: false }),modifyComment)
+
+//ROUTER ACTIVITIES
 Router.route('/activities')
 .get(getActivities)
 .post(addActivity)
@@ -61,7 +69,7 @@ Router.route('/multiplesActivities')
 Router.route('/activitiesbyitinerary/:id')
 .get(getActivitiesByitinerary)
 
-//RUTAS USERS
+//ROUTER USERS
 
 Router.route('/auth/signUp')
 .post(validator,signUp)
