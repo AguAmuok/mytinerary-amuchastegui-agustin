@@ -62,7 +62,6 @@ export default function SignUp() {
         setPassword("")
         setEmail("")
         setPhotoUser("")
-        //setFrom("")
     
 };
 

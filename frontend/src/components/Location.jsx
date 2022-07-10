@@ -41,7 +41,7 @@ const picture = [
 
     { "name": "Petra",
       "country":"Jordan",
-      "image":"https://besthqwallpapers.com/Uploads/28-7-2021/172205/ad-deir-4k-desert-siq-canyon-hdr.jpg",
+      "image":"https://images.pling.com/img/00/00/54/70/32/1331633/debc46a923efb3f23a0043af76b6e87188c8.jpg",
     },
 
 

@@ -63,18 +63,20 @@ const UserControllers = {
     },
 
     signIn: async (req, res) => {
-        //console.log(req.body)
+        
         const {email, password, from} = req.body
         try {
-            const loginUser = await User.findOne({email}) //espera que busque el user por email
+            const loginUser = await User.findOne({email}) ///espera que busque el user por email
+            //console.log(loginUser);
             if (!loginUser) { //si NO existe el usuario
                 res.json({
                     success: false,
-                    from: 'no from',
-                    message: `Sorry.. email or password are incorrect!`})
-            } else { //si existe el usuario
+                    from: 'No from',
+                    message: `Incorrect mail or password`})
+            
+            } else if (loginUser.verification) { 
                 let checkedWord =  loginUser.password.filter(pass => bcryptjs.compareSync(password, pass))
-                //filtramos en el array de contraseñas hasheadas si coincide la contraseña 
+                
                 if (from === "signUpForm") { //si fue registrado por nuestro formulario
                     if (checkedWord.length>0) { //si hay coincidencias
                         const userData = { 
@@ -83,14 +85,14 @@ const UserControllers = {
                             nameUser: loginUser.nameUser,
                             photoUser: loginUser.photoUser,
                             from: loginUser.from}
-                        const token = jwt.sign({...userData}, process.env.PASSWORD_TOKEN, {expiresIn: 30*30*24 })//uso el paquete jwt. y el metodo sign de firma . creamos una firma para el token
-                        await loginUser.save()                      
-                        // console.log(token)
+                        await loginUser.save()
+                        const token = jwt.sign({...userData}, process.env.SECRET_KEY, {expiresIn: 1000*60*60*24 })
+                        console.log(token)
                         res.json({
-                            response: {token, userData}, 
+                            response: {token,userData}, 
                             success: true, 
                             from: from, 
-                            message: `Welcome back ${userData.nameUser}!!`})
+                            message: `Welcome back ${userData.nameUser}!`})
                     } else { //si no hay coincidencias
                         res.json({
                             success: false, 
@@ -98,16 +100,15 @@ const UserControllers = {
                             message: `Verify your password!`})
                     }
                 } else { //si fue registrado por redes sociales
-                    //ACLARACION: por ahora es igual al anterior
-                    if (checkedWord.length>0) { //si hay coincidencias
+                    if (checkedWord.length>=0) { //si hay coincidencias
                         const userData = {
                             id: loginUser._id,
                             email: loginUser.email,
                             nameUser: loginUser.nameUser,
                             photoUser: loginUser.photoUser,
                             from: loginUser.from}
-                        const token = jwt.sign({...userData}, process.env.PASSWORD_TOKEN, {expiresIn: 30*30*24 })//uso el paquete jwt. y el metodo sign de firma . creamos una firma para el token
                         await loginUser.save()
+                        const token = jwt.sign({...userData}, process.env.PASSWORD_TOKEN, {expiresIn: 30*30*24 })
                         res.json({
                             response: {token,userData}, 
                             success: true, 
@@ -120,6 +121,11 @@ const UserControllers = {
                             message: `Verify your mail or password!`})
                     }
                 }
+            } else { //si está registrado PERO el usuario NO FUE VALIDADO
+                res.json({
+                    success: false,
+                    from: from,
+                    message: `Validate your account`})
             }
         } catch (error) {
             console.log(error)
@@ -129,8 +135,75 @@ const UserControllers = {
                 message: 'ERROR'})
         }
     },
+    // signIn: async (req, res) => {
+    //     //console.log(req.body)
+    //     const {email, password, from} = req.body
+    //     try {
+    //         const loginUser = await User.findOne({email}) //espera que busque el user por email
+    //         if (!loginUser) { //si NO existe el usuario
+    //             res.json({
+    //                 success: false,
+    //                 from: 'no from',
+    //                 message: `Sorry.. email or password are incorrect!`})
+    //         } else { //si existe el usuario
+    //             let checkedWord =  loginUser.password.filter(pass => bcryptjs.compareSync(password, pass))
+    //             //filtramos en el array de contraseñas hasheadas si coincide la contraseña 
+    //             if (from === "signUpForm") { //si fue registrado por nuestro formulario
+    //                 if (checkedWord.length>0) { //si hay coincidencias
+    //                     const userData = { 
+    //                         id: loginUser._id,
+    //                         email: loginUser.email,
+    //                         nameUser: loginUser.nameUser,
+    //                         photoUser: loginUser.photoUser,
+    //                         from: loginUser.from}
+    //                     const token = jwt.sign({...userData}, process.env.PASSWORD_TOKEN, {expiresIn: 30*30*24 })//uso el paquete jwt. y el metodo sign de firma . creamos una firma para el token
+    //                     await loginUser.save()                      
+    //                     // console.log(token)
+    //                     res.json({
+    //                         response: {token, userData}, 
+    //                         success: true, 
+    //                         from: from, 
+    //                         message: `Welcome back ${userData.nameUser}!!`})
+    //                 } else { //si no hay coincidencias
+    //                     res.json({
+    //                         success: false, 
+    //                         from: from,  
+    //                         message: `Verify your password!`})
+    //                 }
+    //             } else { //si fue registrado por redes sociales
+    //                 //ACLARACION: por ahora es igual al anterior
+    //                 if (checkedWord.length>0) { //si hay coincidencias
+    //                     const userData = {
+    //                         id: loginUser._id,
+    //                         email: loginUser.email,
+    //                         nameUser: loginUser.nameUser,
+    //                         photoUser: loginUser.photoUser,
+    //                         from: loginUser.from}
+    //                     const token = jwt.sign({...userData}, process.env.PASSWORD_TOKEN, {expiresIn: 30*30*24 })//uso el paquete jwt. y el metodo sign de firma . creamos una firma para el token
+    //                     await loginUser.save()
+    //                     res.json({
+    //                         response: {token,userData}, 
+    //                         success: true, 
+    //                         from: from, 
+    //                         message: `Welcome back ${userData.nameUser}!`})
+    //                 } else { //si no hay coincidencias
+    //                     res.json({
+    //                         success: false, 
+    //                         from: from,  
+    //                         message: `Verify your mail or password!`})
+    //                 }
+    //             }
+    //         } 
+    //     } catch (error) {
+    //         console.log(error)
+    //         res.json({
+    //             success: false,
+    //             from: from,
+    //             message: 'ERROR'})
+    //     }
+    // },
 
-    signOut: async (req, res) => {
+    signOut: async (req, res) => {   
         
         const email = req.body.email
         const user = await User.findOne({email})

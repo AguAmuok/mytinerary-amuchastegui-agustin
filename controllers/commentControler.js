@@ -29,9 +29,7 @@ const commentsControllers = {
         //console.log(res.json());
     },
 
-    modifyComment: async (req, res) => {
-        const {comment } = req.body;
-        const user = req.user._id;
+    modifyComment: async (req, res) => {          
         //console.log(req.body)
 
         try {

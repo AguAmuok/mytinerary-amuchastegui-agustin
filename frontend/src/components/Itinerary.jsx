@@ -23,9 +23,9 @@ import EditIcon from '@mui/icons-material/Edit';
 import {connect} from 'react-redux'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import TextField from '@mui/material/TextField';
-import SendIcon from '@mui/icons-material/Send'
 import commentActions from '../redux/actions/commentActions';
 import itinerariesActions from '../redux/actions/itinerariesActions';
+import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 
 
 const ExpandMore = styled((props) => { 
@@ -50,9 +50,9 @@ const [modify, setModify] = useState('')
 
 const user = useSelector(store => store.userReducer.user)
 
-const dispatch = useDispatch()
 const [text, setText] = useState('')
 
+const dispatch = useDispatch()
 
 useEffect(() => {
     dispatch(itinerariesActions.getOneItinerary(props.id))
@@ -69,7 +69,8 @@ const like = async (event) => {
 }
 
     const [expanded, setExpanded] = React.useState(false);
-    
+
+
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
@@ -77,7 +78,8 @@ const like = async (event) => {
 
     const handleText = (event) => {
         setText(event.target.value)
-        console.log(text)
+        // console.log(text)
+        
     }
     
 
@@ -108,8 +110,7 @@ const like = async (event) => {
     }
 
     
-    return (
-        
+    return (        
             <Box>
                 
                 <Card className='card_tinerary' sx={{
@@ -168,9 +169,7 @@ const like = async (event) => {
                         </CardActions>
 
                         <Collapse in={expanded} timeout="auto" unmountOnExit >
-                            <CardContent>
-                                <Typography variant='h4' paragraph >Choose your own adventure!</Typography>
-                            </CardContent >
+                            
 
                     <CardContent className='card_con'>
 
@@ -179,14 +178,11 @@ const like = async (event) => {
                         <Activities activitiesId={props.activitiesId} />                         
                         : 
                         <Box>
-                            <Typography variant='h1'>No hay nada wachin</Typography>
+                            <Typography variant='h3'>Soon we will have new activities!</Typography>
                         </Box>}
 
-                        {/* COMMENTS                                                            */}
-
                         </CardContent>
-
-                        
+                                                
                         {props.comments.map((item, index) => {
                         console.log(item)
                         return (
@@ -195,7 +191,7 @@ const like = async (event) => {
                                 {props.user ?
 
                                     <Avatar src={item.userId.photoUser} sx={{ marginRight: '2rem', width: '40px', height: '40px', marginLeft: '2rem' }} /> :
-                                    <AccountCircleIcon sx={{ marginRight: '2rem', width: '40px', height: '40px', marginLeft: '2rem' }} alt="Remy Sharp" src={item.userId.photoUser} size="lg" />}
+                                    <Avatar sx={{ marginRight: '2rem', width: '40px', height: '40px', marginLeft: '2rem' }} alt="Remy Sharp" src={item.userId.photoUser} size="lg" />}
 
 
                                 <Typography onInput={(event) => setModify(event.currentTarget.textContent)} suppressContentEditableWarning={true} contentEditable key={index} sx={{ color: 'black', fontSize: '1.4rem' }}>{item.comment}</Typography>
@@ -215,12 +211,13 @@ const like = async (event) => {
                     })}
 
                     <Box sx={{ margin: '1rem', borderRadius: '.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'white', color: 'black', height: '10rem' }}>
+                        
                         {props.user ?
                             <Avatar src={props.user.photoUser} sx={{ marginRight: '2rem', width: '40px', height: '40px', marginLeft: '2rem', }} /> :
-                            <Avatar sx={{ marginRight: '2rem', width: '40px', height: '40px', marginLeft: '2rem' }} alt="Remy Sharp" src="/static/images/avatar/1.jpg" size="lg" />}
+                            <AccountCircleIcon sx={{ marginRight: '2rem', width: '40px', height: '40px', marginLeft: '2rem' }} alt="Remy Sharp" src="/static/images/avatar/1.jpg" size="lg" />}
                         <TextField onChange={(event) => handleText(event)} sx={{ color: 'black', fontSize: '1.4rem' }}></TextField>
-                        <Button sx={{ marginRight: '2rem' }} onClick={() => handleSend()} variant="contained" endIcon={<SendIcon />}>
-                            Send
+                        <Button sx={{ backgroundColor:'rgb(142, 191, 85)', marginRight: '2rem' }} onClick={() => handleSend()} variant="contained" endIcon={<ArrowCircleUpIcon />}>
+                            Add
                         </Button>
                     </Box>                            
                         </Collapse>
