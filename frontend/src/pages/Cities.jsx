@@ -24,19 +24,19 @@ function Cities(props) {
 return (
 <>
 
-<Box sx={{       
+<Box sx={{                
         backgroundImage: 'url(https://r4.wallpaperflare.com/wallpaper/231/5/291/palm-trees-sky-clouds-pink-wallpaper-7b56fced23016f0935d4cbe97d5ccc90.jpg)',
         backgrounSize: 'cover',        
         backgroundPosition: 'center'
         }}>
 
-<Box className='input' sx={{display: 'flex', justifyContent: 'center', padding: '2rem', height: '6rem'        
-    }}>
+<Box className='input' sx={{display: 'flex', justifyContent: 'center', padding: '2rem', height: '6rem'}}>
 
     <input type="text" 
         placeholder='Search...'
         onKeyUp={(e) =>{setSearch(e.target.value)}}
-    />  
+    />
+                
     </Box>
     
     <Box>
@@ -48,11 +48,3 @@ return (
 }
 
 export default Cities
-
-
-// useEffect(() => { 
-    //     axios.get("http://localhost:4000/api/cities") 
-    //     .then(response => setCities(response.data.response.cities) 
-    // )},[])
-
-        // let city = props.cities?.filter(city => city.name.toLowerCase().startsWith(search.trim().toLowerCase()))

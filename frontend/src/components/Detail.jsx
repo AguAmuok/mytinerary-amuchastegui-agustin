@@ -28,7 +28,7 @@ export default function Detail() {
     }, []);
 
     const itineraries = useSelector(store => store.itinerariesReducer.getItineraryByCity)
-    console.log(itineraries)
+    // console.log(itineraries)
 
     const card = useSelector((store) => store.citiesReducer.oneCity)
     
@@ -85,7 +85,7 @@ export default function Detail() {
                 p:'2rem'
                 }}>
 
-                <Typography variant='h3' sx={{color:'white'}}>
+                <Typography variant='h3' sx={{fontFamily: 'monospace', color:'white'}}>
                     ACTIVITIES
                 </Typography>
 

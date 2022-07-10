@@ -2,9 +2,11 @@ import React from 'react'
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { Link as LinkRouter } from "react-router-dom"
+import Link from '@mui/material/Link';
 
 function Footer() {
     return (
@@ -35,10 +37,11 @@ function Footer() {
                     alignItems: 'center',
 
                 }}>
+                    <Link href="https://github.com/AguAmuok"><GitHubIcon sx={{color: 'white' , display: { xs: 'flex', ms: 'none' }, mr: 3 }} /></Link>
+                    <Link href="https://www.linkedin.com/in/agustin-amuchastegui-526ab9ba/"><LinkedInIcon sx={{color: 'white' , display: { xs: 'flex', ms: 'none' }, mr: 3 }} /></Link>
+                    <Link href="https://www.instagram.com/aguamu.ok"><InstagramIcon  sx={{ color: 'white', display: { xs: 'flex', ms: 'none' }, mr: 3 }} /></Link>                   
+                    <Link href="https://twitter.com/AgussPiki"><TwitterIcon sx={{color: 'white' , display: { xs: 'flex', ms: 'none' }, mr: 3 }} /></Link>
 
-                    <InstagramIcon sx={{ cursor: 'pointer' , display: { xs: 'flex', ms: 'none' }, mr: 3 }} />
-                    <FacebookIcon sx={{  cursor: 'pointer' , display: { xs: 'flex', ms: 'none' }, mr: 3 }} />
-                    <TwitterIcon sx={{   cursor: 'pointer' , display: { xs: 'flex', ms: 'none' }, mr: 3 }} />
                 </Box>
 
                 <Box sx={{
@@ -47,22 +50,24 @@ function Footer() {
                 }}>
                     <Typography
                         className='all_reserver'
-                        variant="h6"
+                        
                         noWrap
                         sx={{
                             alignItems: 'center',
                             justifyContent: 'center',
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
+                            fontFamily: 'Montserrat,sans-serif',
                             fontWeight: 600,
                             letterSpacing: '.3rem',
                             color: 'rgb(204, 204, 204)',
                             textDecoration: 'none',
                             padding: '1rem',
+                            fontSize:'1rem!important',
+                            flexWrap: 'wrap'
 
                         }}>
-                        © 2022 My Tinerary Inc | All rights reserved.
+                        © 2022 My Tinerary Inc | All rights reserved. By Amuchástegui Agustin
                     </Typography>
                     <Typography className='all_reserver_mobile'
                         variant="h5"
@@ -73,7 +78,7 @@ function Footer() {
                             mr: 2,
                             display: { xs: 'flex', md: 'none' },
                             flexGrow: 1,
-                            fontFamily: 'monospace',
+                            fontFamily: 'Montserrat,sans-serif',
                             fontWeight: 700,
                             letterSpacing: '.1rem',
                             color: 'rgb(204, 204, 204)',

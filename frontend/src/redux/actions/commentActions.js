@@ -12,9 +12,9 @@ const commentsActions = {
                         'Authorization': `Bearer ${token}`
                     }
                 })
-                console.log(res)
+                // console.log(res)
                 dispatch({
-                    type: 'message',
+                    type: 'MESSAGE',
                     payload: {
                         view: true,
                         message: res.data.message,
@@ -25,7 +25,7 @@ const commentsActions = {
             }
             else {
                 dispatch({
-                    type: 'message',
+                type: 'MESSAGE',
                     payload: {
                         view: true,
                         message: 'Enter comment to save',
@@ -40,7 +40,7 @@ const commentsActions = {
     modifyComment: (commentsMsj) => {
         const {commentId, comment} = commentsMsj
         const token = localStorage.getItem('token')
-        console.log(comment)
+        // console.log(comment)
         return async (dispatch, getState) =>{
             const res = await axios.put(`http://localhost:4000/api/itineraries/comment/${commentId}`, {comment},{
                 headers: {

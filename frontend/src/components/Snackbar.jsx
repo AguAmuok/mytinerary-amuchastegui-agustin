@@ -20,9 +20,10 @@ function Alert(props) {
             width: '100%',
             backgroundColor: props.snackbar.success ? 'rgb(122, 241, 0)':'rgb(255, 0, 71)',
             color: 'black',
-            fontSize:'1.5rem',
+            fontSize:'1rem',
             borderRadius: '4px',
-            padding: '4px',
+            padding: '12px',
+            
             fontWeight: '400'}}>
             {(typeof props.snackbar.message) === "string" ? 
                 (<p>{props.snackbar.message}</p>) :
@@ -34,13 +35,18 @@ function Alert(props) {
 
     return (
         <Snackbar
+            spacing={1}
             open={props.snackbar.view}
             autoHideDuration={7000}
             onClose={handleClose}
             action={action}
+            anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'center',
+            }}
             message={
-                <IconButton size="large" aria-label="close" color="inherit" onClick={handleClose}>
-                    <CloseIcon fontSize="large" />
+                <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
+                    <CloseIcon fontSize="small" />
                 </IconButton>
             } 
         />

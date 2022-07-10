@@ -161,32 +161,3 @@ export default function SignInSide() {
         </Box>
     );
 }
-
-
-
-
-// export default function SignInSide() {
-//     const handleSubmit = (event) => {
-//         event.preventDefault();
-//         const userData(event.target[3].value)
-//         const userData = {
-//             nameUser: event.target[0].value,
-//             lastNameUser: event.target[1].value,
-//             password: event.target[2].value,
-//             email: event.target[3].value,
-//         }
-//         props.singUpUsers(userData)
-//     };
-
-
-//ORIGINAL
-
-// export default function SignInSide() {
-//     const handleSubmit = (event) => {
-//         event.preventDefault();
-//         const data = new FormData(event.currentTarget);
-//         console.log({
-//             email: data.get('email'),
-//             password: data.get('password'),
-//         });
-//     };

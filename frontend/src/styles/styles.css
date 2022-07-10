@@ -305,9 +305,32 @@ a:hover {
     }
 }
 
+.card_con{
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: center;
+}
+
+
+@media (max-width: 580px) {
+    .button-add{
+        margin-right: 0rem!important;       
+    }
+}
+@media (max-width: 580px) {
+    .comment-box{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        
+    }
+}
+
 @media (min-width: 941px) {
     .card_con{
         display: flex;
+        
     }
 }
 
