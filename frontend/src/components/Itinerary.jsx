@@ -51,7 +51,7 @@ function ItineraryCard(props) {
     const user = useSelector(store => store.userReducer.user)
 
     const [text, setText] = useState('')
-
+    
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -90,78 +90,6 @@ function ItineraryCard(props) {
 
     }
 
-    //INPUT COMMENT
-    const blue = {
-        100: '#DAECFF',
-        200: '#80BFFF',
-        400: '#3399FF',
-        600: '#0072E5',
-    };
-
-    const grey = {
-        50: '#F3F6F9',
-        100: '#E7EBF0',
-        200: '#E0E3E7',
-        300: '#CDD2D7',
-        400: '#B2BAC2',
-        500: '#A0AAB4',
-        600: '#6F7E8C',
-        700: '#3E5060',
-        800: '#2D3843',
-        900: '#1A2027',
-    };
-
-    const StyledInputElement = styled('input')(
-        ({ theme }) => `
-        width: 500px;
-        font-size: 0.875rem;
-        font-family: IBM Plex Sans, sans-serif;
-        font-weight: 400;
-        line-height: 1.5;
-        color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
-        background: ${theme.palette.mode === 'dark' ? grey[900] : grey[50]};
-        border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[300]};
-        border-radius: 8px;
-        padding: 12px 12px;
-        
-        &:hover {
-        background: ${theme.palette.mode === 'dark' ? '' : grey[100]};
-        border-color: ${theme.palette.mode === 'dark' ? grey[700] : grey[400]};
-        }
-        
-        &:focus {
-        outline: 3px solid ${theme.palette.mode === 'dark' ? blue[600] : blue[100]};
-        }
-    `,
-    );
-
-    const StyledTextareaElement = styled('textarea', {
-        shouldForwardProp: (prop) =>
-            !['ownerState', 'minRows', 'maxRows'].includes(prop.toString()),
-    })(
-        ({ theme }) => `
-            width: 300px;
-            font-size: 0.875rem;
-    font-family: IBM Plex Sans, sans-serif;
-    font-weight: 400;
-    line-height: 1.5;
-    color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
-    background: ${theme.palette.mode === 'dark' ? grey[900] : grey[50]};
-    border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[300]};
-    border-radius: 8px;
-    padding: 12px 12px;
-
-    &:hover {
-    background: ${theme.palette.mode === 'dark' ? '' : grey[100]};
-    border-color: ${theme.palette.mode === 'dark' ? grey[700] : grey[400]};
-    }
-
-    &:focus {
-    outline: 3px solid ${theme.palette.mode === 'dark' ? blue[600] : blue[100]};
-    }`)
-
-    //-------------------------------------------------------------------------------
-
     async function handleModify(event) {
         const commentsMsj = {
             commentId: event,
@@ -184,7 +112,7 @@ function ItineraryCard(props) {
         <Box>
 
             <Card className='card_tinerary' sx={{ display: 'flex', flexGrow: 1, textAlign: 'center', alignItems: 'center', justifyContent:'center', backgroundColor: 'rgb(192, 75, 128)', filterBlur: '10%', opacity: '80%', color: 'white', padding:'10px',
-            marginTop: '2rem', borderRadius: '2%', width: '100%'
+            marginTop: '2rem', borderRadius: '2%', maxWidth: '100%'
             }}>
 
                 <Box >
@@ -228,7 +156,6 @@ function ItineraryCard(props) {
 
                     <Collapse in={expanded} timeout="auto" unmountOnExit >
 
-
                         <CardContent className='card_con'>
 
                             {props.activitiesId.length > 0 ?
@@ -245,24 +172,25 @@ function ItineraryCard(props) {
                             // console.log(item)
                             return (
 
-                                <Box key={index} sx={{ flexGrow: 1, borderRadius: '.5rem', margin: '3rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'rgb(18, 20, 21)', color: 'white', height: '10rem' }}>
+                                <Box key={index} sx={{ flexGrow: 1, borderRadius: '.5rem', margin: '1rem', display: 'flex', justifyContent: 'space-around', alignItems: 'center', backgroundColor: 'rgb(18, 20, 21)', color: 'white', height: '10rem' }}>
 
                                     <Box sx={{ display: 'flex', flexDirection: 'column' }} >
                                         {props.user ?
-                                            <Avatar src={item.userId.photoUser} sx={{ marginRight: '2rem', width: '40px', height: '40px', marginLeft: '2rem' }} /> :
+                                            <Avatar src={item.userId.photoUser} sx={{ flexGrow: 1,marginRight: '2rem', width: '40px', height: '40px', marginLeft: '2rem' }} /> :
                                             <Avatar sx={{ marginRight: '2rem', width: '40px', height: '40px', marginLeft: '2rem' }} alt="Remy Sharp" src={item.userId.photoUser} size="lg" />}
-                                        <Typography sx={{ mt: '.5rem', color: 'white' }}>{item.userId.nameUser}</Typography></Box>
+                                        <Typography sx={{ mt: '.5rem', color: 'white' }}>{item.userId.nameUser}</Typography>
+                                    </Box>
 
 
-                                    <Typography onInput={(event) => setModify(event.currentTarget.textContent)} suppressContentEditableWarning={true} contentEditable key={index} sx={{ color: 'white', fontSize: '1.4rem' }}>{item.comment}</Typography>
+                                    <Typography onInput={(event) => setModify(event.currentTarget.textContent)} suppressContentEditableWarning={true} contentEditable key={index} sx={{ color: 'white', fontSize: '1rem' }}>{item.comment}</Typography>
 
                                     {props.user && props.user.id === item.userId._id ?
 
-                                        <Box sx={{ marginRight: '2rem' }}>
-                                            <Button onClick={() => handleModify(item._id)} sx={{ margin: '1rem' }} variant="outlined" color="success">
+                                        <Box sx={{ ml: '.5rem', display: 'flex', flexDirection: 'column' }}>
+                                            <Button onClick={() => handleModify(item._id)} fontSize='small' sx={{ ml: '1rem' }}  color="success">
                                                 <EditIcon sx={{ color: 'rgb(142, 191, 85)' }} />
                                             </Button>
-                                            <Button onClick={() => handleDelete(item._id)} variant="outlined" color="error">
+                                            <Button onClick={() => handleDelete(item._id)}  sx={{ ml: '1rem' }} color="error">
                                                 <DeleteIcon />
                                             </Button>
                                         </Box> : <Box></Box>}
@@ -270,7 +198,7 @@ function ItineraryCard(props) {
                                 </Box>)
                         })}
 
-                        <Box className='comment-box' sx={{ margin: '1rem', borderRadius: '.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'rgb(18, 20, 21)', color: 'black', height: '10rem' }}>
+                        <Box className='comment-box' sx={{margin: '1rem', borderRadius: '.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'rgb(18, 20, 21)', color: 'black', height: '10rem' }}>
 
                             <Box sx={{ display: 'flex', flexDirection: 'column' }} >
 
@@ -278,14 +206,12 @@ function ItineraryCard(props) {
                                     <Avatar src={props.user.photoUser} sx={{ marginRight: '2rem', width: '40px', height: '40px', marginLeft: '2rem', }} /> :
                                     <AccountCircleIcon sx={{ marginRight: '2rem', width: '40px', height: '40px', marginLeft: '2rem' }} alt="Remy Sharp" src="/static/images/avatar/1.jpg" size="lg" />}
 
-
                             </Box>
 
-                            <CustomInput components={{ Input: StyledInputElement, Textarea: StyledTextareaElement }} {...props} onChange={(event) => handleText(event)} sx={{ color: 'black', fontSize: '1.4rem' }}
+                            
+                            <CustomInput  onChange={(event) => handleText(event)} sx={{ color: 'black', fontSize: '1.4rem' }}
                                 multiline placeholder="Type something…" />
-
                             <Button className='button-add' sx={{ color: 'rgb(142, 191, 85)', fontSize: 'large', marginRight: '2rem' }} onClick={() => handleSend()} endIcon={<OutboxIcon sx={{ mb: '.5rem', width: '35px', height: '35px' }} />}>
-
                             </Button>
                         </Box>
                     </Collapse>

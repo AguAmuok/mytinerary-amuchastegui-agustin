@@ -233,7 +233,19 @@ a:hover {
     width: 80vh;
     
 }
+
+.MuiInput-input {
+    width: 30rem;
+}
+
 /* ----------TINERARY------------ */
+
+@media (max-width: 775px){
+    .MuiInput-input{
+        width: 15rem;
+    }
+}
+
 @media (max-width: 900px){
     .card-details{
         width: 50rem;
