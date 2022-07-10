@@ -124,7 +124,7 @@ const itineraryControllers = { //definimos un objeto con los controladores del m
         let itineraries
         let error = null
         try {
-            itineraries = await Itinerary.find({ cityId: id }).populate('activitiesId')//populamos el campo activitiesId de tinerary
+            itineraries = await Itinerary.find({ cityId: id }).populate({path:'activitiesId'}).populate({path:"comments.userId", select: "nameUser", select: "photoUser"});//populamos el campo activitiesId de tinerary
         console.log(itineraries)
         } catch (err) {
             error = err

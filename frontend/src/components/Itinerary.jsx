@@ -46,10 +46,13 @@ const [reload, setReload] = useState(false)
 
 const [likes, setLikes] = useState(props.likes)
 
+const [modify, setModify] = useState('')
+
 const user = useSelector(store => store.userReducer.user)
 
 const dispatch = useDispatch()
 const [text, setText] = useState('')
+
 
 useEffect(() => {
     dispatch(itinerariesActions.getOneItinerary(props.id))
@@ -66,6 +69,7 @@ const like = async (event) => {
 }
 
     const [expanded, setExpanded] = React.useState(false);
+    
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
@@ -75,12 +79,35 @@ const like = async (event) => {
         setText(event.target.value)
         console.log(text)
     }
+    
 
     const handleSend = () => {
         dispatch(commentActions.addComment(text, props.id))
             .then(props.getItineraries)
             .catch(error => console.log(error))
+            
     }
+
+    async function handleModify(event) {
+        const commentsMsj = {
+            commentId: event,
+            comment: modify
+        }
+        const res = await dispatch(commentActions.modifyComment(commentsMsj))
+        setReload(!reload)
+        console.log(res)
+        // .then(props.getItineraries)
+    }
+
+
+
+    async function handleDelete(id) {
+        await dispatch(commentActions.deleteComment(id))
+            .then(props.getItineraries)
+        console.log(id)
+    }
+
+    
     return (
         
             <Box>
@@ -158,39 +185,44 @@ const like = async (event) => {
                         {/* COMMENTS                                                            */}
 
                         </CardContent>
-                        <Box sx={{ marginBottom: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'white', color: 'black', height: '10rem' }}>
-                        {props.user ?
-                            <Avatar src={props.user.photoUser} sx={{ width: '40px', height: '40px', marginLeft: '2rem' }} /> :
-                            <AccountCircleIcon sx={{ width: '40px', height: '40px', marginLeft: '2rem' }} alt="Remy Sharp" src="/static/images/avatar/1.jpg" size="lg" />}
-                            
-                        {props.comments.map((item) =>{
-                            console.log(props.comments)
-                            return <Typography sx={{ color: 'black', fontSize: '1.4rem' }}>{item.comment}</Typography>
 
-                        })}
                         
-                        <Box sx={{ marginRight: '2rem' }}>
-                            <Button sx={{ margin: '1rem' }} variant="outlined" color="success">
+                        {props.comments.map((item, index) => {
+                        console.log(item)
+                        return (
 
-                                <EditIcon></EditIcon>
-                            </Button>
-                            <Button variant="outlined" color="error">
-                                <DeleteIcon />
-                            </Button>
-                        </Box> 
+                            <Box key={index} sx={{ borderRadius: '.5rem', margin: '3rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'white', color: 'black', height: '10rem' }}>
+                                {props.user ?
 
-                    </Box>
+                                    <Avatar src={item.userId.photoUser} sx={{ marginRight: '2rem', width: '40px', height: '40px', marginLeft: '2rem' }} /> :
+                                    <AccountCircleIcon sx={{ marginRight: '2rem', width: '40px', height: '40px', marginLeft: '2rem' }} alt="Remy Sharp" src={item.userId.photoUser} size="lg" />}
 
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'white', color: 'black', height: '10rem' }}>
+
+                                <Typography onInput={(event) => setModify(event.currentTarget.textContent)} suppressContentEditableWarning={true} contentEditable key={index} sx={{ color: 'black', fontSize: '1.4rem' }}>{item.comment}</Typography>
+
+                                {props.user && props.user.id === item.userId._id ?
+
+                                    <Box sx={{ marginRight: '2rem' }}>
+                                        <Button onClick={() => handleModify(item._id)} sx={{ margin: '1rem' }} variant="outlined" color="success">
+                                            <EditIcon />
+                                        </Button>
+                                        <Button onClick={() => handleDelete(item._id)} variant="outlined" color="error">
+                                            <DeleteIcon />
+                                        </Button>
+                                    </Box> : <Box></Box>}
+
+                            </Box>)
+                    })}
+
+                    <Box sx={{ margin: '1rem', borderRadius: '.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'white', color: 'black', height: '10rem' }}>
                         {props.user ?
-                            <Avatar src={props.user.photoUser} sx={{ width: '40px', height: '40px', marginLeft: '2rem' }} /> :
-                            <Avatar sx={{ width: '40px', height: '40px', marginLeft: '2rem' }} alt="Remy Sharp" src="/static/images/avatar/1.jpg" size="lg" />}
+                            <Avatar src={props.user.photoUser} sx={{ marginRight: '2rem', width: '40px', height: '40px', marginLeft: '2rem', }} /> :
+                            <Avatar sx={{ marginRight: '2rem', width: '40px', height: '40px', marginLeft: '2rem' }} alt="Remy Sharp" src="/static/images/avatar/1.jpg" size="lg" />}
                         <TextField onChange={(event) => handleText(event)} sx={{ color: 'black', fontSize: '1.4rem' }}></TextField>
                         <Button sx={{ marginRight: '2rem' }} onClick={() => handleSend()} variant="contained" endIcon={<SendIcon />}>
                             Send
                         </Button>
-                    </Box>
-                                                
+                    </Box>                            
                         </Collapse>
                     </Box>
                 </Card>

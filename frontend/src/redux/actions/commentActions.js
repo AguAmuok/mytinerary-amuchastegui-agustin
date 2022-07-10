@@ -37,37 +37,35 @@ const commentsActions = {
         }
     },
 
-    modifyComment: (commentId,comment) => {       
+    modifyComment: (commentsMsj) => {
+        const {commentId, comment} = commentsMsj
         const token = localStorage.getItem('token')
-        return async (dispatch, getState) => {
-            try{
-                const res = await axios.put('http://localhost:4000/api/allItineraries/comment/' +  commentId,  { ...comment }, {
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
-                })
-                //console.log(res)
-                dispatch({
-                    type: 'MESSAGE',
-                    payload: {
-                        view: true,
-                        message: res.data.message,
-                        success: res.data.success
-                    }
-                })  
-                return res
-            }catch(err){
-                console.log(err)
-            }           
+        console.log(comment)
+        return async (dispatch, getState) =>{
+            const res = await axios.put(`http://localhost:4000/api/itineraries/comment/${commentId}`, {comment},{
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            dispatch({
+                type: 'MESSAGE',
+                payload: {
+                    view: true,
+                    message: res.data.message,
+                    success: res.data.success
+                }
+            })
+            return res // No lo trabajo desde redux, en esta instancia no los necestio tener en el ambiente glolbal, porque las acciones se desprenden desde el mismo componente que las va a realizar
+
         }
-    } ,
+    },
 
     deleteComment: (id, commentId) => {
 
         const token = localStorage.getItem('token')//extraemos el token
         //console.log(token)
         return async (dispatch, getState) => {
-            const res = await axios.delete(`http://localhost:4000/api/itineraries/comment/${id}`, {
+            const res = await axios.post(`http://localhost:4000/api/itineraries/comment/${id}`,{}, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 },

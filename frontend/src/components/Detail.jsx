@@ -99,7 +99,7 @@ export default function Detail() {
                             description={itineraries.description}
                             price={itineraries.price}
                             duration={itineraries.duration}
-                            hashtag={itineraries.hashtag} // con el operador ternario muestro las citys sin itinerarios
+                            hashtag={itineraries.hashtag} 
                             likes={itineraries.likes}
                             activitiesId={itineraries.activitiesId}
                             id={itineraries._id}
