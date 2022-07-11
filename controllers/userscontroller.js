@@ -220,7 +220,7 @@ const UserControllers = {
         if (userData) {
             userData.verification = true
             await userData.save()
-            res.redirect("http://localhost:3000")
+            res.redirect("https://my-tinerary-agustin-amu-front.herokuapp.com/")
         }
         else {res.json({
             success: false,
