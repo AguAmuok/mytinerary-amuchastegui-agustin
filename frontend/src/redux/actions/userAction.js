@@ -7,7 +7,7 @@ const userActions = {
     signUp: (userData) => {
         return async(dispatch,getState) => {
             try {
-                const res = await axios.post('http://localhost:4000/api/auth/signUp', {...userData})
+                const res = await axios.post('https://mi-tinerary-agustin-amu-back.herokuapp.com/api/auth/signUp', {...userData})
                 dispatch({
                     type: 'MESSAGE',
                     payload: {
@@ -26,7 +26,7 @@ const userActions = {
 
     signIn: (userLogin) => {
         return async (dispatch, getState) => {
-            const res = await axios.post('http://localhost:4000/api/auth/signIn', {...userLogin})//pedido post a la base de datos
+            const res = await axios.post('https://mi-tinerary-agustin-amu-back.herokuapp.com/api/auth/signIn', {...userLogin})//pedido post a la base de datos
             
             if(res.data.success) {
                 localStorage.setItem('token',res.data.response.token)// se activa si los datos funcionan y guardamos el token
@@ -57,7 +57,7 @@ const userActions = {
 
     signOut: (userData) => {
     return async (dispatch, getState) => {
-        await axios.post('http://localhost:4000/api/auth/signOut',{...userData})//esperamos que axios nos de        
+        await axios.post('https://mi-tinerary-agustin-amu-back.herokuapp.com/api/auth/signOut',{...userData})//esperamos que axios nos de        
         localStorage.removeItem('token')//removemos el token
         
         dispatch({
@@ -69,7 +69,7 @@ const userActions = {
 
     verifyToken: (token) => {
     return async (dispatch, getState) => {       
-        const user = await axios.get('http://localhost:4000/api/auth/signInToken', {headers: {'Authorization': 'Bearer ' + token}} ) //por cabecera pedimos el metodo 'BEARER ' para autenticar y autorizar usuarios      
+        const user = await axios.get('https://mi-tinerary-agustin-amu-back.herokuapp.com/api/auth/signInToken', {headers: {'Authorization': 'Bearer ' + token}} ) //por cabecera pedimos el metodo 'BEARER ' para autenticar y autorizar usuarios      
         if (user.data.success) {
             dispatch({//despacha el tipo de usuario y los datos
                 type: 'USER',

@@ -7,7 +7,7 @@ const itinerariesActions = { //action es un objeto que contiene una funcion con 
 
     getItineraries: () => {
         return async (dispatch, getState) => { // el dispatch es lo que recibe como parametro el reducer junto al estado para luego trabajarlo y cambiarlo
-            const res = await axios.get('http://localhost:4000/api/itineraries')
+            const res = await axios.get('https://mi-tinerary-agustin-amu-back.herokuapp.com/api/itineraries')
             dispatch({type: "GET_ITINERARIES", payload:res.data.response}) // payLoad/"carga util": nos referirnos a los datos que necesita un action en Redux para funcionar correctamente
         }
     },
@@ -15,14 +15,14 @@ const itinerariesActions = { //action es un objeto que contiene una funcion con 
     getOneItinerary: (id) => {
 
         return async (dispatch, getState) => {
-        const res = await axios.get(`http://localhost:4000/api/itineraries/${id}`)
+        const res = await axios.get(`https://mi-tinerary-agustin-amu-back.herokuapp.com/api/itineraries/${id}`)
             return res.data.response.itinerary
     }
 },
 
     getItinerariesByCity: (id) => { //muestra itinerarios por ID
                 return async (dispatch, getState) => {
-        const res = await axios.get(`http://localhost:4000/api/itinerarybycity/${id}`)
+        const res = await axios.get(`https://mi-tinerary-agustin-amu-back.herokuapp.com/api/itinerarybycity/${id}`)
         
         dispatch({type: "GET_ITINERARY_BYCITY", payload:res.data.response})
     }
@@ -34,7 +34,7 @@ const itinerariesActions = { //action es un objeto que contiene una funcion con 
     // console.log(id)
     return async () => {
         try {
-            let response = await axios.put(`http://localhost:4000/api/like/${id}`, {},//ponemos un objeto vacio para pasarlo como primer parametro
+            let response = await axios.put(`https://mi-tinerary-agustin-amu-back.herokuapp.com/api/like/${id}`, {},//ponemos un objeto vacio para pasarlo como primer parametro
             {headers: {
                 Authorization: 'Bearer ' + token
                 }

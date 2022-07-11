@@ -15,7 +15,7 @@ app.use(express.json())// la app/server usa el metodo de express que convierte t
 app.use(passport.initialize())
 app.use('/api', Router) //la app/server usa las rutas y como intermediario añade a casa endpoin =>/apiDeJobs
 
-const PORT = 4000 // definimos el puerto con con la variable de estado "ó" un numero
+const PORT = process.env.PORT || 4000 // definimos el puerto con con la variable de estado "ó" un numero
 //si defino PORT antes que requerir dotenv: va a tomar 4000, sino: EL DEFINIDO EN LA VARIABLE DE ESTADO CORRESPONDIENTE
 
 app.set ('port', PORT) //.set setea o configura una propiedad de app, en este caso el puerto (aunque podemos usar directamente PORT)

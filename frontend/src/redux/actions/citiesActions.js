@@ -8,7 +8,7 @@ const citiesActions = { //action es un objeto que contiene una funcion con dos p
     getCities: () => {
         return async (dispatch, getState) => {  //redux aun no es compatible con funciones asyncronas
             
-            const res = await axios.get('http://localhost:4000/api/cities')
+            const res = await axios.get('https://mi-tinerary-agustin-amu-back.herokuapp.com/api/cities')
             dispatch({type: "GET_CITIES", payload:res.data.response.cities})
         }
     },
@@ -16,7 +16,7 @@ const citiesActions = { //action es un objeto que contiene una funcion con dos p
     getOneCity: (id) => {
 
         return async (dispatch, getState) => {
-        const res = await axios.get(`http://localhost:4000/api/cities/${id}`)
+        const res = await axios.get(`https://mi-tinerary-agustin-amu-back.herokuapp.com/api/cities/${id}`)
         dispatch({type: "GET_ONE_ CITY", payload:res.data.response.city})
     }
 },
