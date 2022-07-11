@@ -20,7 +20,7 @@ const sendVerification = async (email, string) => { //string=uniqueString.. pued
         service: "gmail",
         auth: {// caracteristicas que debe tener/ tienen que coicidir con la variabled de entorno .env
             type: "OAuth2",
-            user: process.env.USER,
+            user: "agustin.amu.dev@gmail.com",
             clientId: process.env.GOOGLE_CLIENTID,
             clientSecret: process.env.GOOGLE_CLIENTSECRET,
             refreshToken: process.env.GOOGLE_REFRESHTOKEN,
