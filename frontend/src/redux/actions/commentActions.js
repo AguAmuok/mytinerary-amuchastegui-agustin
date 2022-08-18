@@ -4,7 +4,7 @@ const commentsActions = {
 
     addComment: (comment, itineraryId) => {
 
-        const token = localStorage.getItem('token')
+        const token = localStorage.getItem('token')//busco token
         return async (dispatch, getState) =>{
             if (comment.comment !== "") { // para que no comente vacio
                 const res = await axios.post('https://mi-tinerary-agustin-amu-back.herokuapp.com/api/itineraries/comment', {comment, itineraryId},{

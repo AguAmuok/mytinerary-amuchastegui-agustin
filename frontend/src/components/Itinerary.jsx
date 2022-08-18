@@ -55,7 +55,7 @@ function ItineraryCard(props) {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(itinerariesActions.getOneItinerary(props.id))
+        dispatch(itinerariesActions.getOneItinerary(props.id))//función que permite lanzar acciones (actions) al store, con la intención de afectar el estado.
             .then(response => setLikes(response.likes))
         //eslint-disable-next-line
     }, [!reload])
@@ -90,7 +90,7 @@ function ItineraryCard(props) {
 
     }
 
-    async function handleModify(event) {
+    async function handleModify(event) {//paso commo parametro el evento
         const commentsMsj = {
             commentId: event,
             comment: modify

@@ -4,13 +4,13 @@ const commentsControllers = {
 
     addComment: async (req, res) => {
         const { itineraryId, comment } = req.body
-        const user = req.user._id;
+        const user = req.user._id;//viene de passport
         //console.log(req.body)
         //console.log(comment)
         try {
             const newComment = await Itinerary.findOneAndUpdate(
                 { _id: itineraryId },
-                { $push: { comments: { comment: comment, userId: user } } },
+                { $push: { comments: { comment: comment, userId: user } } },//push sube lo que le paso por parametro / o sino uso push de array
                 { new: true }
             )
             res.json({
@@ -34,7 +34,7 @@ const commentsControllers = {
 
         try {
             const newComment = await Itinerary.findOneAndUpdate(
-                { "comments._id": req.params.id },
+                { "comments._id": req.params.id },//comparo el id de comment con el de params
                 { $set: { "comments.$.comment": req.body.comment } },//seperamos entre campos con '$'
                 { new: true }
             );

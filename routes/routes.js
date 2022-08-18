@@ -46,11 +46,11 @@ Router.route("/like/:id")
 
 //ROUTER COMMENT
 Router.route('/itineraries/comment')
-.post(passport.authenticate('jwt',{ session: false }),addComment)
+.post(passport.authenticate('jwt',{ session: false }),addComment)//porque son iguales
 
 
 Router.route('/itineraries/comment/:id')
-.post(passport.authenticate('jwt',{ session: false }),deleteComment)
+.post(passport.authenticate('jwt',{ session: false }),deleteComment)//
 .put(passport.authenticate('jwt',{ session: false }),modifyComment)
 
 //ROUTER ACTIVITIES
